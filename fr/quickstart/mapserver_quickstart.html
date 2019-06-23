@@ -113,7 +113,7 @@ Leafpad</span>).</li>
 </ol>
 <p>Put the following content in it:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">MAP</span>
-  <span class="n">NAME</span> <span class="s2">&quot;MAPSERVER QUICKSTART&quot;</span>
+  <span class="n">NAME</span> <span class="s2">&quot;MAPSERVER_QUICKSTART&quot;</span>
   <span class="n">EXTENT</span> <span class="o">-</span><span class="mi">137</span> <span class="mi">29</span> <span class="o">-</span><span class="mi">53</span> <span class="mi">88</span>
   <span class="n">UNITS</span> <span class="n">DD</span>
   <span class="n">SHAPEPATH</span> <span class="s2">&quot;/home/user/data/natural_earth2/&quot;</span>
@@ -127,12 +127,14 @@ Leafpad</span>).</li>
 
   <span class="n">WEB</span>
     <span class="n">METADATA</span>
+      <span class="n">ows_title</span> <span class="s2">&quot;MapServer Quickstart&quot;</span>
       <span class="n">ows_enable_request</span> <span class="s2">&quot;*&quot;</span>
+      <span class="n">ows_srs</span> <span class="s2">&quot;EPSG:4326 EPSG:25832 EPSG:25833&quot;</span>
     <span class="n">END</span>
   <span class="n">END</span>
 
   <span class="n">LAYER</span>
-    <span class="n">NAME</span> <span class="s2">&quot;Admin Countries&quot;</span>
+    <span class="n">NAME</span> <span class="s2">&quot;Countries&quot;</span>
     <span class="n">STATUS</span> <span class="n">ON</span>
     <span class="n">TYPE</span> <span class="n">POLYGON</span>
     <span class="n">DATA</span> <span class="s2">&quot;ne_10m_admin_0_countries&quot;</span>
@@ -149,8 +151,7 @@ Leafpad</span>).</li>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">The example uses the natural earth dataset, which is already installed on
-the live dvd at <code class="file docutils literal"><span class="pre">~/data/natural_earth2</span></code> (a short cut to
+<p class="last">The example uses the natural earth dataset, which is already on OSGeoLive at <code class="file docutils literal"><span class="pre">~/data/natural_earth2</span></code> (a short cut to
 <code class="file docutils literal"><span class="pre">/usr/local/share/data/natural_earth2</span></code>).</p>
 </div>
 <p>Each object in a MapFile starts with its name (for example <strong>MAP</strong>) and ends
@@ -197,7 +198,7 @@ can be found in the <a class="reference external" href="http://mapserver.org/map
 layers from a MapFile with MapServer using an OGC WMS request.</p>
 </div>
 <p>Open a web browser and enter the following URL:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>http://localhost/cgi-bin/mapserv?map=/home/user/mapserver_quickstart.map&amp;SERVICE=WMS&amp;REQUEST=Getmap&amp;VERSION=1.1.1&amp;LAYERS=Admin%20Countries&amp;SRS=EPSG:4326&amp;BBOX=-137,29,-53,88&amp;FORMAT=PNG&amp;WIDTH=800&amp;HEIGHT=600
+<div class="highlight-default"><div class="highlight"><pre><span></span>http://localhost/cgi-bin/mapserv?map=/home/user/mapserver_quickstart.map&amp;SERVICE=WMS&amp;REQUEST=Getmap&amp;VERSION=1.1.1&amp;LAYERS=Countries&amp;SRS=EPSG:4326&amp;BBOX=-137,29,-53,88&amp;FORMAT=PNG&amp;WIDTH=800&amp;HEIGHT=600
 </pre></div>
 </div>
 <p>What does the above mean?  If we put it in simple words, it’s a <a class="reference external" href="http://www.opengeospatial.org/standards/wms">Web Map
@@ -222,7 +223,7 @@ result looks like the following:</p>
 <p>Although MapServer is geared towards web applications, it can also produce
 images on the command line. This can be useful if you are looking for
 repetitive mapping, or while debugging.</p>
-<p>Open a terminal (<span class="menuselection">Applications ‣ Accessories ‣ Terminal
+<p>Open a terminal (<span class="menuselection">Applications ‣ System Tools ‣ Terminal
 Emulator</span>) and type:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">shp2img</span> <span class="o">-</span><span class="n">m</span> <span class="n">mapserver_quickstart</span><span class="o">.</span><span class="n">map</span> <span class="o">-</span><span class="n">o</span> <span class="n">mymap</span><span class="o">.</span><span class="n">png</span>
 </pre></div>
@@ -258,7 +259,7 @@ specifically request it, it won’t be rendered.</p>
 <p>Let’s take our previous WMS <strong>GetMap</strong> request and add our new «&nbsp;Lakes&nbsp;» layer
 to the image rendered. We simply need to add the new layer name to the
 «&nbsp;LAYERS&nbsp;» property list:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>http://localhost/cgi-bin/mapserv?map=/home/user/mapserver_quickstart.map&amp;SERVICE=WMS&amp;REQUEST=Getmap&amp;VERSION=1.1.1&amp;LAYERS=Admin%20Countries,Lakes&amp;SRS=EPSG:4326&amp;BBOX=-137,29,-53,88&amp;FORMAT=PNG&amp;WIDTH=800&amp;HEIGHT=600
+<div class="highlight-default"><div class="highlight"><pre><span></span>http://localhost/cgi-bin/mapserv?map=/home/user/mapserver_quickstart.map&amp;SERVICE=WMS&amp;REQUEST=Getmap&amp;VERSION=1.1.1&amp;LAYERS=Countries,Lakes&amp;SRS=EPSG:4326&amp;BBOX=-137,29,-53,88&amp;FORMAT=PNG&amp;WIDTH=800&amp;HEIGHT=600
 </pre></div>
 </div>
 <p>The image rendered by MapServer looks like our previous map, but with the
