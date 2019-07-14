@@ -256,7 +256,7 @@
 </div></blockquote>
 <p>Beispiel für einen WMS</p>
 <p>WhereGroup OSM WMS
-<a class="reference external" href="https://osm-demo.wheregroup.com/service">https://osm-demo.wheregroup.com/service</a></p>
+<a class="reference external" href="https://osm-demo.wheregroup.com/service?SERVICE=WMS&amp;VERSION=1.3.0&amp;REQUEST=getCapabilities">https://osm-demo.wheregroup.com/service?SERVICE=WMS&amp;VERSION=1.3.0&amp;REQUEST=getCapabilities</a></p>
 </div>
 <div class="section" id="add-service-to-application">
 <h2><a class="toc-backref" href="#id14">Fügen Sie Dienste zur Anwendung hinzu</a><a class="headerlink" href="#add-service-to-application" title="Link zu dieser Überschrift">¶</a></h2>
@@ -290,11 +290,11 @@
 <li>visible - Standard ist aktiv. Dienst ist sichtbar</li>
 <li>basesource - aktiviert für Dienste, die vom BaseSourceSwitcher verwaltet werden sollten</li>
 <li>proxy - bei Aktivierung wird der Dienst über Mapbender als Proxy angefordert</li>
-<li>transparency - Standard ist aktiviert. Deaktiviert wird der Dienst ohne transparenten Hintergrund angefordert (getMap-Request mit TRANSPARENT=FALSE)</li>
+<li>transparency - default is active, the source is without a transparent background if it is deactivated (getMap-Request with TRANSPARENT=FALSE)</li>
 <li>tiled - Dienst wird in Kacheln angefordert, Standard ist nicht gekachelt (kann bei einer großen Karte sehr hilfreich sein, sofern der Dienst die Kartengröße nicht unterstützt)</li>
 <li>Layerreihenfolge - die Ebenenreihenfolge kann in der Anwendung angepasst werden</li>
-<li>BBOX Factor</li>
-<li>tile buffer</li>
+<li>BBOX factor - This parameter is valid for non-tiled WMS services. You can specify the size of the returned map-image. A value greater than 1 will request a bigger map-image. Default: 1.25, can be set to 1.</li>
+<li>tile buffer - This parameter is valid for tiles services and specifies if additional tiles should be requested. If the user pans the map, these tiles are already downloaded and visible. The higher the value the more tiles are requested. Default: 0</li>
 </ul>
 <p>Layerkonfiguration</p>
 <ul class="simple">
@@ -303,12 +303,12 @@
 <li>Auswählen an (select on) - Layer ist bei Anwendungsstart aktiv</li>
 <li>Auswählen erlauben (select allow) - Layer ist auswählbar im Ebenenbaum</li>
 <li>info on - Layer-Infoabfrage wird beim Start aktiviert</li>
-<li>info allow - Infoabfrage wird für diesen Layer zugelassen</li>
+<li>info allow - feature info is possible for this layer</li>
 <li>minscale / maxscale - Definiert den Maßstabsbereich, in dem der Layer angezeigt wird. Tragen Sie nichts ein, um Maßstabsbegrenzungen zu umgehen</li>
 <li>toggle - Aufklappen beim Start der Anwendung</li>
 <li>reorder - Ebenen können über Drag &amp; Drop in der Anwendung verschoben werden</li>
 <li>öffnet einen Dialog mit weiteren Informationen</li>
-<li>name - Layername der Service Information (wird beim getMap-Request verwendet und ist nicht veränderbar)</li>
+<li>name - layer name of the service information (for getMap-Requests)</li>
 <li>style - Wenn ein WMS mehr als einen Stil anbietet, können Sie einen anderen Stil als den default-Stil wählen.</li>
 </ul>
 </div>
@@ -330,9 +330,8 @@
 <blockquote>
 <div><a class="reference internal image-reference" href="../../_images/mapbender3_application_elements.png"><img alt="../../_images/mapbender3_application_elements.png" src="../../_images/mapbender3_application_elements.png" style="width: 785.4px; height: 592.9px;" /></a>
 </div></blockquote>
-<p>Beispiele für Elemente, die Mapbender anbietet:</p>
+<p>Examples for elements Mapbender offers:</p>
 <ul class="simple">
-<li>Über Mapbender-Dialog (About Dialog) - zeigt Informationen über Mapbender an</li>
 <li>Aktivitätsanzeige</li>
 <li>Hintergrund wechseln</li>
 <li>Button</li>
@@ -345,16 +344,17 @@
 <li>Legende</li>
 <li>Layertree - Ebenenbaum</li>
 <li>Karte</li>
+<li>Navigationstoolbar (Zoombar)</li>
 <li>Übersicht</li>
 <li>Druck</li>
+<li>Redlining</li>
 <li>Linien- und Flächenmessung</li>
 <li>Maßstabsauswahl</li>
 <li>Maßstabsleiste</li>
-<li>Einfache Suche</li>
-<li>Suche</li>
+<li>SimpleSearch - Search via Solr</li>
+<li>SearchRouter - Seach via SQL</li>
 <li>SRS Auswahl</li>
 <li>Auswahl der Projektion über eine Auwahlbox (SRS Auswahl)</li>
-<li>Navigationstoolbar (Zoombar)</li>
 <li>WMS Loader</li>
 <li>WMC Editor</li>
 <li>WMC Loader</li>
@@ -366,11 +366,14 @@
 <h2><a class="toc-backref" href="#id17">Versuchen Sie es selber</a><a class="headerlink" href="#try-it-yourself" title="Link zu dieser Überschrift">¶</a></h2>
 <ul class="simple">
 <li>Fügen Sie ein Kartenelement (Map-Element) zum content-Bereich Ihrer Anwendung hinzu</li>
-<li>Fügen Sie einen Ebenenbaum (Layertree) zum content-Bereich Ihrer Anwendung hinzu</li>
-<li>Fügen Sie einen Button in die Toolbar hinzu, der den Layertree öffnet</li>
+<li>add a Layertree to the sidepane of your application</li>
+<li>add a Legend to the sidepane of your application</li>
+<li>add a print element to the content</li>
+<li>add a button that opens the print to the top of your application</li>
 <li>Fügen Sie das Navigationselement (Navigation Toolbar) in den content-Bereich hinzu</li>
+<li>add an overview map to the content</li>
 <li>Fügen Sie ein Copyright-Element hinzu und ändern Sie den Copyright-Text.</li>
-<li>Fügen Sie einen SRS Selector in den Footer-Bereich ein.</li>
+<li>add a Scales Selector and an SRS Selector to the footer</li>
 </ul>
 </div>
 <div class="section" id="user-and-group-management">
@@ -457,9 +460,7 @@
 <div><a class="reference external" href="https://mapbender.org/">https://mapbender.org/</a></div></blockquote>
 <p>Sie finden Tutorials unter</p>
 <blockquote>
-<div><p><a class="reference external" href="https://doc.mapbender.org">https://doc.mapbender.org</a></p>
-<p><a class="reference external" href="https://api.mapbender.org">https://api.mapbender.org</a></p>
-</div></blockquote>
+<div><a class="reference external" href="https://doc.mapbender.org">https://doc.mapbender.org</a></div></blockquote>
 <p>Beteiligen Sie sich</p>
 <blockquote>
 <div><a class="reference external" href="https://www.mapbender.org/?q=de/node/16">https://www.mapbender.org/?q=de/node/16</a></div></blockquote>
