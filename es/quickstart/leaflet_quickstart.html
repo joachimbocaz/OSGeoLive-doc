@@ -143,7 +143,9 @@
 </pre></div>
 </div>
 <p>Si usted tiene acceso en línea, puede que desee utilizar un tilemap mejor como  fondo:</p>
-<p>L.tileLayer(“<a class="reference external" href="http:/">http:/</a>/{s}.tile.openstreetmap.org/{z}/{x}/{y}.png”,{maxZoom:18, attribution: “© &lt;a href=»https://www.openstreetmap.org/copyright»&gt;OpenStreetMap&lt;/a&gt; contributors”}).addTo(map);</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">L</span><span class="o">.</span><span class="n">tileLayer</span><span class="p">(</span><span class="s1">&#39;http://</span><span class="si">{s}</span><span class="s1">.tile.openstreetmap.org/</span><span class="si">{z}</span><span class="s1">/</span><span class="si">{x}</span><span class="s1">/</span><span class="si">{y}</span><span class="s1">.png&#39;</span><span class="p">,{</span><span class="n">maxZoom</span><span class="p">:</span><span class="mi">18</span><span class="p">,</span> <span class="n">attribution</span><span class="p">:</span> <span class="s1">&#39;© &lt;a href=&quot;https://www.openstreetmap.org/copyright&quot;&gt;OpenStreetMap&lt;/a&gt; contributors&#39;</span><span class="p">})</span><span class="o">.</span><span class="n">addTo</span><span class="p">(</span><span class="nb">map</span><span class="p">);</span>
+</pre></div>
+</div>
 <p>Asegúrese de después de la inclusión  <strong>div</strong> and <strong>leaflet.js</strong>. ¡Eso es!. Ahora usted tiene un mapa de folleto en funcionamiento.</p>
 <p>Cabe destacar que Leaflet es independiente del proveedor, lo que significa que no impone una opción particular de proveedores para las teselas  y ni siquiera contiene una sola línea de código específica del proveedor, por lo que puede usar otros proveedores si lo necesita.</p>
 </div>

@@ -143,7 +143,9 @@
 </pre></div>
 </div>
 <p>Si vous avez accès Internet, vous pouvez utiliser un fond de carte plus agréabl&nbsp;:</p>
-<p>L.tileLayer(“<a class="reference external" href="http:/">http:/</a>/{s}.tile.openstreetmap.org/{z}/{x}/{y}.png”,{maxZoom:18, attribution: “© &lt;a href=&nbsp;»https://www.openstreetmap.org/copyright&nbsp;»&gt;OpenStreetMap&lt;/a&gt; contributors”}).addTo(map);</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">L</span><span class="o">.</span><span class="n">tileLayer</span><span class="p">(</span><span class="s1">&#39;http://</span><span class="si">{s}</span><span class="s1">.tile.openstreetmap.org/</span><span class="si">{z}</span><span class="s1">/</span><span class="si">{x}</span><span class="s1">/</span><span class="si">{y}</span><span class="s1">.png&#39;</span><span class="p">,{</span><span class="n">maxZoom</span><span class="p">:</span><span class="mi">18</span><span class="p">,</span> <span class="n">attribution</span><span class="p">:</span> <span class="s1">&#39;© &lt;a href=&quot;https://www.openstreetmap.org/copyright&quot;&gt;OpenStreetMap&lt;/a&gt; contributors&#39;</span><span class="p">})</span><span class="o">.</span><span class="n">addTo</span><span class="p">(</span><span class="nb">map</span><span class="p">);</span>
+</pre></div>
+</div>
 <p>Assurez-vous que tout le code est appelé après l’insertion de la <strong>div</strong> et de <strong>leaflet.js</strong>. Voilà&nbsp;! Vous avez une carte Leaflet fonctionnelle maintenant.</p>
 <p>Il est à noter que Leaflet est indépendant du fournisseur, ce qui signifie qu’il n’est pas imposé un choix particulier de fournisseurs pour les tuiles, et il ne contient même pas une ligne spécifique au fournisseur, donc vous êtes libre d’utiliser d’autres fournisseurs si vous en avez le besoin.</p>
 </div>

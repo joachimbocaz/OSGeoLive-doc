@@ -145,7 +145,9 @@ In this case we will be using the tile images provided by TileStache on the live
 </pre></div>
 </div>
 <p>If you have online access you may want to use a nicer tilemap as the background:</p>
-<p>L.tileLayer(‚<a class="reference external" href="http:/">http:/</a>/{s}.tile.openstreetmap.org/{z}/{x}/{y}.png‘,{maxZoom:18, attribution: ‚© &lt;a href=“https://www.openstreetmap.org/copyright“&gt;OpenStreetMap&lt;/a&gt; contributors‘}).addTo(map);</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">L</span><span class="o">.</span><span class="n">tileLayer</span><span class="p">(</span><span class="s1">&#39;http://</span><span class="si">{s}</span><span class="s1">.tile.openstreetmap.org/</span><span class="si">{z}</span><span class="s1">/</span><span class="si">{x}</span><span class="s1">/</span><span class="si">{y}</span><span class="s1">.png&#39;</span><span class="p">,{</span><span class="n">maxZoom</span><span class="p">:</span><span class="mi">18</span><span class="p">,</span> <span class="n">attribution</span><span class="p">:</span> <span class="s1">&#39;© &lt;a href=&quot;https://www.openstreetmap.org/copyright&quot;&gt;OpenStreetMap&lt;/a&gt; contributors&#39;</span><span class="p">})</span><span class="o">.</span><span class="n">addTo</span><span class="p">(</span><span class="nb">map</span><span class="p">);</span>
+</pre></div>
+</div>
 <p>Make sure all the code is called after the <strong>div</strong> and <strong>leaflet.js</strong> inclusion. That’s it! You have a working Leaflet map now.</p>
 <p>It’s worth noting that Leaflet is provider-agnostic, meaning that it doesn’t enforce a particular choice of providers for tiles, and it doesn’t even contain a single provider-specific line of code, so you’re free to use other providers if you need to.</p>
 </div>
