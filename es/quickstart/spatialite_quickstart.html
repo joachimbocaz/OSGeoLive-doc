@@ -107,7 +107,7 @@
 </li>
 <li><p class="first">Usted notará que la pantalla se divide en 3 áreas:</p>
 <ol class="arabic simple">
-<li>El panel de la izquierda muestra la jerarquía de la base de datos, por ejemplo, una lista de tablas y columnas dentro de la tabla. Haga click derecho en los elementos del panel izquierdo para seleccionar de una lista de acciones comunes de la base de datos.</li>
+<li>The left panel displays the database hierarchy, such as a list of tables, and columns within the table. Right click on elements of the left panel to select from a list of common database actions.</li>
 <li>El panel superior derecho muestra el SQL para la acción seleccionada. Puede introducir su propio SQL personalizada en este panel.</li>
 <li>El panel derecho inferior muestra los resultados de la consulta SQL.</li>
 </ol>
@@ -121,7 +121,9 @@
 </li>
 </ul>
 <ul>
-<li><p class="first">Ahora trate de afinar esta sentencia SQL para obtener NOME y (Lat, Long) para sólo los campos NOME_PROV incluyendo «BRESCIA», esta vez usando el MunicipalHallsView.  En el panel superior derecho SQL teclee:</p>
+<li><p class="first">Now let’s try tweaking this SQL statement to get NOME and (Lat,Long) for only
+the NOME_PROV fields include «BRESCIA», this time using the
+MunicipalHallsView.  In the upper right SQL pane type:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">NOME</span><span class="p">,</span> <span class="n">X</span><span class="p">(</span><span class="n">Geometry</span><span class="p">)</span> <span class="n">AS</span> <span class="n">Longitude</span><span class="p">,</span> <span class="n">Y</span><span class="p">(</span><span class="n">Geometry</span><span class="p">)</span> <span class="n">AS</span> <span class="n">Latitude</span>
      <span class="n">FROM</span> <span class="s2">&quot;MunicipalHallsView&quot;</span>
      <span class="n">WHERE</span> <span class="n">NOME_PROV</span> <span class="n">LIKE</span> <span class="s2">&quot;BRESCIA&quot;</span><span class="p">;</span>

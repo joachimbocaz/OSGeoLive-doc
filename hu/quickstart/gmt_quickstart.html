@@ -113,7 +113,7 @@
 </pre></div>
 </div>
 <p>Kísérletezhet más színtáblákkal, lásd a  <cite>man gmt makecpt</cite> parancsot a teljes listához.</p>
-<p>Az árnyékolt domborzat példánkhoz meg kell adnunk hogyan változik a szín intenzitás a rács mentén. Ehhez kiszámoljuk az irány szerinti deriváltat vagy gradienst a rácsunkból a <cite>grdgradient</cite> parancs segítségével.  A <cite>grdgradient</cite> parancshoz használjuk a <cite>-Ne</cite> kapcsolót az output normalizálásához a kumulatív Laplace elosztást használva és a <a href="#id1"><span class="problematic" id="id2">`</span></a>-A`kapcsolót az irány szerinti deriváltak északtól mért irányához.</p>
+<p>Az árnyékolt domborzat példánkhoz meg kell adnunk hogyan változik a szín intenzitás a rács mentén. Ehhez kiszámoljuk az irány szerinti deriváltat vagy gradienst a rácsunkból a <cite>grdgradient</cite> parancs segítségével.  A <cite>grdgradient</cite> parancshoz használjuk a <cite>-Ne</cite> kapcsolót az output normalizálásához a kumulatív Laplace elosztást használva és a <cite>-A</cite> kapcsolót az irány szerinti deriváltak északtól mért irányához.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">gmt</span> <span class="n">grdgradient</span> <span class="n">geo_elevation</span><span class="o">.</span><span class="n">gmt</span> <span class="o">-</span><span class="n">Ne0</span><span class="o">.</span><span class="mi">8</span> <span class="o">-</span><span class="n">A100</span> <span class="o">-</span><span class="n">fg</span> <span class="o">-</span><span class="n">Ggradient</span><span class="o">.</span><span class="n">nc</span>
 </pre></div>
 </div>
