@@ -410,17 +410,19 @@ OSGeoLive
         :title-heading: h3
   
 
-            =================== ======================= ================ =================
-            =================== ======================= ================ =================
-              GeoServer          MapServer               deegree          ncWMS         
-              |geoserver_logo|   |mapserver_logo|        |deegree_logo|   |ncWMS_logo|  
-              EOxServer          GeoNetwork              pycsw            PyWPS         
-              |eoxserver_logo|   |geonetwork_logo|       |pycsw_logo|     |pywps_logo|  
-              MapProxy           QGIS Server             istSOS           52 North SOS  
-              |mapproxy_logo|    |qgis_mapserver_logo|   |istsos_logo|    |52nSOS_logo| 
-              52 North WPS       Zoo Project             t-rex            Actinia       
-              |52nWPS_logo|      |zoo-project_logo|      |t-rex_logo|     |actinia_logo|
-            =================== ======================= ================ =================
+            =================== ================== ======================= =================
+            =================== ================== ======================= =================
+              GeoServer          MapServer          MapCache                deegree       
+              |geoserver_logo|   |mapserver_logo|   |mapcache_logo|         |deegree_logo|
+              ncWMS              EOxServer          GeoNetwork              pycsw         
+              |ncWMS_logo|       |eoxserver_logo|   |geonetwork_logo|       |pycsw_logo|  
+              PyWPS              MapProxy           QGIS Server             istSOS        
+              |pywps_logo|       |mapproxy_logo|    |qgis_mapserver_logo|   |istsos_logo| 
+              52 North SOS       52 North WPS       Zoo Project             t-rex         
+              |52nSOS_logo|      |52nWPS_logo|      |zoo-project_logo|      |t-rex_logo|  
+              Actinia                                 
+              |actinia_logo|                          
+            =================== ================== ======================= =================
 
 
 
@@ -459,6 +461,19 @@ OSGeoLive
             Note 
             Mapserver is one of the earliest Open Source Web Map Services. The codebase is very mature and it retains a large development community. It serves data through Web Map Service images, Web Feature Service vectors, a Web Coverage Service and Sensor Observation Services. It connects to a wide range of databases and data stores. It is written in C and has connections for a number of other languages.
 
+
+
+
+    .. revealjs:: MapCache
+        :title-heading: h3
+  
+        .. image:: ../images/projects/mapcache/mapcache_screenshot.png
+            :height: 600
+
+        .. rv_note::
+            Note 
+            MapCache is a server that implements tile caching to speed up access to WMS layers. MapCache is part of the MapServer family, 
+            but can be configured to cache and serve data from any geospatial server that uses WMS. 
 
 
 
@@ -1182,6 +1197,7 @@ OSGeoLive
 .. |geonode_logo| image:: ../images/projects/geonode/logo_geonode.png
 .. |geoserver_logo| image:: ../images/projects/geoserver/logo_geoserver.png
 .. |mapserver_logo| image:: ../images/projects/mapserver/logo_mapserver.png
+.. |mapcache_logo| image:: ../images/projects/mapcache/logo_mapcache.png
 .. |deegree_logo| image:: ../images/projects/deegree/logo_deegree.png
 .. |ncWMS_logo| image:: ../images/projects/ncWMS/logo_ncWMS.png
 .. |eoxserver_logo| image:: ../images/projects/eoxserver/logo_eoxserver.png

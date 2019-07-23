@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Mapbender &#8212; OSGeoLive 13.0 Documentation</title>
+    <title>MapCache &#8212; OSGeoLive 13.0 Documentation</title>
     <link rel="stylesheet" href="../../_static/overview.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <script type="text/javascript">
@@ -25,8 +25,8 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="copyright" title="Copyright" href="../copyright.html" />
-    <link rel="next" title="MapCache" href="mapcache_overview.html" />
-    <link rel="prev" title="libLAS" href="liblas_overview.html" />
+    <link rel="next" title="Mapnik" href="mapnik_overview.html" />
+    <link rel="prev" title="Mapbender" href="mapbender_overview.html" />
 	<script type="text/javascript" src="../../_static/osgeolive.js"></script>
 
 
@@ -68,58 +68,78 @@
       <div class="documentwrapper">
           <div class="body" role="main">
             
-  <a class="reference external image-reference" href="http://www.mapbender.org"><img alt="../../_images/logo_mapbender.png" class="align-right" src="../../_images/logo_mapbender.png" /></a>
-<div class="section" id="mapbender">
-<h1>Mapbender<a class="headerlink" href="#mapbender" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="geoportal-framework">
-<h2>Geoportal Framework<a class="headerlink" href="#geoportal-framework" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference external" href="https://www.mapbender.org/en">Mapbender</a> is a graduated OSGeo project. It is a web based geoportal framework to publish, register, view, navigate, monitor and grant secure access to spatial data infrastructure services.</p>
-<p>Mapbender is the tip of the iceberg, a meta layer of software providing access to SDI components adhering to international standards. Mapbender allows users to easily create customised browser clients from a wide range of widgets (without any/with minimal) programming required. Widgets integrate with server functionality to provide advanced functionality like security proxying, digitizing, auto snapping and more.</p>
-<p>Mapbender management applications are straight forward and easy to use providing highly focused functionality for the operation of large scale distributed SDI components. It is the tool of choice for SDI administrators who need to maintain, categorize and monitor map and feature services. Mapbender grants access to individuals, groups and manages machine to machine access. Adherence to standardized services, such as OGC WMS allows to take advantage of interoperable services from a multitude of server platforms.</p>
-<p>Mapbender is based on Symfony, OpenLayers and jQuery.</p>
-<a class="reference internal image-reference" href="../../_images/mapbender_screenshot.png"><img alt="mapbender screenshot" class="align-right" src="../../_images/mapbender_screenshot.png" style="width: 500px;" /></a>
+  <a class="reference external image-reference" href="http://mapserver.org/"><img alt="../../_images/logo_mapcache.png" class="align-right" src="../../_images/logo_mapcache.png" /></a>
+<a class="reference external image-reference" href="target:http://www.osgeo.org"><img alt="../../_images/OSGeo_project.png" class="align-right" src="../../_images/OSGeo_project.png" /></a>
+<div class="section" id="mapcache">
+<h1>MapCache<a class="headerlink" href="#mapcache" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="web-service">
+<h2>Web Service<a class="headerlink" href="#web-service" title="Permalink to this headline">¶</a></h2>
+<p>MapCache is a server that implements tile caching to speed up access to WMS layers. The primary objectives are to be fast and easily deployable,
+while offering the essential features (and more!) expected from a tile caching solution.</p>
+<p>MapCache is part of the MapServer family, but can be configured to cache and serve data from any geospatial server
+that uses WMS. MapCache can be run on Apache as a module or on any web server that supports CGI/FastCGI such as IIS, Nginx, and Jetty.</p>
+<a class="reference internal image-reference" href="../../_images/mapcache_screenshot.png"><img alt="mapcache screenshot" class="align-right" src="../../_images/mapcache_screenshot.png" style="width: 500px;" /></a>
 <div class="section" id="core-features">
 <h3>Core Features<a class="headerlink" href="#core-features" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Easily create web mapping interfaces using template applications<ul>
-<li>add/remove/customize applications</li>
+<li>Allows tile caches to be stored in<ul>
+<li>on disk</li>
+<li>in the cloud using REST (S3, Azure, Google)</li>
+<li>in databases including SQLite, Berkeley DB, Riak</li>
+<li>in Memcache</li>
 </ul>
 </li>
-<li>Create applications with digitize functionality</li>
-<li>Create mobile Applications</li>
-<li>Print high-quality maps using your own PDF templates.</li>
-<li>Digitizing via SQL</li>
-<li>Upload and share remote OGC WMS (Capabilities caching)<ul>
-<li>arrange uploaded WMS for overlay</li>
-<li>editing layer visibility</li>
-<li>order</li>
-<li>format</li>
-</ul>
-</li>
-<li>Create users and groups, share and grant access to services and modules</li>
-<li>Restrict user access with the OWS security proxy module via trusted servers</li>
-<li>Encrypted protocols monitoring and status notification and auto-update service for remote OGC services</li>
-<li>… and more!</li>
+<li>Includes a seeder application</li>
+<li>Caching based on dimensions (such as time)</li>
+<li>Allows caching of Mapbox Vector (MVT) tiles</li>
+<li>Customizable grids</li>
+<li>Allows tiles to be “assembled” together - allowing tiles for different datasets to be
+merged together into a single tile to send to the client</li>
+<li>Includes a seeder application to pre-fill caches from the command line</li>
+<li>Allows requests to be proxied back to a server</li>
+<li>An inbuilt demo interface</li>
 </ul>
 </div>
 <div class="section" id="implemented-standards">
 <h3>Implemented Standards<a class="headerlink" href="#implemented-standards" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>OGC Web Map Service (WMS) 1.1.1, 1.3.0</li>
+<li>Support of numerous Open Geospatial Consortium  (OGC) standards<ul>
+<li><a class="reference external" href="http://www.opengeospatial.org/standards/wms">WMS</a></li>
+<li><a class="reference external" href="http://www.opengeospatial.org/standards/wmts">WMTS</a></li>
+</ul>
+</li>
+<li>Additional standards include:<ul>
+<li><a class="reference external" href="https://wiki.osgeo.org/wiki/Tile_Map_Service_Specification">TMS</a></li>
+<li>Google Maps XYZ</li>
+<li>KML SuperOverlays</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="demo">
+<h3>Demo<a class="headerlink" href="#demo" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><a class="reference external" href="http://localhost/mapcache/demo/">Default MapCache Demo</a></li>
+</ul>
+</div>
+<div class="section" id="documentation">
+<h3>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><a class="reference external" href="https://mapserver.org/mapcache/">MapCache Documentation</a></li>
 </ul>
 </div>
 <div class="section" id="details">
 <h3>Details<a class="headerlink" href="#details" title="Permalink to this headline">¶</a></h3>
-<p><strong>Website:</strong> <a class="reference external" href="https://www.mapbender.org/">https://www.mapbender.org/</a></p>
-<p><strong>Licence:</strong> <a class="reference external" href="http://opensource.org/licenses/MIT">MIT license</a></p>
-<p><strong>Software Version:</strong> 3.0.7.3</p>
+<p><strong>Website:</strong> <a class="reference external" href="https://mapserver.org/mapcache/">https://mapserver.org/mapcache/</a></p>
+<p><strong>Licence:</strong> <a class="reference external" href="http://mapserver.org/copyright.html#license">MIT-style license</a></p>
+<p><strong>Software Version:</strong> 1.6.1</p>
 <p><strong>Supported Platforms:</strong> Windows, Linux, Mac</p>
-<p><strong>Support:</strong> <a class="reference external" href="https://www.mapbender.org/en/community">https://www.mapbender.org/en/community</a></p>
+<p><strong>Support:</strong> <a class="reference external" href="http://mapserver.org/community/">http://mapserver.org/community/</a></p>
 </div>
 <div class="section" id="quickstart">
 <h3>Quickstart<a class="headerlink" href="#quickstart" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><a class="reference internal" href="../quickstart/mapbender_quickstart.html"><span class="doc">Quickstart documentation</span></a></li>
+<li><a class="reference internal" href="../quickstart/mapcache_quickstart.html"><span class="doc">Quickstart documentation</span></a></li>
 </ul>
 </div>
 </div>

@@ -386,9 +386,9 @@ GeoNode is a Content Management System for geospatial data which provides creati
 <div><table border="1" class="docutils">
 <colgroup>
 <col width="25%" />
-<col width="31%" />
-<col width="21%" />
 <col width="23%" />
+<col width="30%" />
+<col width="22%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">&#160;</th>
@@ -400,43 +400,53 @@ GeoNode is a Content Management System for geospatial data which provides creati
 <tbody valign="top">
 <tr class="row-even"><td>GeoServer</td>
 <td>MapServer</td>
+<td>MapCache</td>
 <td>deegree</td>
-<td>ncWMS</td>
 </tr>
 <tr class="row-odd"><td><img alt="geoserver_logo" src="../_images/logo_geoserver.png" /></td>
 <td><img alt="mapserver_logo" src="../_images/logo_mapserver.png" /></td>
+<td><img alt="mapcache_logo" src="../_images/logo_mapcache.png" /></td>
 <td><img alt="deegree_logo" src="../_images/logo_deegree.png" /></td>
-<td><img alt="ncWMS_logo" src="../_images/logo_ncWMS.png" /></td>
 </tr>
-<tr class="row-even"><td>EOxServer</td>
+<tr class="row-even"><td>ncWMS</td>
+<td>EOxServer</td>
 <td>GeoNetwork</td>
 <td>pycsw</td>
-<td>PyWPS</td>
 </tr>
-<tr class="row-odd"><td><img alt="eoxserver_logo" src="../_images/logo_eoxserver.png" /></td>
+<tr class="row-odd"><td><img alt="ncWMS_logo" src="../_images/logo_ncWMS.png" /></td>
+<td><img alt="eoxserver_logo" src="../_images/logo_eoxserver.png" /></td>
 <td><img alt="geonetwork_logo" src="../_images/logo_geonetwork.png" /></td>
 <td><img alt="pycsw_logo" src="../_images/logo_pycsw.png" /></td>
-<td><img alt="pywps_logo" src="../_images/logo_pywps.png" /></td>
 </tr>
-<tr class="row-even"><td>MapProxy</td>
+<tr class="row-even"><td>PyWPS</td>
+<td>MapProxy</td>
 <td>QGIS Server</td>
 <td>istSOS</td>
-<td>52 North SOS</td>
 </tr>
-<tr class="row-odd"><td><img alt="mapproxy_logo" src="../_images/logo_mapproxy.png" /></td>
+<tr class="row-odd"><td><img alt="pywps_logo" src="../_images/logo_pywps.png" /></td>
+<td><img alt="mapproxy_logo" src="../_images/logo_mapproxy.png" /></td>
 <td><img alt="qgis_mapserver_logo" src="../_images/logo_qgis_mapserver.png" /></td>
 <td><img alt="istsos_logo" src="../_images/logo_istsos.png" /></td>
-<td><img alt="52nSOS_logo" src="../_images/logo_52nSOS.png" /></td>
 </tr>
-<tr class="row-even"><td>52 North WPS</td>
+<tr class="row-even"><td>52 North SOS</td>
+<td>52 North WPS</td>
 <td>Zoo Project</td>
 <td>t-rex</td>
-<td>Actinia</td>
 </tr>
-<tr class="row-odd"><td><img alt="52nWPS_logo" src="../_images/logo_52nWPS.png" /></td>
+<tr class="row-odd"><td><img alt="52nSOS_logo" src="../_images/logo_52nSOS.png" /></td>
+<td><img alt="52nWPS_logo" src="../_images/logo_52nWPS.png" /></td>
 <td><img alt="zoo-project_logo" src="../_images/logo_zoo-project.png" /></td>
 <td><img alt="t-rex_logo" src="../_images/logo_t-rex.png" /></td>
-<td><img alt="actinia_logo" src="../_images/logo_actinia.png" /></td>
+</tr>
+<tr class="row-even"><td>Actinia</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><img alt="actinia_logo" src="../_images/logo_actinia.png" /></td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
 </tr>
 </tbody>
 </table>
@@ -463,6 +473,14 @@ GeoServer comes with a nice browser-based management interface and connects to m
 <aside class="last notes">
 Note
 Mapserver is one of the earliest Open Source Web Map Services. The codebase is very mature and it retains a large development community. It serves data through Web Map Service images, Web Feature Service vectors, a Web Coverage Service and Sensor Observation Services. It connects to a wide range of databases and data stores. It is written in C and has connections for a number of other languages.</aside>
+</section>
+<section>
+<h3>MapCache</h3>
+<a class="first reference internal image-reference" href="../_images/mapcache_screenshot.png"><img alt="../_images/mapcache_screenshot.png" src="../_images/mapcache_screenshot.png" style="height: 600px;" /></a>
+<aside class="last notes">
+Note
+MapCache is a server that implements tile caching to speed up access to WMS layers. MapCache is part of the MapServer family,
+but can be configured to cache and serve data from any geospatial server that uses WMS.</aside>
 </section>
 <section>
 <h3>deegree</h3>
