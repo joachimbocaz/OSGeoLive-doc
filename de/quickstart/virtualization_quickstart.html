@@ -138,7 +138,15 @@
 <p>Dabei können gemeinsame Ordner wahlweise nur lesend und automatisch verbunden werden. Klicken Sie ok, sobald der „Ordnerpfad“ und „Ordnername“ definiert wurde und nochmals OK, um die Einstellungen zu speichern und das Fenster zu schließen.</p>
 <p><strong>Start der Virtuellen Maschine</strong></p>
 <p>Starten Sie nun die VM durch Klicken von Start (grüner Pfeilbutton).</p>
-<p>Fügen Sie ihren Benutzer sobald das OSGeo System startet zur vboxsf Gruppe hinzu, so dass auf die gemeinsamen Ordner zugegriffen werden kann. Öffnen Sie dazu ein Befehlsfenster:</p>
+<p>When you install the iso on the VM, the username must be set to „user“</p>
+<p>The user „user“ is not a member of the „users“ group on the OSGeoLive virtual machine. This prevents some tools from writing to its data directory and causes some software to fail to start.</p>
+<p>The solution is to fix the vmdk with the following one-time procedure:</p>
+<ol class="arabic simple">
+<li>Start a terminal.</li>
+<li>Run „sudo adduser user users“.</li>
+<li>Apply this change by starting a new desktop session: either restart the virtual machine or log out and log back in (username „user“, password „user“).</li>
+</ol>
+<p>Also once the OSGeo system comes up, add yourself to the vboxsf group so that the shared folders (defined above) are accessible by running in a terminal window:</p>
 <p><code class="docutils literal"><span class="pre">user&#64;osgeolive:~$</span> <span class="pre">sudo</span> <span class="pre">usermod</span> <span class="pre">-a</span> <span class="pre">-G</span> <span class="pre">vboxsf</span> <span class="pre">user</span></code></p>
 <p>Im oberen Beispiel wurde ein gemeinsamer Ordner auf dem Gastrechner mit Namen „GIS“ in den VM Einstellungen definiert. Der gemeinsame Ordner wird im Dateisystem unter /media/sf_GIS/ auftauchen. Um das Verzeichnis in das Home-Verzeichnis zu leiten, geben Sie Folgendes im Befehlsfenster ein:</p>
 <p><code class="docutils literal"><span class="pre">user&#64;osgeolive:~$</span> <span class="pre">mkdir</span> <span class="pre">GIS</span></code></p>

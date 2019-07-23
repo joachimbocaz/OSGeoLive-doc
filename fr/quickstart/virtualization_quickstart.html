@@ -138,7 +138,15 @@
 <p>Vous pouvez sélectionner de rendre le répertoire partagé en lecture seule et de le monter automatiquement. Une fois le «&nbsp;Chemin du dossier&nbsp;» et le «&nbsp;Nom du dossier&nbsp;» définis, cliquez sur OK, puis sur OK de nouveau pour terminer et fermer la fenêtre des paramètres.</p>
 <p><strong>Exécuter une machine virtuelle</strong></p>
 <p>Démarrez maintenant la VM en cliquant sur le bouton Démarrer (flèche verte).</p>
-<p>Une fois que le système OSGeo apparaît, ajoutez-vous au groupe vboxsf pour que les répertoires partagés (définis ci-dessus) soient accessibles en exécutant dans une fenêtre de terminal:</p>
+<p>When you install the iso on the VM, the username must be set to «&nbsp;user&nbsp;»</p>
+<p>The user «&nbsp;user&nbsp;» is not a member of the «&nbsp;users&nbsp;» group on the OSGeoLive virtual machine. This prevents some tools from writing to its data directory and causes some software to fail to start.</p>
+<p>The solution is to fix the vmdk with the following one-time procedure:</p>
+<ol class="arabic simple">
+<li>Start a terminal.</li>
+<li>Run «&nbsp;sudo adduser user users&nbsp;».</li>
+<li>Apply this change by starting a new desktop session: either restart the virtual machine or log out and log back in (username «&nbsp;user&nbsp;», password «&nbsp;user&nbsp;»).</li>
+</ol>
+<p>Also once the OSGeo system comes up, add yourself to the vboxsf group so that the shared folders (defined above) are accessible by running in a terminal window:</p>
 <p><code class="docutils literal"><span class="pre">user&#64;osgeolive:~$</span> <span class="pre">sudo</span> <span class="pre">usermod</span> <span class="pre">-a</span> <span class="pre">-G</span> <span class="pre">vboxsf</span> <span class="pre">user</span></code></p>
 <p>Dans l’exemple ci-dessus, nous avons défini un chemin de répertoire partagé sur le système hôte et l’avons nommé «&nbsp;GIS&nbsp;» dans les paramètres de la VM. Le répertoire partagé apparaîtra dans le système de fichiers sous /media/sf_GIS/. Pour monter ce dossier dans le répertoire personnel de l’utilisateur, par exemple, dans un terminal, faites:</p>
 <p><code class="docutils literal"><span class="pre">user&#64;osgeolive:~$</span> <span class="pre">mkdir</span> <span class="pre">GIS</span></code></p>

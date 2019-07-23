@@ -138,7 +138,15 @@
 <p>You can select to make the shared folder read only, and auto-mounted. Once the “Folder path” and “Folder name” are defined, click OK, and again OK to finish and close the settings window.</p>
 <p><strong>Running the Virtual Machine</strong></p>
 <p>Now bootup the VM by clicking the Start (green arrow) button.</p>
-<p>Once the OSGeo system comes up, add yourself to the vboxsf group so that the shared folders (defined above) are accessible by running in a terminal window:</p>
+<p>When you install the iso on the VM, the username must be set to “user”</p>
+<p>The user “user” is not a member of the “users” group on the OSGeoLive virtual machine. This prevents some tools from writing to its data directory and causes some software to fail to start.</p>
+<p>The solution is to fix the vmdk with the following one-time procedure:</p>
+<ol class="arabic simple">
+<li>Start a terminal.</li>
+<li>Run “sudo adduser user users”.</li>
+<li>Apply this change by starting a new desktop session: either restart the virtual machine or log out and log back in (username “user”, password “user”).</li>
+</ol>
+<p>Also once the OSGeo system comes up, add yourself to the vboxsf group so that the shared folders (defined above) are accessible by running in a terminal window:</p>
 <p><code class="docutils literal"><span class="pre">user&#64;osgeolive:~$</span> <span class="pre">sudo</span> <span class="pre">usermod</span> <span class="pre">-a</span> <span class="pre">-G</span> <span class="pre">vboxsf</span> <span class="pre">user</span></code></p>
 <p>In the above example, we defined a Shared Folder path on the host system and named it “GIS” in the VM Settings. The shared folder will appear in the file system under /media/sf_GIS/. To mount this folder in the user’s home directory, for example, in a terminal do:</p>
 <p><code class="docutils literal"><span class="pre">user&#64;osgeolive:~$</span> <span class="pre">mkdir</span> <span class="pre">GIS</span></code></p>
