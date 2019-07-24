@@ -79,8 +79,12 @@ steps below will result in the demo GeoExt application at <a class="reference ex
 <div class="section" id="html-page">
 <h2>HTML Page<a class="headerlink" href="#html-page" title="Hivatkozás erre a fejezetcímre">¶</a></h2>
 <p>In this step we will set-up an empty HTML page which will contain the application.</p>
-<p>First create a new HTML file at <code class="docutils literal"><span class="pre">/var/www/html/geoext/demo.html</span></code> using the text editor Leafpad installed on OSGeoLive (you can
-open this via the Start menu under <span class="menuselection">Accessories ‣ Leafpad</span>).</p>
+<p>First create a new HTML file at <code class="docutils literal"><span class="pre">/var/www/html/geoext/demo.html</span></code> using the text editor Leafpad installed on OSGeoLive. To
+ensure you have permissions to save the file open Leafpad from the command line with elevated permissions using the
+command below:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>sudo leafpad
+</pre></div>
+</div>
 <p>Next paste in the HTML below. This contains links to the ExtJS and OpenLayers JavaScript libraries,
 and two CSS files used to style ExtJS and OpenLayers components.</p>
 <p>We will use the <code class="docutils literal"><span class="pre">Ext.Loader</span></code> class to load in GeoExt JavaScript source files. These are all in the <code class="docutils literal"><span class="pre">src</span></code> folder
