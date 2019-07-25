@@ -156,11 +156,11 @@ run from the command line as follows:</p>
 </div>
 <p>Now refresh the page at <a class="reference external" href="http://localhost/mapcache-quickstart/">http://localhost/mapcache-quickstart/</a> - you should see the new streams layer being served by MapCache.</p>
 <img alt="../../_images/openlayers.png" src="../../_images/openlayers.png" />
-<p>As you browse the map you will see the tile cache folders in <code class="docutils literal"><span class="pre">/usr/local/share/mapcache</span></code> fill with PNG images.</p>
+<p>As you browse the map you will see the tile cache folders in <code class="docutils literal"><span class="pre">/var/cache/mapcache</span></code> fill with PNG images.</p>
 <img alt="../../_images/tilecache.png" src="../../_images/tilecache.png" />
 <p>The location and type of the cache is set by the following block in the configuration file:</p>
 <div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;cache</span> <span class="na">name=</span><span class="s">&quot;disk&quot;</span> <span class="na">type=</span><span class="s">&quot;disk&quot;</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;base&gt;</span>/usr/local/share/mapcache<span class="nt">&lt;/base&gt;</span>
+  <span class="nt">&lt;base&gt;</span>/var/cache/mapcache<span class="nt">&lt;/base&gt;</span>
   <span class="nt">&lt;symlink_blank/&gt;</span>
 <span class="nt">&lt;/cache&gt;</span>
 </pre></div>
@@ -216,7 +216,7 @@ in a single tile) to zoom level 5</li>
 <a class="reference external" href="https://mapserver.org/mapcache/seed.html">Seeder Documentation</a>.</p>
 <img alt="../../_images/seeder.png" src="../../_images/seeder.png" />
 <p>If you want to remove a cache folder you can the following command:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>sudo rm -r /usr/local/share/mapcache/lakes
+<div class="highlight-bash"><div class="highlight"><pre><span></span>sudo rm -r /var/cache/mapcache/lakes
 </pre></div>
 </div>
 </div>
