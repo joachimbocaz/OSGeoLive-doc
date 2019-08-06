@@ -27,7 +27,7 @@
     <link rel="search" title="Búsqueda" href="../search.html" />
     <link rel="copyright" title="Copyright" href="../copyright.html" />
     <link rel="next" title="SAGA Quickstart" href="saga_quickstart.html" />
-    <link rel="prev" title="Inicio Rápido de QGIS" href="qgis_quickstart.html" />
+    <link rel="prev" title="QGIS Quickstart" href="qgis_quickstart.html" />
 	<script type="text/javascript" src="../../_static/osgeolive.js"></script>
 
 
@@ -78,7 +78,7 @@
 <p class="topic-title first">Contents</p>
 <ul class="simple">
 <li><a class="reference internal" href="#rasdaman-quickstart" id="id3">Guía de Inicio Rápido de Rasdaman</a><ul>
-<li><a class="reference internal" href="#setup" id="id4">Setup</a></li>
+<li><a class="reference internal" href="#setup" id="id4">Configuración</a></li>
 <li><a class="reference internal" href="#running-wcps-queries" id="id5">Ejecutar Consultas WCPS</a></li>
 <li><a class="reference internal" href="#running-coverage" id="id6">Ejecutar Cobertura</a></li>
 <li><a class="reference internal" href="#access-a-coverage" id="id7">Cobertura de acceso A</a></li>
@@ -91,22 +91,16 @@
 </ul>
 </div>
 <div class="section" id="setup">
-<h2><a class="toc-backref" href="#id4">Setup</a><a class="headerlink" href="#setup" title="Enlazar permanentemente con este título">¶</a></h2>
-<p>The first step before trying any of the following queries is to start rasdaman
-and Tomcat. Open the <em>Databases</em> directory on the Desktop, and then
-<em>Start Rasdaman Server</em>. Allow two to three minutes for rasdaman and especially
-Tomcat to fully start (once the
-<a class="reference external" href="http://localhost:8080/rasdaman/ows">rasdaman web client</a> loads in the browser).</p>
-<p>Afterwards, you can open <em>Rasdaman-Earthlook Demo</em> from the same directory,
-which will launch a local demonstrator in the browser. For a more hands-on
-tutorial though, continue with the next examples here.</p>
+<h2><a class="toc-backref" href="#id4">Configuración</a><a class="headerlink" href="#setup" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>El primer paso antes de probar cualquiera de las siguientes consultas es iniciar rasdaman y Tomcat. Abra el directorio <em>Databases</em> en el escritorio y, a continuación, <em>Start Rasdaman Server</em>. Espere de dos a tres minutos para que rasdaman y especialmente Tomcat se inicien por completo (una vez que el <a class="reference external" href="http://localhost:8080/rasdaman/ows">cliente web rasdaman</a> se carga en el navegador).</p>
+<p>Después, puede abrir <em>Rasdaman-Earthlook Demo</em> desde el mismo directorio, que lanzará un demostrador local en el navegador. Para obtener un tutorial más práctico, sin embargo, continúe con los siguientes ejemplos de aquí.</p>
 </div>
 <div class="section" id="running-wcps-queries">
 <h2><a class="toc-backref" href="#id5">Ejecutar Consultas WCPS</a><a class="headerlink" href="#running-wcps-queries" title="Enlazar permanentemente con este título">¶</a></h2>
 <dl class="docutils">
 <dt>Ya sea:</dt>
 <dd><ul class="first last simple">
-<li>Go to the <a class="reference external" href="http://localhost:8080/rasdaman/ows">rasdaman web client</a>, switch to the <em>ProcessCoverages</em> tab, and enter your query in the query boxes and press send.</li>
+<li>Vaya al cliente web <a class="reference external" href="http://localhost:8080/rasdaman/ows">rasdaman</a>,  cambie a la pestaña <em>ProcessCoverages</em> e introduzca su consulta en los cuadros de consulta y presione enviar.</li>
 <li>Agregue su consulta en esta url: <a class="reference external" href="http://localhost:8080/rasdaman/ows?query=your_query">http://localhost:8080/rasdaman/ows?query=your_query</a> y ejecútela usando un navegador.</li>
 </ul>
 </dd>
@@ -123,7 +117,7 @@ tutorial though, continue with the next examples here.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">(</span><span class="n">NIR</span><span class="p">)</span> <span class="k">return</span> <span class="n">encode</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="s2">&quot;png&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Click on <a class="reference external" href="http://localhost:8080/rasdaman/ows?query=for%20c%20in%20(NIR)%20return%20encode%28c,%20%22png%22%29">coverage request</a> to execute it in the browser.</p>
+<p>haga click en <a class="reference external" href="http://localhost:8080/rasdaman/ows?query=for%20c%20in%20(NIR)%20return%20encode%28c,%20%22png%22%29">coverage request</a> para ejecutarlo en el navegador.</p>
 </div>
 <div class="section" id="select-a-subset-of-the-coverage">
 <h2><a class="toc-backref" href="#id8">Seleccione un subconjunto de la cobertura</a><a class="headerlink" href="#select-a-subset-of-the-coverage" title="Enlazar permanentemente con este título">¶</a></h2>
@@ -131,7 +125,7 @@ tutorial though, continue with the next examples here.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">(</span><span class="n">NIR</span><span class="p">)</span> <span class="k">return</span> <span class="n">encode</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">(</span><span class="mi">0</span><span class="p">:</span><span class="mi">500</span><span class="p">),</span><span class="n">j</span><span class="p">(</span><span class="mi">0</span><span class="p">:</span><span class="mi">500</span><span class="p">)],</span> <span class="s2">&quot;png&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Click on the <a class="reference external" href="http://localhost:8080/rasdaman/ows?query=for%20c%20in%20(NIR)%20return%20encode%28c[i(0:500),j(0:500)],%20%22png%22%29">subsetting request</a> to execute it on the browser.</p>
+<p>Haga click <a class="reference external" href="http://localhost:8080/rasdaman/ows?query=for%20c%20in%20(NIR)%20return%20encode%28c[i(0:500),j(0:500)],%20%22png%22%29">en la consulta subsequente</a> para ejecutarlo en el navegador.</p>
 <p>El resultado de la consulta es imagen como la siguiente:</p>
 <a class="reference internal image-reference" href="../../_images/rasdaman_ndvi2.png"><img alt="../../_images/rasdaman_ndvi2.png" src="../../_images/rasdaman_ndvi2.png" style="width: 479.0px; height: 125.25px;" /></a>
 </div>
@@ -141,7 +135,7 @@ tutorial though, continue with the next examples here.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">(</span><span class="n">NIR</span><span class="p">)</span> <span class="k">return</span> <span class="n">encode</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">red</span><span class="p">,</span> <span class="s2">&quot;png&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Click on <a class="reference external" href="http://localhost:8080/rasdaman/ows?query=for%20c%20in%20(NIR)%20return%20encode%28c.red,%20%22png%22%29">band extraction</a> to execute it; you should see the following image in the browser as a result:</p>
+<p>Haga click en la <a class="reference external" href="http://localhost:8080/rasdaman/ows?query=for%20c%20in%20(NIR)%20return%20encode%28c.red,%20%22png%22%29">extracción de bandas</a> para ejecutarlo; debe de poder ver la siguiente imágen, como resultado,  en el navegador:</p>
 <a class="reference internal image-reference" href="../../_images/rasdaman_ndvi3.png"><img alt="../../_images/rasdaman_ndvi3.png" src="../../_images/rasdaman_ndvi3.png" style="width: 479.0px; height: 269.0px;" /></a>
 </div>
 <div class="section" id="arithmetic-operation-extracting-ndvi-of-the-coverage">
@@ -162,10 +156,10 @@ tutorial though, continue with the next examples here.</p>
 <h2><a class="toc-backref" href="#id11">¿Qué sigue?</a><a class="headerlink" href="#what-next" title="Enlazar permanentemente con este título">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
-<li>The <a class="reference external" href="http://tutorial.rasdaman.org">rasdaman tutorial</a> provides a condensed introduction to the concepts behind rasdaman, rasql and the OGC web services support.</li>
+<li>El tutorial “tutorial de rasdaman &lt;<a class="reference external" href="http://tutorial.rasdaman.org">http://tutorial.rasdaman.org</a>&gt;`_  proporciona una introducción condensada a los conceptos detrás de rasdaman, rasql y al soporte de servicios web OGC.</li>
 <li>Aprenda más acerca del Lenguaje Estándar (WCPS) de OGC  <a class="reference external" href="http://www.opengeospatial.org/standards/wcps">Web Coverage Processing Service</a>   (que está fuertemente inspirado en rasdaman); un buen punto de partida es   <a class="reference external" href="http://standards.rasdaman.com/">la página de documentación y tutoriales</a>  y  <a class="reference external" href="http://localhost/rasdaman-demo/demo/client/query-sandbox.html">WCPS Query SandBox</a>.</li>
 <li>¿Interesado en cobetura de datos y servicios en general? Visite OGC’s <a class="reference external" href="http://external.opengeospatial.org/twiki_public/CoveragesDWG/WebHome">Coverages Domain Working Group wiki</a>.</li>
-<li>Explore the <a class="reference external" href="http://doc.rasdaman.org">rasdaman documentation</a> to learn about rasdaman administration, its query language, and data ingestion.</li>
+<li>Explore  <a class="reference external" href="http://doc.rasdaman.org">rasdaman documentation</a> para aprender sobre la administración de rasdaman, su lenguaje de consultas e ingestión de datos.</li>
 <li>Vaya a  <a class="reference external" href="http://localhost/rasdaman-demo">multi-dimensional demo</a> para explorar los demos interactivos  1-D a 4-D de rasdaman. Los más pequeños son parte de OSGeoLive, aquellos que utilizan conjuntos más grandes (más allá de la capacidad de este disco), avanzan hacia el <a class="reference external" href="http://standards.rasdaman.com">OGC standards showcase site</a> .</li>
 </ul>
 </div></blockquote>

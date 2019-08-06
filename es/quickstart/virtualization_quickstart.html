@@ -138,15 +138,15 @@
 <p>Puede seleccionar que la carpeta compartida sea de sólo lectura y se monte automáticamente. Una vez que se definan la «Ruta de Carpeta» y el «Nombre de Carpeta», haga clik en OK, y de nuevo OK para finalizar y cerrar la ventana de configuraciones.</p>
 <p>** Ejecutando la Máquina Virtual **</p>
 <p>Ahora, inicie la VM haciendo clik en el botón de Start o Inicio (flecha verde).</p>
-<p>When you install the iso on the VM, the username must be set to «user»</p>
-<p>The user «user» is not a member of the «users» group on the OSGeoLive virtual machine. This prevents some tools from writing to its data directory and causes some software to fail to start.</p>
-<p>The solution is to fix the vmdk with the following one-time procedure:</p>
+<p>Al instalar el iso en la máquina virtual, el nombre de usuario debe establecerse en «user»</p>
+<p>El usuario «user» no es miembro del grupo «users» en la máquina virtual OSGeoLive. Esto evita que algunas herramientas escriban en su directorio de datos y cause algún software falle al iniciar.</p>
+<p>La solución consiste en corregir el vmdk con el siguiente procedimiento que se hace una sola vez:</p>
 <ol class="arabic simple">
-<li>Start a terminal.</li>
-<li>Run «sudo adduser user users».</li>
-<li>Apply this change by starting a new desktop session: either restart the virtual machine or log out and log back in (username «user», password «user»).</li>
+<li>Inicie una terminal.</li>
+<li>Ejecute «sudo adduser user users».</li>
+<li>Aplique este cambio iniciando una nueva sesión de escritorio: reinicie la máquina virtual o cierre la sesión y vuelva a iniciarla (nombre de usuario «user», contraseña «user»).</li>
 </ol>
-<p>Also once the OSGeo system comes up, add yourself to the vboxsf group so that the shared folders (defined above) are accessible by running in a terminal window:</p>
+<p>Una vez que el sistema de OSGeo arranca, agréguese al grupo de vboxsf para que las carpetas compartidas (definidas anteriormente) sean accesibles ejecutando una ventana de terminal</p>
 <p><code class="docutils literal"><span class="pre">user&#64;osgeolive:~$</span> <span class="pre">sudo</span> <span class="pre">usermod</span> <span class="pre">-a</span> <span class="pre">-G</span> <span class="pre">vboxsf</span> <span class="pre">user</span></code></p>
 <p>En el ejemplo anterior, definimos la ruta de una Carpeta Compartida n the above example, we defined a Shared Folder path en el sistema host y lo llamamos «GIS» en Configuraciones  de VM. La carpeta compartida aparecerá en el sistema de archivos en /media/sf_GIS/.  Para montar esta carpeta en el directorio de inicio del usuario, por ejemplo, en un terminal hacer lo siguiente:</p>
 <p><code class="docutils literal"><span class="pre">user&#64;osgeolive:~$</span> <span class="pre">mkdir</span> <span class="pre">GIS</span></code></p>
