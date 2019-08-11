@@ -76,9 +76,9 @@
 <p class="topic-title first">Inhalt</p>
 <ul class="simple">
 <li><a class="reference internal" href="#liblas-quickstart" id="id1">libLAS Quickstart</a><ul>
-<li><a class="reference internal" href="#processing" id="id2">Processing</a><ul>
-<li><a class="reference internal" href="#reprojecting-an-las-file" id="id3">Reprojecting an LAS file</a></li>
-<li><a class="reference internal" href="#output-las-file-to-text" id="id4">Output LAS file to text</a></li>
+<li><a class="reference internal" href="#processing" id="id2">Verarbeitung</a><ul>
+<li><a class="reference internal" href="#reprojecting-an-las-file" id="id3">Reprojektion einer LAS-Datei</a></li>
+<li><a class="reference internal" href="#output-las-file-to-text" id="id4">Ausgabe der LAS-Datei als Text</a></li>
 </ul>
 </li>
 </ul>
@@ -86,32 +86,19 @@
 </ul>
 </div>
 <div class="section" id="processing">
-<h2>Processing<a class="headerlink" href="#processing" title="Link zu dieser Überschrift">¶</a></h2>
-<p>The libLAS ‚command-line utilities‘ provide the bulk of
-user-facing operational software for libLAS, although the underlying libLAS
-library is what powers them.  Below is a listing of common operations that
-you might want to do on LAS data, and the utilities and approaches to
-take to complete those tasks. The demo data can be found in <code class="file docutils literal"><span class="pre">/home/user/data/las/srs.las</span></code></p>
+<h2>Verarbeitung<a class="headerlink" href="#processing" title="Link zu dieser Überschrift">¶</a></h2>
+<p>Die libLAS kommandozeilenbasierten Dienstprogramme stellen den Großteil der benutzerorientierten Betriebssoftware für libLAS bereit, obwohl die zugrunde liegende libLAS-Bibliothek die Stärke beinhaltet. Im Folgenden finden Sie eine Liste der allgemeinen Vorgänge, die Sie möglicherweise für LAS-Daten ausführen möchten, sowie die Dienstprogramme und Ansätze, die Sie zum Ausführen dieser Aufgaben ausführen müssen. Die Demodaten finden Sie unter :<a class="reference external" href="file:'/home/user/data/las/srs.las">file:‘/home/user/data/las/srs.las</a>‘</p>
 <div class="section" id="reprojecting-an-las-file">
-<h3>Reprojecting an LAS file<a class="headerlink" href="#reprojecting-an-las-file" title="Link zu dieser Überschrift">¶</a></h3>
-<p>All LAS data are in some sort of coordinate system, even if that coordinate
-system is not described in the LAS file.  For terrestrial LAS data, these
-coordinate system descriptions often map to coordinate systems described
-by the <a class="reference external" href="http://www.epsg-registry.org/">EPSG</a> database.  Another source of information about coordinate
-systems in <a class="reference external" href="http://spatialreference.org">http://spatialreference.org</a>.</p>
+<h3>Reprojektion einer LAS-Datei<a class="headerlink" href="#reprojecting-an-las-file" title="Link zu dieser Überschrift">¶</a></h3>
+<p>Alle LAS-Daten befinden sich in einer Art Koordinatensystem, auch wenn dieses Koordinatensystem nicht in der LAS-Datei beschrieben ist.  Bei terrestrischen LAS-Daten werden diese Koordinatensystembeschreibungen häufig den Koordinatensystemen zugeordnet, die von der Datenbank <a class="reference external" href="http://www.epsg-registry.org/">EPSG</a> beschrieben werden.  Eine weitere Informationsquelle über Koordinatensysteme in <a class="reference external" href="http://spatialreference.org">http://spatialreference.org</a>.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">lasinfo</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">check</span> <span class="n">srs</span><span class="o">.</span><span class="n">las</span>
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Bemerkung</p>
-<p class="last">The –no-check option tells lasinfo to only print the header information
-for the file and to not scan through all of the points.  For a 10 point file,
-this of course isn’t much of a concern, but with a 50 or 500 million point
-file, it isn’t worth waiting for a full scan of the data if all you
-want is header information.</p>
+<p class="last">Die Option –no-check weist lasinfo an, nur die Kopfzeileninformationen zur Datei zu drucken und nicht alle Punkte zu durchsuchen.  Für eine 10-Punkte-Datei ist dies natürlich kein großes Problem, aber bei einer 50- oder 500-Millionen-Punkt-Datei lohnt es sich nicht, auf einen vollständigen Scan der Daten zu warten, wenn Sie nur Header-Informationen benötigen.</p>
 </div>
-<p>Our ‚lasinfo‘ invocation tells us that the <code class="docutils literal"><span class="pre">srs.las</span></code> file
-is in a UTM North Zone 17 coordinate system:</p>
+<p>Unser „lasinfo“-Aufruf sagt uns, dass sich die Datei ‚‘srs.las‘‘ in einem UTM North Zone 17-Koordinatensystem befindet:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">PROJCS</span><span class="p">[</span><span class="s2">&quot;WGS 84 / UTM zone 17N&quot;</span><span class="p">,</span>
     <span class="n">GEOGCS</span><span class="p">[</span><span class="s2">&quot;WGS 84&quot;</span><span class="p">,</span>
         <span class="n">DATUM</span><span class="p">[</span><span class="s2">&quot;WGS_1984&quot;</span><span class="p">,</span>
@@ -132,14 +119,11 @@ is in a UTM North Zone 17 coordinate system:</p>
     <span class="n">AUTHORITY</span><span class="p">[</span><span class="s2">&quot;EPSG&quot;</span><span class="p">,</span><span class="s2">&quot;32617&quot;</span><span class="p">]]</span>
 </pre></div>
 </div>
-<p>Now that we know our input coordinate system, we can make a decision about
-what to reproject the data to.  In our first example, we’re going to use
-the venerable plate carrée non-coordinate system, <a class="reference external" href="http://spatialreference.org/ref/epsg/4326/">EPSG:4326</a>.</p>
+<p>Nun, da wir unser Eingabekoordinatensystem kennen, können wir eine Entscheidung darüber treffen, wohin die Daten reprojiziert werden sollen.  In unserem ersten Beispiel verwenden wir das ehrwürdige Platten-Carrée-Nicht-Koordinatensystem <a class="reference external" href="http://spatialreference.org/ref/epsg/4326/">EPSG:4326</a>.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">las2las</span> <span class="n">srs</span><span class="o">.</span><span class="n">las</span> <span class="o">--</span><span class="n">t_srs</span> <span class="n">EPSG</span><span class="p">:</span><span class="mi">4326</span>
 </pre></div>
 </div>
-<p>Our process succeeds, but after a quick inspection of the data with
-<code class="docutils literal"><span class="pre">lasinfo</span> <span class="pre">output.las</span></code> we see a problem:</p>
+<p>Unser Prozess war erfolgreich, aber nach einer schnellen Überprüfung der Daten mit ‚‘lasinfo output.las‘‘ sehen wir ein Problem:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">...</span>
 <span class="n">Scale</span> <span class="n">Factor</span> <span class="n">X</span> <span class="n">Y</span> <span class="n">Z</span><span class="p">:</span>          <span class="mf">0.01</span> <span class="mf">0.01</span> <span class="mf">0.01</span>
 <span class="n">Offset</span> <span class="n">X</span> <span class="n">Y</span> <span class="n">Z</span><span class="p">:</span>                <span class="o">-</span><span class="mf">0.00</span> <span class="o">-</span><span class="mf">0.00</span> <span class="o">-</span><span class="mf">0.00</span>
@@ -148,17 +132,11 @@ the venerable plate carrée non-coordinate system, <a class="reference external"
 <span class="n">Max</span> <span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span><span class="p">:</span>                <span class="o">-</span><span class="mf">83.43</span><span class="p">,</span> <span class="mf">39.01</span><span class="p">,</span> <span class="mf">170.76</span><span class="p">,</span>
 </pre></div>
 </div>
-<p>The <code class="docutils literal"><span class="pre">srs.las</span></code> file had a scale of 0.01, or two decimal places of precision
-for its X, Y, and Z coordinates. For UTM data, this is ok, because it implies
-an implicit precision of 1 cm. For decimal degree data of the unprojected
-Plate Carrée coordinate system, it causes us to lose a bunch of precision. We
-need to set our scale values to something that can hold more precision in our
-case:</p>
+<p>Die Datei ‚‘srs.las‘‘ hatte eine Skala von 0,01 oder zwei Dezimalstellen der Genauigkeit für ihre X-, Y- und Z-Koordinaten. Für UTM-Daten ist dies in Ordnung, da dies eine implizite Genauigkeit von 1 cm impliziert. Bei Dezimalgraddaten des nicht projizierten Platten-Carrée-Koordinatensystems verlieren wir dadurch eine Reihe von Präzisionen. Wir müssen unsere Maßstabswerte auf etwas festlegen, das in unserem Fall präziser sein kann:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">las2las</span> <span class="o">--</span><span class="n">t_srs</span> <span class="n">EPSG</span><span class="p">:</span><span class="mi">4326</span> <span class="n">srs</span><span class="o">.</span><span class="n">las</span> <span class="o">--</span><span class="n">scale</span> <span class="mf">0.000001</span> <span class="mf">0.000001</span> <span class="mf">0.01</span>
 </pre></div>
 </div>
-<p>Another quick inspection with ‚lasinfo‘ gives us something
-we’re more comfortable with:</p>
+<p>Eine weitere schnelle Untersuchung mit ‚lasinfo‘ gibt uns etwas, mit dem wir uns wohler fühlen:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">...</span>
 <span class="n">Scale</span> <span class="n">Factor</span> <span class="n">X</span> <span class="n">Y</span> <span class="n">Z</span><span class="p">:</span>          <span class="mf">0.000001</span> <span class="mf">0.000001</span> <span class="mf">0.01</span>
 <span class="n">Offset</span> <span class="n">X</span> <span class="n">Y</span> <span class="n">Z</span><span class="p">:</span>                <span class="o">-</span><span class="mf">0.000000</span> <span class="o">-</span><span class="mf">0.000000</span> <span class="o">-</span><span class="mf">0.00</span>
@@ -169,7 +147,7 @@ we’re more comfortable with:</p>
 </div>
 </div>
 <div class="section" id="output-las-file-to-text">
-<h3>Output LAS file to text<a class="headerlink" href="#output-las-file-to-text" title="Link zu dieser Überschrift">¶</a></h3>
+<h3>Ausgabe der LAS-Datei als Text<a class="headerlink" href="#output-las-file-to-text" title="Link zu dieser Überschrift">¶</a></h3>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">las2txt</span> <span class="nb">input</span><span class="o">.</span><span class="n">las</span> <span class="o">--</span><span class="n">parse</span> <span class="n">xyzti</span>
 </pre></div>
 </div>

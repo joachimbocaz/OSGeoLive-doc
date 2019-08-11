@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="hu">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>OpenLayers Quickstart &#8212; OSGeoLive 13.0 Documentation</title>
+    <title>OpenLayers gyorstalpaló &#8212; OSGeoLive 13.0 Documentation</title>
     <link rel="stylesheet" href="../../_static/overview.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <script type="text/javascript">
@@ -72,48 +72,43 @@
   <a class="reference external image-reference" href="http://openlayers.org/"><img alt="../../_images/logo_openlayers.png" class="align-right" src="../../_images/logo_openlayers.png" /></a>
 <a class="reference external image-reference" href="target:http://www.osgeo.org"><img alt="../../_images/OSGeo_project.png" class="align-right" src="../../_images/OSGeo_project.png" /></a>
 <div class="section" id="openlayers-quickstart">
-<h1><a class="toc-backref" href="#id1">OpenLayers Quickstart</a><a class="headerlink" href="#openlayers-quickstart" title="Hivatkozás erre a fejezetcímre">¶</a></h1>
-<p>This Quick Start describes some basic steps required to start working with OpenLayers: creating a basic map, adding raster and vector layers and styling features.</p>
-<p>OpenLayers makes it easy to put a dynamic map in any web page. It can display map tiles, vector data and markers loaded from any source. OpenLayers has been developed to further the use of geographic information of all kinds. It is completely free, Open Source JavaScript, released under the 2-clause BSD License (also known as the FreeBSD).</p>
+<h1><a class="toc-backref" href="#id1">OpenLayers gyorstalpaló</a><a class="headerlink" href="#openlayers-quickstart" title="Hivatkozás erre a fejezetcímre">¶</a></h1>
+<p>Ez a gyorstalpaló leírja a munka elkezdéséhez szükséges alapvető lépéseket tartalmazza az OpenLayers-el: alaptérkép létrehozása,  raszter és vektor réteg hozzáadása és az elemek stílusának beállítása</p>
+<p>Az OpenLayers egyszerűvé teszi dinamikus térképek hozzáadását bármelyik honlaphoz. Térkép csempéket, vektor adatokat és szimbólumokat tud megjeleníteni tetszőleges forrásból. Az OpenLayers-t mindenféle térinformatikai adat használatára fejlesztették. Teljesen szabad, nyílt forráskódú JavaScript, melyet a 2-záradék BSD licenc (úgyis ismert mint FreeBSD) alatt bocsájtanak ki.</p>
 <div class="contents topic" id="contents">
 <p class="topic-title first">Contents</p>
 <ul class="simple">
-<li><a class="reference internal" href="#openlayers-quickstart" id="id1">OpenLayers Quickstart</a><ul>
-<li><a class="reference internal" href="#core-concepts" id="id2">Core Concepts</a></li>
-<li><a class="reference internal" href="#a-basic-map" id="id3">A basic map</a></li>
-<li><a class="reference internal" href="#adding-raster-layers" id="id4">Adding raster layers</a></li>
-<li><a class="reference internal" href="#adding-vector-layers" id="id5">Adding vector layers</a></li>
-<li><a class="reference internal" href="#styling-features" id="id6">Styling features</a></li>
-<li><a class="reference internal" href="#working-with-events" id="id7">Working with events</a></li>
-<li><a class="reference internal" href="#what-s-next" id="id8">What’s Next?</a></li>
+<li><a class="reference internal" href="#openlayers-quickstart" id="id1">OpenLayers gyorstalpaló</a><ul>
+<li><a class="reference internal" href="#core-concepts" id="id2">Alapfunkciók</a></li>
+<li><a class="reference internal" href="#a-basic-map" id="id3">Egy alaptérkép</a></li>
+<li><a class="reference internal" href="#adding-raster-layers" id="id4">Raszter rétegek hozzáadása</a></li>
+<li><a class="reference internal" href="#adding-vector-layers" id="id5">Vektor rétegek hozzáadása</a></li>
+<li><a class="reference internal" href="#styling-features" id="id6">Térképi elemek stílusa</a></li>
+<li><a class="reference internal" href="#working-with-events" id="id7">Munka az eseményekkel</a></li>
+<li><a class="reference internal" href="#what-s-next" id="id8">Mi a következő?</a></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="core-concepts">
-<h2><a class="toc-backref" href="#id2">Core Concepts</a><a class="headerlink" href="#core-concepts" title="Hivatkozás erre a fejezetcímre">¶</a></h2>
-<p>Before we start working with OpenLayers it helps to understand OpenLayers core concepts:</p>
+<h2><a class="toc-backref" href="#id2">Alapfunkciók</a><a class="headerlink" href="#core-concepts" title="Hivatkozás erre a fejezetcímre">¶</a></h2>
+<p>Mielőtt elkezdenénk a munkát az OpenLayers-el segít, ha megértjük az alapkoncepcióját:</p>
 <dl class="docutils">
-<dt><strong>Map</strong></dt>
-<dd>The <em>map</em> is the core component of OpenLayers. For a <em>map</em> to render, a <em>view</em>, one or more <em>layers</em>, and a target container are needed.</dd>
-<dt><strong>View</strong></dt>
-<dd>The <em>view</em> determines how the map is rendered. It is used to set the resolution, the center location, etc. It is like a camera through which we look at the map’s content.</dd>
-<dt><strong>Layers</strong></dt>
-<dd><em>Layers</em> can be added to the map in a stacked order. Layers can be either <em>raster layers</em> (images), or <em>vector layers</em> (points/lines/polygons).</dd>
-<dt><strong>Source</strong></dt>
-<dd>Each layer has a <em>source</em>, which knows how to load the layer content.
-In the case of <em>vector layers</em>, its source reads vector data
-using a <em>format</em> class (for example GeoJSON or KML) and provides the layer
-with a set of <em>features</em>.</dd>
-<dt><strong>Features</strong></dt>
-<dd><em>Features</em> represent real world things and can be rendered using different
-<em>geometries</em> (like point, line or polygon) using a given <em>style</em>, which
-determines its look (line thinkness, fill color, etc).</dd>
+<dt><strong>Térkép</strong></dt>
+<dd>A <em>térkép</em> az OpenLayers egy alapkomponense. Egy térkép megjelenítéséhez egy <em>view</em>, egy vagy több réteg és egy cél konténer szükséges.</dd>
+<dt><strong>View</strong> (nézet)</dt>
+<dd>A <em>view</em> határozza meg, hogyan jelenítjük meg a térképet. Arra használjuk, hogy beállítsuk a felbontást, a középpont helyét, stb. Ez olyan mint egy kamera melyen keresztül a térkép tartalmát nézzük.</dd>
+<dt><strong>Rétegek</strong></dt>
+<dd><em>Rétegek</em> egymás alá/fölé helyezve adhatók a térképhez. A réteg vagy <em>raszter réteg</em> (képek) vagy <em>vektor réteg</em> (pontok/vonalak/felületek) lehet.</dd>
+<dt><strong>Forrás</strong></dt>
+<dd>Minden rétegnek van egy <em>forrása</em>, mely tudja hogyan kell a réteg tartalmát betölteni. <em>Vektor rétegek esetén a forrás a *format</em> osztályt használva olvassa be az adatokat (például GeoJSON vagy KML) és mint a <em>térképi elemek</em> (features) halmazát szolgáltatja a réteget.</dd>
+<dt><strong>Features</strong> (térképelemek)</dt>
+<dd>A <em>térképi elemek</em> a világban megjelenő dolgokat reprezentálnak és különböző <em>geometria*ként (mint pont, vonal vagy felület) jeleníthetjük meg őket, egy adott *stílus</em> használatával, mely a kinézetüket határozza meg (vonalvastagság, kitöltési szín, stb.).</dd>
 </dl>
 </div>
 <div class="section" id="a-basic-map">
-<h2><a class="toc-backref" href="#id3">A basic map</a><a class="headerlink" href="#a-basic-map" title="Hivatkozás erre a fejezetcímre">¶</a></h2>
-<p>In this step we will create a basic map.</p>
+<h2><a class="toc-backref" href="#id3">Egy alaptérkép</a><a class="headerlink" href="#a-basic-map" title="Hivatkozás erre a fejezetcímre">¶</a></h2>
+<p>Ebben a lépésben egy alaptérképet hozunk létre.</p>
 <p>Create a file in e.g. /home/user/ called basic-map.html , and copy the following content into the file.</p>
 <div class="highlight-html"><div class="highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
 <span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;en&quot;</span><span class="p">&gt;</span>
@@ -161,25 +156,22 @@ determines its look (line thinkness, fill color, etc).</dd>
 <span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </pre></div>
 </div>
-<p><strong>Ex. 1</strong>: Basic code structure</p>
-<p>Now try opening basic-map.html from a web browser using File-&gt;Open File. You should see the following:</p>
+<p><strong>1. gyakorlat</strong>: Alap kód struktúra</p>
+<p>Most próbálja megnyitni a basic-map.html fájlt a böngésző programból a File-&gt;Open File használatával. A következőt kellene látnia:</p>
 <a class="reference internal image-reference" href="../../_images/openlayers-basic-map.png"><img alt="../../_images/openlayers-basic-map.png" src="../../_images/openlayers-basic-map.png" style="width: 711.0px; height: 620.0px;" /></a>
-<p>Note:</p>
+<p>Megjegyzés:</p>
 <ul class="simple">
-<li>The code follows the best practice of loading JavaScipt code at the end of the html file.</li>
-<li>An OpenLayers map needs to be attached to a HTML DOM element, so we have created a <code class="docutils literal"><span class="pre">&lt;div&gt;</span></code> element identified by the <em>map</em> id.</li>
-<li>Maps are represented by the <code class="docutils literal"><span class="pre">ol.Map</span></code> class. We specify the DOM element to render the map into using the <strong>target</strong> property.</li>
-<li>OpenLayers allows map rendering using two different mechanisms: Canvas and WebGL. The default renderer is <em>canvas</em>.</li>
-<li>A map shows data contained within layers, so we have created a tiled layer, represented by the <code class="docutils literal"><span class="pre">ol.layer.Tile</span></code> class, that loads content from the OpenStreetMap project, using the <code class="docutils literal"><span class="pre">ol.source.OSM</span></code> source class.</li>
-<li>Finally, we set the initial position of the <em>camera</em> using the <code class="docutils literal"><span class="pre">ol.View</span></code> class, set the initial zoom level and center location.</li>
+<li>A kód követi a legjobb gyakorlatot, a JavaScript kód betöltése a html fájl végén.</li>
+<li>Egy OpenLayers térképet egy HTML DOM elemhez kapcsolnunk, ezért létrehoztunk egy <code class="docutils literal"><span class="pre">&lt;div&gt;</span></code> elemet, a <em>map</em> azonosítóval (id).</li>
+<li>A térképeket az <code class="docutils literal"><span class="pre">olMap</span></code> osztály reprezentálja. A DOM elemet, melyben a térképet megjelentjük a <strong>target</strong> tulajdonság beállításával adjuk meg.</li>
+<li>OpenLayers a térképrajzolást két különböző mechanizmus felhasználásával teszi lehetővé: a Canvas és a WebGL. Az alapértelmezett megjelenítő a <em>canvas</em>.</li>
+<li>A térkép a rétegekben tárolt adatokat mutatja, így egy csempékből álló réteget hoztunk létre, melyet az <code class="docutils literal"><span class="pre">ol.layer.Tile</span></code> osztály reprezentál, ez a tartalmat az OpenStreetMap projektből tölti be az <cite>ol.source.OSM`</cite> forrás osztály felhasználásával.</li>
+<li>Végül a kamera kezdeti pozícióját az <code class="docutils literal"><span class="pre">ol.View</span></code> osztály használatával állítjuk be, a kezdeti nagyítást és a középpontot.</li>
 </ul>
 </div>
 <div class="section" id="adding-raster-layers">
-<h2><a class="toc-backref" href="#id4">Adding raster layers</a><a class="headerlink" href="#adding-raster-layers" title="Hivatkozás erre a fejezetcímre">¶</a></h2>
-<p>The most used raster layers are the tiled layers, provided by the likes of
-OpenStreetMap, Stamen, Bing, etc. Tiled layers are represented by the
-<code class="docutils literal"><span class="pre">ol.layer.Tile</span></code> class and must use a source that knows how to load tiles from
-a given provider, like <code class="docutils literal"><span class="pre">ol.source.OSM</span></code> or <code class="docutils literal"><span class="pre">ol.source.Stamen</span></code>:</p>
+<h2><a class="toc-backref" href="#id4">Raszter rétegek hozzáadása</a><a class="headerlink" href="#adding-raster-layers" title="Hivatkozás erre a fejezetcímre">¶</a></h2>
+<p>A leggyakrabban használt raszter rétegek a csempe rétegek, melyeket például az OpenStreetMap, Stamen, Bing, stb. szolgáltat. A csempe rétegeket az <code class="docutils literal"><span class="pre">ol.layer.Tile</span></code> reprezentálja és egy olyan forrást kell használniuk, mely tudja hogyan tölthetők be a csempék egy adott szolgáltatótól, mint például az <code class="docutils literal"><span class="pre">ol.source.OSM</span></code> vagy <code class="docutils literal"><span class="pre">ol.source.Stamen</span></code>:</p>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">osm</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ol</span><span class="p">.</span><span class="nx">layer</span><span class="p">.</span><span class="nx">Tile</span><span class="p">({</span>
   <span class="nx">source</span><span class="o">:</span> <span class="k">new</span> <span class="nx">ol</span><span class="p">.</span><span class="nx">source</span><span class="p">.</span><span class="nx">OSM</span><span class="p">()</span>
 <span class="p">});</span>
@@ -191,10 +183,10 @@ a given provider, like <code class="docutils literal"><span class="pre">ol.sourc
 <span class="p">});</span>
 </pre></div>
 </div>
-<p><strong>Ex. 2:</strong> Create raster layers</p>
-<p>Layers can be added to the map in two ways:</p>
+<p><strong>2. Gyakorlat:</strong> Raszter réteg létrehozása</p>
+<p>Kétféle módon adhatunk rétegeket a térképhez:</p>
 <ol class="arabic">
-<li><p class="first">When constructing the <code class="docutils literal"><span class="pre">ol.Map</span></code>, using the <code class="docutils literal"><span class="pre">layers</span></code> property:</p>
+<li><p class="first">Az <code class="docutils literal"><span class="pre">ol.Map</span></code> létrehozatalánál a  <code class="docutils literal"><span class="pre">layers</span></code> tulajdonság használatával:</p>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">map</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ol</span><span class="p">.</span><span class="nx">Map</span><span class="p">({</span>
   <span class="p">...</span>
   <span class="nx">layers</span><span class="o">:</span> <span class="p">[</span><span class="nx">osm</span><span class="p">,</span> <span class="nx">stamen</span><span class="p">]</span>
@@ -202,22 +194,20 @@ a given provider, like <code class="docutils literal"><span class="pre">ol.sourc
 <span class="p">});</span>
 </pre></div>
 </div>
-<p><strong>Ex. 3:</strong> Adding layers on map initialization</p>
+<p><strong>3. Gyakorlat:</strong> Rétegek hozzáadása a térkép inicializáláskor</p>
 </li>
-<li><p class="first">Adding manually with the <code class="docutils literal"><span class="pre">map.addLayer()</span></code> method:</p>
+<li><p class="first">Manuális hozzáadás a  <code class="docutils literal"><span class="pre">map.addLayer()</span></code> metódussal:</p>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">map</span><span class="p">.</span><span class="nx">addLayer</span><span class="p">(</span><span class="nx">osm</span><span class="p">);</span>
 <span class="nx">map</span><span class="p">.</span><span class="nx">addLayer</span><span class="p">(</span><span class="nx">stamen</span><span class="p">);</span>
 </pre></div>
 </div>
-<p><strong>Ex. 4:</strong> Adding layers manually</p>
+<p><strong>4. Gyakorlat:</strong> Rétegek manuális hozzáadása</p>
 </li>
 </ol>
 </div>
 <div class="section" id="adding-vector-layers">
-<h2><a class="toc-backref" href="#id5">Adding vector layers</a><a class="headerlink" href="#adding-vector-layers" title="Hivatkozás erre a fejezetcímre">¶</a></h2>
-<p>Vector layers are represented by the <code class="docutils literal"><span class="pre">ol.layer.Vector</span></code> class and must use a
-source suitable for reading the vector format, like <code class="docutils literal"><span class="pre">ol.source.GeoJSON</span></code>,
-<code class="docutils literal"><span class="pre">ol.source.KML</span></code> or <code class="docutils literal"><span class="pre">ol.source.TopoJSON</span></code>.</p>
+<h2><a class="toc-backref" href="#id5">Vektor rétegek hozzáadása</a><a class="headerlink" href="#adding-vector-layers" title="Hivatkozás erre a fejezetcímre">¶</a></h2>
+<p>A vektor rétegeket az <code class="docutils literal"><span class="pre">ol.layer.Vector</span></code> osztály reprezentálja és a vektor formátum olvasására alkalmas forrást kell használnia mint például  <code class="docutils literal"><span class="pre">ol.source.GeoJSON</span></code>, <code class="docutils literal"><span class="pre">ol.source.KML</span></code> vagy <code class="docutils literal"><span class="pre">ol.source.TopoJSON</span></code>.</p>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">vectorLayer</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ol</span><span class="p">.</span><span class="nx">layer</span><span class="p">.</span><span class="nx">Vector</span><span class="p">({</span>
   <span class="nx">source</span><span class="o">:</span> <span class="k">new</span> <span class="nx">ol</span><span class="p">.</span><span class="nx">source</span><span class="p">.</span><span class="nx">GeoJSON</span><span class="p">({</span>
     <span class="nx">url</span><span class="o">:</span> <span class="s1">&#39;url_to_geojson_file&#39;</span>
@@ -228,13 +218,10 @@ source suitable for reading the vector format, like <code class="docutils litera
 <span class="nx">map</span><span class="p">.</span><span class="nx">addLayer</span><span class="p">(</span><span class="nx">vectorLayer</span><span class="p">);</span>
 </pre></div>
 </div>
-<p><strong>Ex. 5:</strong> Constructing a GeoJSON vector layer</p>
+<p><strong>5. Gyakorlat 5:</strong> GeoJSON réteg felépítése</p>
 <a class="reference internal image-reference" href="../../_images/openlayers-vector.png"><img alt="../../_images/openlayers-vector.png" src="../../_images/openlayers-vector.png" style="width: 518.0px; height: 277.0px;" /></a>
-<p>Note, in the previous code we must change the <code class="docutils literal"><span class="pre">url_to_file</span></code> to point to a
-valid GeoJSON file placed in our server.
-Note that Javascript security will prevent sourcing of datasets from an external URL on a different domain / port (a.k.a. same-origin policy).</p>
-<p>Features can also be created manually. In this case we need to create a geometry
-that represents the feature:</p>
+<p>Megjegyzés, az előző kódban az  <code class="docutils literal"><span class="pre">url_to_file</span></code> meg kell változtatnunk, hogy egy megfelelő GeoJSON fájlra mutasson, melyet a szerverünkön helyeztünk el. Vegye figyelembe, hogy a JavaScript biztonsági előírások megakadályozzák az adatok külső URL-ről, egy másik szerverről vagy portról betöltését (más néven: ugyanaz a forrás szabály).</p>
+<p>Térképi elemeket manuálisan is létrehozhatunk. Ebben az esetben a térképi elemet reprezentáló geometriát kell létrehoznunk:</p>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="c1">// Geometries</span>
 <span class="kd">var</span> <span class="nx">point</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ol</span><span class="p">.</span><span class="nx">geom</span><span class="p">.</span><span class="nx">Point</span><span class="p">(</span>
     <span class="nx">ol</span><span class="p">.</span><span class="nx">proj</span><span class="p">.</span><span class="nx">transform</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">50</span><span class="p">],</span> <span class="s1">&#39;EPSG:4326&#39;</span><span class="p">,</span> <span class="s1">&#39;EPSG:3857&#39;</span><span class="p">)</span>
@@ -263,13 +250,12 @@ that represents the feature:</p>
 <span class="nx">map</span><span class="p">.</span><span class="nx">addLayer</span><span class="p">(</span><span class="nx">vectorLayer</span><span class="p">);</span>
 </pre></div>
 </div>
-<p><strong>Ex. 6:</strong> Adding features by hand</p>
+<p><strong>6. Gyakorlat:</strong> Térképi elemek hozzáadása</p>
 </div>
 <div class="section" id="styling-features">
-<h2><a class="toc-backref" href="#id6">Styling features</a><a class="headerlink" href="#styling-features" title="Hivatkozás erre a fejezetcímre">¶</a></h2>
-<p>Features within vector layers can be styled.
-The style is determined by a combination of fill, stroke, text  and image, which are all optional. In addition, a style can be applied to a layer, which determines the style of all contained features, or to an individual feature.</p>
-<p>A style is represented by the <code class="docutils literal"><span class="pre">ol.style.Style</span></code> class which has properties to set the <code class="docutils literal"><span class="pre">fill</span></code>, <code class="docutils literal"><span class="pre">stroke</span></code>, <code class="docutils literal"><span class="pre">text</span></code> and <code class="docutils literal"><span class="pre">image</span></code> to be applied. The next example shows the World’s administrative limits dataset styled to use a green fill and stroke:</p>
+<h2><a class="toc-backref" href="#id6">Térképi elemek stílusa</a><a class="headerlink" href="#styling-features" title="Hivatkozás erre a fejezetcímre">¶</a></h2>
+<p>Egy vektor réteg térképi elemeinek stílusát beállíthatjuk. A stílust a kitöltés, a vonalvastagság, szöveg és kép határozza meg, melyek mind opcionálisak. Továbbá a stílust alkalmazhatjuk a teljes rétegre, mely meghatározza az összes tartalmazott térképi elem stílusát, vagy egyes térképi elemekre.</p>
+<p>A stílust az <code class="docutils literal"><span class="pre">ol.style.Style</span></code>&nbsp; osztály reprezentálja, melynek <code class="docutils literal"><span class="pre">fill</span></code>, <code class="docutils literal"><span class="pre">stroke</span></code>, <code class="docutils literal"><span class="pre">text</span></code> és <code class="docutils literal"><span class="pre">image</span></code> beállítható tulajdonságai vannak. A következő példa a világ országait zöld kitöltéssel és zöld határvonalakkal mutatja be.</p>
 <a class="reference internal image-reference" href="../../_images/openlayers-styling.png"><img alt="../../_images/openlayers-styling.png" src="../../_images/openlayers-styling.png" style="width: 555.0px; height: 283.0px;" /></a>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">limitsLayer</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ol</span><span class="p">.</span><span class="nx">layer</span><span class="p">.</span><span class="nx">Vector</span><span class="p">({</span>
   <span class="nx">source</span><span class="o">:</span> <span class="k">new</span> <span class="nx">ol</span><span class="p">.</span><span class="nx">source</span><span class="p">.</span><span class="nx">Vector</span><span class="p">({</span>
@@ -295,16 +281,14 @@ The style is determined by a combination of fill, stroke, text  and image, which
 <span class="p">});</span>
 </pre></div>
 </div>
-<p><strong>Ex. 7:</strong> Styling features</p>
-<p>In the code, we have loaded a TopoJSON file and styled it through the <code class="docutils literal"><span class="pre">style</span></code> property.
-We have set a <code class="docutils literal"><span class="pre">fill</span></code> and <code class="docutils literal"><span class="pre">stroke</span></code>, required for lines and polygons, and an
-<code class="docutils literal"><span class="pre">image</span></code> (in this case a circle) used for point features.</p>
+<p><strong>7. Gyakorlat:</strong> Térképi elemek stílusa</p>
+<p>A kódban egy TopoJSON fájlt töltöttünk be és a <code class="docutils literal"><span class="pre">style</span></code> tulajdonságon keresztül színeztük. A <code class="docutils literal"><span class="pre">fill</span></code> és <code class="docutils literal"><span class="pre">stroke</span></code> tulajdonságokat a vonalakhoz és felületekhez kívántra állítottuk és egy <code class="docutils literal"><span class="pre">image</span></code>-t (ebben az esetben egy kör) használtunk a pont térképi elemekhez.</p>
 </div>
 <div class="section" id="working-with-events">
-<h2><a class="toc-backref" href="#id7">Working with events</a><a class="headerlink" href="#working-with-events" title="Hivatkozás erre a fejezetcímre">¶</a></h2>
-<p>Most of the components, like map, layers or controls, trigger events to notify changes. For example we can be notified each time the mouse is moved over the map, or when a feature is added to a vector layer, etc.</p>
-<p>Events can be easily registered on an object with the <code class="docutils literal"><span class="pre">on()</span></code> method and unregistered with <code class="docutils literal"><span class="pre">un()</span></code>.</p>
-<p>The following code registers an event on a map instance, and will be notified each time the pointer is moved. Within the callback function we obtain the pointer coordinates and print in the browser console in two different projections.</p>
+<h2><a class="toc-backref" href="#id7">Munka az eseményekkel</a><a class="headerlink" href="#working-with-events" title="Hivatkozás erre a fejezetcímre">¶</a></h2>
+<p>A legtöbb komponens, mint például a térkép, réteg vagy vezérlők eseményeket hoznak létre, hogy a változásról értesítést küldjenek. Például értesülhetünk minden alkalommal arról, ha a térképen az egér elmozdul, vagy amikor egy térképi elemet adtak egy vektor réteghez, stb.</p>
+<p>Eseményekre könnyen regisztrálhatunk egy objektummal az  <code class="docutils literal"><span class="pre">on()</span></code> metódussal és visszavonhatjuk a regisztrációt az <code class="docutils literal"><span class="pre">un()</span></code> metódussal.</p>
+<p>A következő kód a térkép példányhoz regisztrál egy eseményt és értesítést kap minden esetben, amikor az egérmutató elmozdul. A callback függvényben megkapjuk az egérmutató koordinátáit és a böngésző konzolba kiírjuk két különböző vetületben.</p>
 <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="nx">map</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;pointermove&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
   <span class="kd">var</span> <span class="nx">coord3857</span> <span class="o">=</span> <span class="nx">event</span><span class="p">.</span><span class="nx">coordinate</span><span class="p">;</span>
   <span class="kd">var</span> <span class="nx">coord4326</span> <span class="o">=</span> <span class="nx">ol</span><span class="p">.</span><span class="nx">proj</span><span class="p">.</span><span class="nx">transform</span><span class="p">(</span><span class="nx">coord3857</span><span class="p">,</span> <span class="s1">&#39;EPSG:3857&#39;</span><span class="p">,</span> <span class="s1">&#39;EPSG:4326&#39;</span><span class="p">);</span>
@@ -313,16 +297,15 @@ We have set a <code class="docutils literal"><span class="pre">fill</span></code
 <span class="p">});</span>
 </pre></div>
 </div>
-<p><strong>Ex. 8:</strong> Printing pointer position.</p>
+<p><strong>8. Gyakorlat:</strong> egér pozíció kiírása.</p>
 </div>
 <div class="section" id="what-s-next">
-<h2><a class="toc-backref" href="#id8">What’s Next?</a><a class="headerlink" href="#what-s-next" title="Hivatkozás erre a fejezetcímre">¶</a></h2>
-<p>Sometimes the quickest way to work out how OpenLayers works is to look at examples
-and their source code. You can find more OpenLayers information here:</p>
+<h2><a class="toc-backref" href="#id8">Mi a következő?</a><a class="headerlink" href="#what-s-next" title="Hivatkozás erre a fejezetcímre">¶</a></h2>
+<p>Néha a példák és a forráskódjuk megtekintése a leggyorsabb módja annak, hogy kitaláljuk, hogyan működik az OpenLayers További OpenLayers információkat itt talál:</p>
 <ul class="simple">
 <li><a class="reference external" href="../../openlayers/apidoc/">API Docs</a></li>
-<li><a class="reference external" href="../../openlayers/examples/">Examples</a></li>
-<li><a class="reference external" href="http://openlayers.org/">OpenLayers.org Website</a></li>
+<li><a class="reference external" href="../../openlayers/examples/">Példák</a></li>
+<li><a class="reference external" href="http://openlayers.org/">OpenLayers.org honlap</a></li>
 </ul>
 </div>
 </div>

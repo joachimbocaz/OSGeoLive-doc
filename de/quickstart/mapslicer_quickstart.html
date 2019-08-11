@@ -72,71 +72,65 @@
   <a class="reference external image-reference" href="http://mapproxy.org/"><img alt="../../_images/logo_mapslicer.png" class="align-right" src="../../_images/logo_mapslicer.png" /></a>
 <div class="section" id="mapslicer-quickstart">
 <h1>MapSlicer Quickstart<a class="headerlink" href="#mapslicer-quickstart" title="Link zu dieser Überschrift">¶</a></h1>
-<p><a class="reference external" href="https://wiki.osgeo.org/wiki/MapSlicer">MapSlicer</a> provides a simple way of creating a set of tiles from any georeferenced map image. The tiles can then be presented as a georeferenced map overlay on a web server. It follows the <a class="reference external" href="http://www.osgeo.org/">Open Source Geospatial Foundation’s (OSGeo’s)</a> <a class="reference external" href="http://wiki.osgeo.org/wiki/Tile_Map_Service_Specification">Tile Map Service (TMS)</a> specification.</p>
+<p>Mit <a class="reference external" href="https://wiki.osgeo.org/wiki/MapSlicer">MapSlicer</a> kann man Kacheln ausgehend von georeferenzierten Kartenbildern erzeugen. Die Kacheln können dann über einen Webserver als georeferenzierte Karte eingebunden und präsentiert werden. MapSlicer folgt dabei der <a class="reference external" href="http://wiki.osgeo.org/wiki/Tile_Map_Service_Specification">Tile Map Service (TMS)</a> Spezifikation der <a class="reference external" href="http://www.osgeo.org/">Open Source Geospatial Foundation (OSGeo)</a>.</p>
 <ul class="simple">
-<li><strong>Input options</strong>: Any georeferenced image file, eg. a TIFF, JPEG from ArcGIS, QGIS.</li>
-<li><strong>Output options</strong>: A set of directories with tiled images which can be copied to a web server for presentation as a georeferenced overlay.</li>
-<li><strong>Strengths</strong>: MapSlicer is simple, free, open-source software, with an easy wizard, described below, to guide through the options.</li>
+<li><strong>Eingangsparameter</strong>: Beliebige georeferenzierte Bilddateien, z.B. TIFF, JPEG von ArcGIS, QGIS.</li>
+<li><strong>Ausgabeoptionen</strong>: Verzeichnisse mit gekachelten Bildern, die in einen Webserver kopiert werden können.</li>
+<li><strong>Stärken</strong>: MapSlicer is einfach, frei, Open-Source Software mit einem mit einem einfachen Assistenten, der untern beschrieben und auf die Optionen eingegangen wird.</li>
 </ul>
-<p>MapSlicer takes advantage of the fact that <a class="reference external" href="http://maps.google.com/">Google Maps</a> , <a class="reference external" href="http://maps.bing.com">Microsoft Bing</a> , <a class="reference external" href="http://maps.yahoo.com/">Yahoo Maps</a> , and other online mapping providers including <a class="reference external" href="http://www.openstreetmap.org/">OpenStreetMap</a>  use the same projection and tiling profile and the tiles are therefore compatible. MapSlicer prepares tiles using this specification as an easy and quick way of preparing a georeferenced map in a mashup web page.</p>
+<p>MapSlicer nutzt den Vorteil, dass <a class="reference external" href="http://maps.google.com/">Google Maps</a> , <a class="reference external" href="http://maps.bing.com">Microsoft Bing</a> , <a class="reference external" href="http://maps.yahoo.com/">Yahoo Maps</a> und andere Online-Kartenprovider, inklusive <a class="reference external" href="http://www.openstreetmap.org/">OpenStreetMap</a> , die gleiche Kartenprojektion und das Kachelschema verwenden. Somit sind die Kacheln kompatibel. MapSlicer bereitet die Kacheln soweit vor, dass diese zur Spezfikation passen und ist somit ein einfaches Tool, um georeferenzierte Karten in einer Mashup Webseite einzubinden.</p>
 <div class="section" id="start-mapslicer">
-<h2>Start MapSlicer<a class="headerlink" href="#start-mapslicer" title="Link zu dieser Überschrift">¶</a></h2>
+<h2>MapSlicer starten<a class="headerlink" href="#start-mapslicer" title="Link zu dieser Überschrift">¶</a></h2>
 <ol class="arabic">
-<li><p class="first">Start MapSlicer from the Geospatial menu, under the Spatial Tools sub-menu.</p>
+<li><p class="first">Download MapSlicer oder starten Sie das Programm direkt von der OSGeo-Live Distribution.</p>
 </li>
-<li><p class="first">Select the <strong>Tile Profile</strong>. Choose <em>Image Based Tiles (raster)</em> for standard web publishing. Click <em>Continue</em>.</p>
+<li><p class="first">Wählen Sie das <strong>Tile Profile</strong> (Kachelprofil) aus. Wählen Sie <em>Image Based Tiles (raster)</em> für die Standard-Webveröffentlichung. Klicken Sie auf <em>Weiter</em>.</p>
 <a class="reference internal image-reference" href="../../_images/mapslicer1.jpg"><img alt="../../_images/mapslicer1.jpg" class="align-center" src="../../_images/mapslicer1.jpg" style="width: 553.0px; height: 430.5px;" /></a>
 </li>
-<li><p class="first">Choose the <strong>Source Data Files</strong>. Browse to select the raster image you want to tile. It is also possible to select a NODATA colour that will appear as transparent in the resulting image. Click <em>Continue</em>.</p>
+<li><p class="first">Wählen Sie die <strong>Source Data Files</strong> (Daten). Navigieren Sie, um das Rasterbild auszuwählen, das Sie kacheln möchten. Es ist auch möglich, eine NODATA-Farbe auszuwählen, die im resultierenden Bild als transparent erscheint. Klicken Sie auf <em>Weiter</em>.</p>
 <a class="reference internal image-reference" href="../../_images/mapslicer2.jpg"><img alt="../../_images/mapslicer2.jpg" class="align-center" src="../../_images/mapslicer2.jpg" style="width: 553.0px; height: 430.5px;" /></a>
 </li>
-<li><p class="first">Specify the <strong>Spatial Reference System / Coordinate System</strong> of the image. Specify the id-number from the EPSG database. Click <em>Continue</em>.</p>
+<li><p class="first">Geben Sie das <strong>Räumliche Referenzsystem / Koordinatensystem</strong> des Bildes an. Geben Sie die ID-Nummer aus der EPSG-Datenbank an. Klicken Sie auf <em>Weiter</em>.</p>
 <a class="reference internal image-reference" href="../../_images/mapslicer3.jpg"><img alt="../../_images/mapslicer3.jpg" class="align-center" src="../../_images/mapslicer3.jpg" style="width: 553.0px; height: 430.5px;" /></a>
 </li>
-<li><p class="first">Specify details about the <strong>Tile Pyramid</strong>. The default settings for zoom levels and file format are often best. Click <em>Continue</em>.</p>
+<li><p class="first">Geben Sie Details zur <strong>Kachelpyramide</strong> an. Die Standardeinstellungen für Zoomstufen und Dateiformat sind oft am besten. Klicken Sie auf <em>Weiter</em>.</p>
 <a class="reference internal image-reference" href="../../_images/mapslicer4.jpg"><img alt="../../_images/mapslicer4.jpg" class="align-center" src="../../_images/mapslicer4.jpg" style="width: 553.0px; height: 430.5px;" /></a>
 </li>
-<li><p class="first">Specify details about the <strong>Destination folder and Addresses / URLs</strong> for the tileset. If you do not know these, they can be added into the default <em>googlemaps.html</em> and <em>openlayers.html</em> files after tile generation. Click <em>Continue</em>.</p>
+<li><p class="first">Geben Sie Details zum <strong>Zielordner und Adressen /URLs</strong> für das Kachelset an. Wenn Sie diese nicht kennen, können sie nach der Kachelgenerierung in die Standarddateien <em>googlemaps.html</em> und <em>openlayers.html</em> eingefügt werden. Klicken Sie auf <em>Weiter</em>.</p>
 <a class="reference internal image-reference" href="../../_images/mapslicer5.jpg"><img alt="../../_images/mapslicer5.jpg" class="align-center" src="../../_images/mapslicer5.jpg" style="width: 553.0px; height: 430.5px;" /></a>
 </li>
-<li><p class="first">Tick the <strong>Viewers that should be generated</strong>. By default, a <em>openlayers.html</em> file is generated. Click <em>Continue</em>.</p>
+<li><p class="first">Klicken Sie <strong>Viewers that should be generated</strong>. Standardmäßig wird eine <em>openlayers.html</em>-Datei generiert. Klicken Sie auf <em>Weiter</em>.</p>
 <a class="reference internal image-reference" href="../../_images/mapslicer6.jpg"><img alt="../../_images/mapslicer6.jpg" class="align-center" src="../../_images/mapslicer6.jpg" style="width: 553.0px; height: 430.5px;" /></a>
 </li>
-<li><p class="first">Specify the <strong>Details for generating the Viewers</strong>, such as the title, copyright notice, and API keys. If you do not know these, they can be added into the default <em>googlemaps.html / openlayers.html</em> files after tile generation. Click <em>Continue</em>.</p>
+<li><p class="first">Geben Sie die <strong>Details zur Erstellung des Viewers</strong> an, z. B. Titel, Copyright-Hinweis und API-Schlüssel. Wenn Sie diese nicht kennen, können sie nach der Kachelgenerierung in die Standarddateien <em>googlemaps.html / openlayers.html</em> eingefügt werden. Klicken Sie auf <em>Weiter</em>.</p>
 <a class="reference internal image-reference" href="../../_images/mapslicer7.jpg"><img alt="../../_images/mapslicer7.jpg" class="align-center" src="../../_images/mapslicer7.jpg" style="width: 553.0px; height: 430.5px;" /></a>
 </li>
-<li><p class="first">Click <strong>Render</strong> to start rendering the image.</p>
+<li><p class="first">Klicken Sie auf <strong>Render</strong>, um mit dem Rendern des Bildes zu beginnen.</p>
 <a class="reference internal image-reference" href="../../_images/mapslicer8.jpg"><img alt="../../_images/mapslicer8.jpg" class="align-center" src="../../_images/mapslicer8.jpg" style="width: 553.0px; height: 430.5px;" /></a>
 </li>
-<li><p class="first">When complete, MapSlicer provides a link to the finished tileset.</p>
+<li><p class="first">Nach Beendigung, stellt MapSlicer einen Link zum fertigen Kachelsatz bereit.</p>
 </li>
 </ol>
 <blockquote>
 <div><a class="reference internal image-reference" href="../../_images/mapslicer9.jpg"><img alt="../../_images/mapslicer9.jpg" class="align-center" src="../../_images/mapslicer9.jpg" style="width: 553.0px; height: 430.5px;" /></a>
 </div></blockquote>
 <ol class="arabic">
-<li><p class="first">Open the <em>openlayers.html</em> files in a web browser to view the tileset as an overlay on the live online map. To present this on the web, just copy the entire tileset and all subdirectories to a web server, and edit the googlemaps.html or openlayers.html files as required.</p>
+<li><p class="first">Öffnen Sie die <em>openlayers.html</em>-Dateien in einem Webbrowser, um das Kachelset als Overlay auf der Live-Onlinekarte anzuzeigen. Um dies im Web zu präsentieren, kopieren Sie einfach das gesamte Kachelset und alle Unterverzeichnisse auf einen Webserver und bearbeiten Sie die Dateien googlemaps.html oder openlayers.html nach Bedarf.</p>
 <a class="reference internal image-reference" href="../../_images/mapslicer10.jpg"><img alt="../../_images/mapslicer10.jpg" class="align-center" src="../../_images/mapslicer10.jpg" style="width: 530.6px; height: 478.09999999999997px;" /></a>
 </li>
 </ol>
 </div>
 <div class="section" id="using-gdal2tiles-to-create-a-mbtiles-database">
-<h2>Using gdal2tiles to create a MBTiles database<a class="headerlink" href="#using-gdal2tiles-to-create-a-mbtiles-database" title="Link zu dieser Überschrift">¶</a></h2>
-<p>MapSlicer is essentially a GUI frontend to the <cite>gdal2tiles.py</cite> script. An updated
-version of <cite>gdal2tiles.py</cite> is also present on the Live disc. The resulting tile
-trees created by these software can be used with the <cite>mb-util</cite> program to create
-an mbtiles database, for use with smartphone software
-like <a class="reference external" href="http://geopaparazzi.github.io/geopaparazzi/">Geopaparazzi</a>.</p>
-<p>To create an MBTiles SQLite database from the newly created tile tree, open a
-terminal, then</p>
+<h2>Verwenden von gdal2tiles zum Erstellen einer MBTiles-Datenbank<a class="headerlink" href="#using-gdal2tiles-to-create-a-mbtiles-database" title="Link zu dieser Überschrift">¶</a></h2>
+<p>MapSlicer ist im Wesentlichen ein GUI-Frontend zum Skript „gdal2tiles.py“. Eine aktualisierte Version von „gdal2tiles.py“ ist auch auf OSGeoLive vorhanden. Die daraus resultierenden Kachelbäume, die von dieser Software erstellt wurden, können mit dem Programm ‚mb-util‘ verwendet werden, um eine mbtiles-Datenbank zu erstellen, um Sie mit Smartphone-Software wie  <a class="reference external" href="http://geopaparazzi.github.io/geopaparazzi/">Geopaparazzi</a> zu verwenden.</p>
+<p>Um eine MBTiles-SQLite-Datenbank aus dem neu erstellten Kachelbaum zu erstellen, öffnen Sie ein Terminal,</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cp</span> <span class="n">data</span><span class="o">/</span><span class="n">raster</span><span class="o">/</span><span class="n">bluemarble</span><span class="o">.</span><span class="n">tif</span> <span class="o">.</span>
 <span class="n">mapslicer</span>    <span class="c1"># (select /home/user/bluemarble.tif for input, JPEG as format)</span>
 <span class="n">mb</span><span class="o">-</span><span class="n">util</span> <span class="o">--</span><span class="n">scheme</span><span class="o">=</span><span class="n">tms</span> <span class="o">--</span><span class="n">image_format</span><span class="o">=</span><span class="n">jpg</span> <span class="n">bluemarble</span> <span class="n">bluemarble</span><span class="o">.</span><span class="n">mbtiles</span>
 <span class="n">qgis</span> <span class="n">bluemarble</span><span class="o">.</span><span class="n">mbtiles</span>
 </pre></div>
 </div>
-<p>See <cite>gdal2tiles.py –help</cite> and <cite>mb-util –help</cite> for additional information on
-running these tools.</p>
+<p>Weitere Informationen zum Ausführen dieser Werkzeuge finden Sie unter „gdal2tiles.py –help“ und „mb-util –help“.</p>
 </div>
 </div>
 
