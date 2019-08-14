@@ -224,11 +224,7 @@
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">demo</span><span class="o">=</span><span class="c1"># CREATE TABLE cities ( id int4 primary key, name varchar(50), geom geometry(POINT,4326) );</span>
 </pre></div>
 </div>
-<p>Conventionally this geometry column is named
-<code class="docutils literal"><span class="pre">geom</span></code> (the older PostGIS convention was <code class="docutils literal"><span class="pre">the_geom</span></code>). This tells PostGIS what kind of geometry
-each feature has (points, lines, polygons etc), how many dimensions
-(in this case 2, if it had 3 or 4 dimensions we would use POINTZ, POINTM, or POINTZM), and the spatial reference
-system. We used EPSG:4326 coordinates for our cities.</p>
+<p>Classiquement cette colonne de géométrie est nommée <code class="docutils literal"><span class="pre">geom</span></code> (l’ancienne convention de PostGIS était <code class="docutils literal"><span class="pre">the_geom</span></code>). Cela indique à PostGIS, quel type de géométrie a chaque entité (points, lignes, polygones, etc.), combien de dimensions (dans ce cas 2, si il y avait 3 ou 4 dimensions, nous utiliserions POINTZ, POINTM ou POINTZM) et le système de référence spatiale. Nous avons utilisé le CRS EPSG:4326 pour nos villes.</p>
 <p>Maintenant si vous regardez la table cities vous devriez voir la nouvelle colonne et être informé que la table ne contient actuellement aucune ligne.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">demo</span><span class="o">=</span><span class="c1"># SELECT * from cities;</span>
  <span class="nb">id</span> <span class="o">|</span> <span class="n">name</span> <span class="o">|</span> <span class="n">geom</span>
@@ -260,7 +256,7 @@ system. We used EPSG:4326 coordinates for our cities.</p>
 <span class="p">(</span><span class="mi">3</span> <span class="n">rows</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>This gives us an encoded hexadecimal version of the coordinates, not so useful for humans.</p>
+<p>Cela nous donne une version hexadécimale codée des coordonnées, peu utile pour les humains.</p>
 <p>Si vous voulez jeter un oeil à votre géométrie au format WKT (Well Known Text), encore une fois, vous pouvez utiliser les fonctions ST_AsText(geom) ou ST_AsEwkt(geom). Vous pouvez également utiliser ST_X(geom), ST_Y(geom) pour obtenir la valeur numérique des coordonnées&nbsp;:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">demo</span><span class="o">=</span><span class="c1"># SELECT id, ST_AsText(geom), ST_AsEwkt(geom), ST_X(geom), ST_Y(geom) FROM cities;</span>
  <span class="nb">id</span> <span class="o">|</span>          <span class="n">st_astext</span>           <span class="o">|</span>               <span class="n">st_asewkt</span>                <span class="o">|</span>    <span class="n">st_x</span>     <span class="o">|</span>   <span class="n">st_y</span>
@@ -310,11 +306,7 @@ system. We used EPSG:4326 coordinates for our cities.</p>
 <div class="section" id="mapping">
 <h2><a class="toc-backref" href="#id7">Cartographie</a><a class="headerlink" href="#mapping" title="Lien permanent vers ce titre">¶</a></h2>
 <p>Pour produire une carte à partir de données PostGIS, vous avez besoin d’un client qui peut obtenir les données. La plupart des programmes open source SIG bureautiques peuvent faire cela - gvSIG, QGIS, uDig, par exemple. Maintenant, nous allons vous montrer comment faire une carte avec QGIS.</p>
-<p>Start QGIS from the Desktop GIS menu and choose <code class="docutils literal"><span class="pre">Add</span> <span class="pre">PostGIS</span> <span class="pre">layers</span></code> from the layer menu. The
-parameters for connecting to the Natural Earth data in PostGIS are already defined in the Connections
-drop-down menu. You can define new server connections here, and store the settings for easy
-recall. Click on Connections drop down menu and choose Natural Earth. Hit <code class="docutils literal"><span class="pre">Edit</span></code> if you want to see what those parameters are for Natural Earth, or just
-hit <code class="docutils literal"><span class="pre">Connect</span></code> to continue:</p>
+<p>Démarrez QGIS dans le menu Desktop GIS et choisissez <code class="docutils literal"><span class="pre">Add</span> <span class="pre">PostGIS</span> <span class="pre">layers</span></code> dans le menu Couches. Les paramètres pour la connexion aux données Natural Earth dans PostGIS sont déjà définies dans la liste déroulante des connexions. Vous pouvez définir ici les nouvelles connexions serveur et enregistrer les paramètres d’un rappel facile. Cliquez sur le menu déroulant de connexions et choisissez la Natural Earth. Cliquez sur  <code class="docutils literal"><span class="pre">Edit</span></code> si vous voulez voir ce que ces paramètres sont Natural Earth, ou appuyez simplement sur <code class="docutils literal"><span class="pre">Connect</span></code> pour continuer&nbsp;:</p>
 <a class="reference internal image-reference" href="../../_images/postgis_addlayers.png"><img alt="Connect to Natural Earth" class="align-center" src="../../_images/postgis_addlayers.png" style="width: 450.0px; height: 378.0px;" /></a>
 <p>Vous obtiendrez maintenant une liste des tables spatiales dans la base de données&nbsp;:</p>
 <a class="reference internal image-reference" href="../../_images/postgis_listtables.png"><img alt="Natural Earth Layers" class="align-center" src="../../_images/postgis_listtables.png" style="width: 450.0px; height: 378.0px;" /></a>
@@ -329,9 +321,7 @@ hit <code class="docutils literal"><span class="pre">Connect</span></code> to co
 <p>Dépliez l’élément Postgis, puis l’élément NaturalEarth. Puis, il se connectera à la base NaturalEarth. Laisser le mot de passe vide si demandé Dans l’élément public, il y a la liste des couches fournies par la base de données. Vous verrez la fenêtre principale de gestion. Sur la gauche, vous pouvez sélectionner les tables de la base de données et utilisez les onglets sur la droite pour en savoir à leur sujet. L’onglet Aperçu vous montre une petite carte.</p>
 <a class="reference internal image-reference" href="../../_images/postgis_managerpreview.png"><img alt="QGIS Manager Preview" class="align-center" src="../../_images/postgis_managerpreview.png" style="width: 610.5px; height: 428.25px;" /></a>
 <p>Nous allons maintenant utiliser le gestionnaire DB pour importer un shapefile dans la base de données. Nous utiliserons les données de syndrome de mort subite du nourrisson (SMSN) de Caroline du Nord qui est incluses avec l’un des paquets supplémentaires du langage de statistiques R.</p>
-<p>From the <code class="docutils literal"><span class="pre">Table</span></code> menu choose the <code class="docutils literal"><span class="pre">Import</span> <span class="pre">layer/file</span></code> option.
-Hit the <code class="docutils literal"><span class="pre">...</span></code> button and browse to the <code class="docutils literal"><span class="pre">sids.shp</span></code> shapefile in the R <code class="docutils literal"><span class="pre">maptools</span></code> package
-(located in /usr/local/lib/R/site-library/spData/shapes):</p>
+<p>Dans le menu <code class="docutils literal"><span class="pre">Table</span></code>  choisir l’option``Import layer/file``. Cliquez sur le bouton <code class="docutils literal"><span class="pre">...</span></code> , puis accédez au shapefile <code class="docutils literal"><span class="pre">sids.shp``du</span> <span class="pre">paquet</span> <span class="pre">``spData</span></code> de R (situé dans /usr/local/lib/R/site-library/spData/shapes)&nbsp;:</p>
 <a class="reference internal image-reference" href="../../_images/postgis_browsedata.png"><img alt="Find the shapefile" class="align-center" src="../../_images/postgis_browsedata.png" style="width: 632.25px; height: 492.0px;" /></a>
 <p>Laissez tout le reste comme il est et cliquez sur <code class="docutils literal"><span class="pre">Load</span></code></p>
 <a class="reference internal image-reference" href="../../_images/postgis_importsids.png"><img alt="Import a shapefile" class="align-center" src="../../_images/postgis_importsids.png" style="width: 346.5px; height: 400.5px;" /></a>
@@ -355,9 +345,7 @@ Hit the <code class="docutils literal"><span class="pre">...</span></code> butto
 <h2><a class="toc-backref" href="#id10">Exécution d’une requête SQL de pgAdmin III</a><a class="headerlink" href="#executing-a-sql-query-from-pgadmin-iii" title="Lien permanent vers ce titre">¶</a></h2>
 <p>pgAdmin III, offre la possibilité d’exécuter des requêtes sur une base de données relationnelle.</p>
 <p>Pour effectuer une requête sur la base de données, vous devez appuyer sur le bouton <code class="docutils literal"><span class="pre">SQL</span></code> de la barre d’outils principale (celle avec la loupe jaune).</p>
-<p>We are going to find the rate of the SIDS over the births for the 1974 for each city.
-Furthermore we are going to sort the result, based on the computed rate. To do that, we need to perform the following query (submit it
-on the text editor of the SQL Window):</p>
+<p>Nous allons trouver le taux de SIDS des naissances pour chaque ville en 1974. En outre, nous allons pour trier les résultats, basé sur le taux calculé. Pour ce faire, nous avons besoin exécuter la requête suivante (à exécuter depuis l’éditeur de texte de la fenêtre SQL)&nbsp;:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">select</span> <span class="n">name</span><span class="p">,</span> <span class="mi">1000</span><span class="o">*</span><span class="n">sid74</span><span class="o">/</span><span class="n">bir74</span> <span class="k">as</span> <span class="n">rate</span> <span class="kn">from</span> <span class="nn">sids</span> <span class="n">order</span> <span class="n">by</span> <span class="n">rate</span><span class="p">;</span>
 </pre></div>
 </div>

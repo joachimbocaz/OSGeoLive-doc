@@ -224,11 +224,7 @@
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">demo</span><span class="o">=</span><span class="c1"># CREATE TABLE cities ( id int4 primary key, name varchar(50), geom geometry(POINT,4326) );</span>
 </pre></div>
 </div>
-<p>Conventionally this geometry column is named
-<code class="docutils literal"><span class="pre">geom</span></code> (the older PostGIS convention was <code class="docutils literal"><span class="pre">the_geom</span></code>). This tells PostGIS what kind of geometry
-each feature has (points, lines, polygons etc), how many dimensions
-(in this case 2, if it had 3 or 4 dimensions we would use POINTZ, POINTM, or POINTZM), and the spatial reference
-system. We used EPSG:4326 coordinates for our cities.</p>
+<p>Hagyományosan a geometria oszlopot <code class="docutils literal"><span class="pre">geom</span></code>-nak nevezzük (a korábbi PostGIS konvenció a <code class="docutils literal"><span class="pre">the_geom</span></code> volt). Ez megadja a PostGIS-nek milyen típusú geometria tartozik az egyes elemekhez (pontok, törtvonalak, területek, stb.), hány dimenziósak (ebben az esetben 2, 3 vagy 4 dimenzióhoz a POINZ, POINTM vagy POINTZM kell használni) és megadja a vetületet. EPSG:4326 koordinátákat használunk a városokhoz.</p>
 <p>Ha most ellenőrzi a cities táblát, láthatja az új oszlopot és azt az információt, hogy tábla aktuálisan egy sort sem tartalmaz.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">demo</span><span class="o">=</span><span class="c1"># SELECT * from cities;</span>
  <span class="nb">id</span> <span class="o">|</span> <span class="n">name</span> <span class="o">|</span> <span class="n">geom</span>
@@ -260,7 +256,7 @@ system. We used EPSG:4326 coordinates for our cities.</p>
 <span class="p">(</span><span class="mi">3</span> <span class="n">rows</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>This gives us an encoded hexadecimal version of the coordinates, not so useful for humans.</p>
+<p>Ez a koordináták kódolt hexadecimális változatát adja nekünk, nem túl hasznos az embereknek.</p>
 <p>Ha újra WKT formátumban  szeretne egy pillantást vetni a geometriára, akkor az ST_AsText(geom), vagy az ST_AsEwkt(geom) függvényeket használhatja. Az ST_X(geom),  az ST_Y(geom) függvényeket is használhatja  a koordináták numerikus értékének kiolvasásához:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">demo</span><span class="o">=</span><span class="c1"># SELECT id, ST_AsText(geom), ST_AsEwkt(geom), ST_X(geom), ST_Y(geom) FROM cities;</span>
  <span class="nb">id</span> <span class="o">|</span>          <span class="n">st_astext</span>           <span class="o">|</span>               <span class="n">st_asewkt</span>                <span class="o">|</span>    <span class="n">st_x</span>     <span class="o">|</span>   <span class="n">st_y</span>
@@ -310,11 +306,7 @@ system. We used EPSG:4326 coordinates for our cities.</p>
 <div class="section" id="mapping">
 <h2><a class="toc-backref" href="#id7">Térkép</a><a class="headerlink" href="#mapping" title="Hivatkozás erre a fejezetcímre">¶</a></h2>
 <p>Az adatokat fogadni képes kliens szükséges a PostGIS adatokból térkép készítéshez. A legtöbb nyílt forráskódú asztali GIS meg tudja csinálni ezt - például a QGIS, a gvSIG, a uDIG. Most megmutatjuk hogyan készíthet térképet a QGIS-ből</p>
-<p>Start QGIS from the Desktop GIS menu and choose <code class="docutils literal"><span class="pre">Add</span> <span class="pre">PostGIS</span> <span class="pre">layers</span></code> from the layer menu. The
-parameters for connecting to the Natural Earth data in PostGIS are already defined in the Connections
-drop-down menu. You can define new server connections here, and store the settings for easy
-recall. Click on Connections drop down menu and choose Natural Earth. Hit <code class="docutils literal"><span class="pre">Edit</span></code> if you want to see what those parameters are for Natural Earth, or just
-hit <code class="docutils literal"><span class="pre">Connect</span></code> to continue:</p>
+<p>Indítsa el a QGIS-t a Desktop GIS menüből és válassza az <code class="docutils literal"><span class="pre">Add</span> <span class="pre">PostGIS</span> <span class="pre">layers</span></code>-t (PostGIS réteg hozzáadás) a Layer (Réteg) menüből. A PostGIS-ban tárolt Natural Earth adatokhoz kapcsolódás paramétereit már beállítottuk a Connections (Kapcsolatok) legördülő listában. Itt új szerver kapcsolatokat adhat meg és tárolhatja a beállításokat a könnyű újrafelhasználáshoz. Kattintson a Connections (Kapcsolatok) legördülő listára és válassza a Natural Earth-t.Kattintson az <code class="docutils literal"><span class="pre">Edit</span></code> (Szerkeszt) gombra, ha meg akarja tekinteni a Natural Earth-höz tartozó paramétereket vagy egyszerűen kattintson a <code class="docutils literal"><span class="pre">Connect</span></code>-re (Kapcsolódás) gombra a folytatáshoz:</p>
 <a class="reference internal image-reference" href="../../_images/postgis_addlayers.png"><img alt="Connect to Natural Earth" class="align-center" src="../../_images/postgis_addlayers.png" style="width: 450.0px; height: 378.0px;" /></a>
 <p>Az adatbázisban lévő téradat táblák listáját kapja meg:</p>
 <a class="reference internal image-reference" href="../../_images/postgis_listtables.png"><img alt="Natural Earth Layers" class="align-center" src="../../_images/postgis_listtables.png" style="width: 450.0px; height: 378.0px;" /></a>
@@ -329,9 +321,7 @@ hit <code class="docutils literal"><span class="pre">Connect</span></code> to co
 <p>Bontsa szét a PostGIS elemet, majd a NaturalEarth elemet. Ezután kapcsolódik a Natural Earth adatbázishoz. Hagyja üresen a jelszót, ha kérdezik. A public elemben az adatbázis által szolgáltatott rétegek listája van. A fő kezelő ablakot látja. A bal oldalon az adatbázisból választhat egy táblát és használja a füleket a jobb oldalon, hogy megtudjon valamit róluk. A Preview (Előnézet) fül egy kis térképet mutat.</p>
 <a class="reference internal image-reference" href="../../_images/postgis_managerpreview.png"><img alt="QGIS Manager Preview" class="align-center" src="../../_images/postgis_managerpreview.png" style="width: 610.5px; height: 428.25px;" /></a>
 <p>Most a DB manager-t használjuk egy shape fájl adatbázisba importálásához. Az észak karolinai hirtelen csecsemőhalál-szindróma adatokat fogjuk használni, melyeket az egyik R statisztikai csomag bővítmény tartalmaz.</p>
-<p>From the <code class="docutils literal"><span class="pre">Table</span></code> menu choose the <code class="docutils literal"><span class="pre">Import</span> <span class="pre">layer/file</span></code> option.
-Hit the <code class="docutils literal"><span class="pre">...</span></code> button and browse to the <code class="docutils literal"><span class="pre">sids.shp</span></code> shapefile in the R <code class="docutils literal"><span class="pre">maptools</span></code> package
-(located in /usr/local/lib/R/site-library/spData/shapes):</p>
+<p>A <code class="docutils literal"><span class="pre">Table</span></code> menüből válassza az <code class="docutils literal"><span class="pre">Import</span> <span class="pre">layer/file</span></code> opciót. Kattintson a  <code class="docutils literal"><span class="pre">...</span></code> gombra és tallózzon a <code class="docutils literal"><span class="pre">sids.shp</span></code> shape fájlhoz az R <code class="docutils literal"><span class="pre">maptools</span></code> csomagban (a /usr/local/lib/R/site-library/spData/shapes mappában):</p>
 <a class="reference internal image-reference" href="../../_images/postgis_browsedata.png"><img alt="Find the shapefile" class="align-center" src="../../_images/postgis_browsedata.png" style="width: 632.25px; height: 492.0px;" /></a>
 <p>Hagyjon minden mást változatlanul és kattintson a <code class="docutils literal"><span class="pre">Load</span></code>-ra</p>
 <a class="reference internal image-reference" href="../../_images/postgis_importsids.png"><img alt="Import a shapefile" class="align-center" src="../../_images/postgis_importsids.png" style="width: 346.5px; height: 400.5px;" /></a>
@@ -355,9 +345,7 @@ Hit the <code class="docutils literal"><span class="pre">...</span></code> butto
 <h2><a class="toc-backref" href="#id10">SQL lekérdezések végrehajtás a pgAdmin III-ból</a><a class="headerlink" href="#executing-a-sql-query-from-pgadmin-iii" title="Hivatkozás erre a fejezetcímre">¶</a></h2>
 <p>A pgAdmin biztosítja lekérdezések végrehajtásának lehetőségét a relációs adatbázisból.</p>
 <p>Az adatbázison történő lekérdezés végrehajtásához nyomja meg az <code class="docutils literal"><span class="pre">SQL</span></code> gombot a fő eszközsorból (a sárga nagyítólencsét tartalmazóból).</p>
-<p>We are going to find the rate of the SIDS over the births for the 1974 for each city.
-Furthermore we are going to sort the result, based on the computed rate. To do that, we need to perform the following query (submit it
-on the text editor of the SQL Window):</p>
+<p>Az SIDS arányát keressük a születésekhez minden városban 1974-ben. Továbbá rendezzük az eredményt a számított arányok alapján. Ehhez a következő lekérdezést kell végrehajtanunk (küldje el ezt az SQL ablak szövegszerkesztőjéből):</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">select</span> <span class="n">name</span><span class="p">,</span> <span class="mi">1000</span><span class="o">*</span><span class="n">sid74</span><span class="o">/</span><span class="n">bir74</span> <span class="k">as</span> <span class="n">rate</span> <span class="kn">from</span> <span class="nn">sids</span> <span class="n">order</span> <span class="n">by</span> <span class="n">rate</span><span class="p">;</span>
 </pre></div>
 </div>

@@ -224,11 +224,7 @@
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">demo</span><span class="o">=</span><span class="c1"># CREATE TABLE cities ( id int4 primary key, name varchar(50), geom geometry(POINT,4326) );</span>
 </pre></div>
 </div>
-<p>Conventionally this geometry column is named
-<code class="docutils literal"><span class="pre">geom</span></code> (the older PostGIS convention was <code class="docutils literal"><span class="pre">the_geom</span></code>). This tells PostGIS what kind of geometry
-each feature has (points, lines, polygons etc), how many dimensions
-(in this case 2, if it had 3 or 4 dimensions we would use POINTZ, POINTM, or POINTZM), and the spatial reference
-system. We used EPSG:4326 coordinates for our cities.</p>
+<p>Üblicherweise wird diese Geometriespalte ‚‘geom‘‘ genannt (die ältere PostGIS-Konvention war ‚‘the_geom‘‘). Dies teilt PostGIS mit, welche Geometrie jedes Feature hat (Punkte, Linien, Polygone usw.), welche Dimension (in diesem Fall 2, wenn es 3 oder 4 Dimensionen hätte, würden POINTZ, POINTM oder POINTZM verwendet) und das Raumbezugssystem. Wir haben EPSG:4326 Koordinaten für unsere Städte verwendet.</p>
 <p>Wenn Sie sich nun die Tabelle cities anschauen, sollten Sie die neue Spalte sehen. Sie sehen ebenfalls, dass die Tabelle derzeit leer ist.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">demo</span><span class="o">=</span><span class="c1"># SELECT * from cities;</span>
  <span class="nb">id</span> <span class="o">|</span> <span class="n">name</span> <span class="o">|</span> <span class="n">geom</span>
@@ -260,7 +256,7 @@ system. We used EPSG:4326 coordinates for our cities.</p>
 <span class="p">(</span><span class="mi">3</span> <span class="n">rows</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>This gives us an encoded hexadecimal version of the coordinates, not so useful for humans.</p>
+<p>Diese Ausgabe gibt uns die hexadezimale Version der Koordinaten aus, die für uns schwer lesbar ist.</p>
 <p>Wenn Sie Ihre Geometrien wieder im WKT-Format ausgeben möchten, können Sie die Funktionen ST_AsText(geom) oder ST_AsEwkt(geom) verwenden. Sie können außerdem die Funktionen ST_X(geom) und ST_Y(geom) verwenden, um die Koordinaten auszugeben:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">demo</span><span class="o">=</span><span class="c1"># SELECT id, ST_AsText(geom), ST_AsEwkt(geom), ST_X(geom), ST_Y(geom) FROM cities;</span>
  <span class="nb">id</span> <span class="o">|</span>          <span class="n">st_astext</span>           <span class="o">|</span>               <span class="n">st_asewkt</span>                <span class="o">|</span>    <span class="n">st_x</span>     <span class="o">|</span>   <span class="n">st_y</span>
@@ -310,11 +306,7 @@ system. We used EPSG:4326 coordinates for our cities.</p>
 <div class="section" id="mapping">
 <h2><a class="toc-backref" href="#id7">Mapping</a><a class="headerlink" href="#mapping" title="Link zu dieser Überschrift">¶</a></h2>
 <p>Um eine Karte aus Ihren PostGIS-Daten zu erzeugen, brauchen Sie einen Client, der auf die Daten zugreifen kann. Die meisten der Open Source Desktop GIS Programme unterstützen PostGIS - wie z. B. QGIS, gvSIG, uDig. Wir werden unsere Karte mit QGIS erzeugen.</p>
-<p>Start QGIS from the Desktop GIS menu and choose <code class="docutils literal"><span class="pre">Add</span> <span class="pre">PostGIS</span> <span class="pre">layers</span></code> from the layer menu. The
-parameters for connecting to the Natural Earth data in PostGIS are already defined in the Connections
-drop-down menu. You can define new server connections here, and store the settings for easy
-recall. Click on Connections drop down menu and choose Natural Earth. Hit <code class="docutils literal"><span class="pre">Edit</span></code> if you want to see what those parameters are for Natural Earth, or just
-hit <code class="docutils literal"><span class="pre">Connect</span></code> to continue:</p>
+<p>Starten Sie QGIS über das Desktop-GIS-Menü und wählen Sie im Menü ‚‘PostGIS-Layer hinzufügen‘‘. Die Parameter für die Verbindung mit den Natural Earth-Daten in PostGIS sind bereits im Dropdown-Menü Verbindungen definiert. Sie können hier neue Serververbindungen definieren und die Einstellungen speichern. Klicken Sie auf Connections Drop-down-Menü und wählen Sie Natural Earth. Klicken Sie auf ‚‘Bearbeiten‘‘ wenn Sie die Konfiguration für Verbindung zu Natural Earth anschauen möchten, oder drücken Sie einfach ‚‘Connect‘‘, um fortzufahren:</p>
 <a class="reference internal image-reference" href="../../_images/postgis_addlayers.png"><img alt="Connect to Natural Earth" class="align-center" src="../../_images/postgis_addlayers.png" style="width: 450.0px; height: 378.0px;" /></a>
 <p>Im Anschluss daran erscheint eine Liste der Tabellen mit räumlichen Informationen:</p>
 <a class="reference internal image-reference" href="../../_images/postgis_listtables.png"><img alt="Natural Earth Layers" class="align-center" src="../../_images/postgis_listtables.png" style="width: 450.0px; height: 378.0px;" /></a>
@@ -329,9 +321,7 @@ hit <code class="docutils literal"><span class="pre">Connect</span></code> to co
 <p>Stellt das PostGIS-Element und danach das NaturalEarth-Element bereit. Es wird eine Verbindung zur Natural Earth-Datenbank hergestellt. Lassen Sie das Kennwort leer, wenn danach gefragt wird. Im Bereich public befindet sich eine Liste der Layer, die von der Datenbank bereitgestellt werden. Sie sehen das Hauptfenster des Managers. Auf der linken Seite können Sie Tabellen aus der Datenbank auswählen und anschließend die Registerkarten auf der rechten Seite verwenden, um mehr über die Daten zu erfahren. Auf der Registerkarte Vorschau wird eine Ansicht der Daten angezeigt.</p>
 <a class="reference internal image-reference" href="../../_images/postgis_managerpreview.png"><img alt="QGIS Manager Preview" class="align-center" src="../../_images/postgis_managerpreview.png" style="width: 610.5px; height: 428.25px;" /></a>
 <p>Wir verwenden nun den DB-Manager, um ein Shapefile in die Datenbank zu importieren. Wir verwenden die Daten des sudden infant death syndrome (SIDS) aus North Carolina, die in einem der Add-Ons des R-Statistikpakets enthalten sind.</p>
-<p>From the <code class="docutils literal"><span class="pre">Table</span></code> menu choose the <code class="docutils literal"><span class="pre">Import</span> <span class="pre">layer/file</span></code> option.
-Hit the <code class="docutils literal"><span class="pre">...</span></code> button and browse to the <code class="docutils literal"><span class="pre">sids.shp</span></code> shapefile in the R <code class="docutils literal"><span class="pre">maptools</span></code> package
-(located in /usr/local/lib/R/site-library/spData/shapes):</p>
+<p>Wählen Sie im Menü ‚‘Tabelle‘‘ die Option ‚‘Layer/Datei importieren‘‘‘. Klicken Sie auf die Schaltfläche ‚‘…‘‘ und navigieren Sie zum Shapefile ‚‘sids.shp‘‘ im R ‚‘maptools‘-Paket (unter  /usr/local/lib/R/site-library/spData/shapes):</p>
 <a class="reference internal image-reference" href="../../_images/postgis_browsedata.png"><img alt="Find the shapefile" class="align-center" src="../../_images/postgis_browsedata.png" style="width: 632.25px; height: 492.0px;" /></a>
 <p>Lassen Sie alles andere so, wie es ist und drücken Sie ‚‘Load‘‘</p>
 <a class="reference internal image-reference" href="../../_images/postgis_importsids.png"><img alt="Import a shapefile" class="align-center" src="../../_images/postgis_importsids.png" style="width: 346.5px; height: 400.5px;" /></a>
@@ -355,9 +345,7 @@ Hit the <code class="docutils literal"><span class="pre">...</span></code> butto
 <h2><a class="toc-backref" href="#id10">Ausführen von SQL-Abfragen mit pgAdmin III</a><a class="headerlink" href="#executing-a-sql-query-from-pgadmin-iii" title="Link zu dieser Überschrift">¶</a></h2>
 <p>pgAdmin III bietet die Möglichkeit Abfragen an relationale Datenbanken abzusetzen.</p>
 <p>Um eine Abfrage an die Datenbank zu schicken, müssen Sie den <code class="docutils literal"><span class="pre">SQL</span></code>-Button der Hauptwerkzeugleiste klicken (Button mit gelber Lupe).</p>
-<p>We are going to find the rate of the SIDS over the births for the 1974 for each city.
-Furthermore we are going to sort the result, based on the computed rate. To do that, we need to perform the following query (submit it
-on the text editor of the SQL Window):</p>
+<p>Wir wollen die Rate der SIDS anhand der Geburten für 1974 für jede Stadt ermitteln. Darüber hinaus werden wir das Ergebnis auf der Grundlage der berechneten Rate sortieren. Dazu müssen wir die folgende Abfrage durchführen (im Texteditor des SQL-Fensters absenden):</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">select</span> <span class="n">name</span><span class="p">,</span> <span class="mi">1000</span><span class="o">*</span><span class="n">sid74</span><span class="o">/</span><span class="n">bir74</span> <span class="k">as</span> <span class="n">rate</span> <span class="kn">from</span> <span class="nn">sids</span> <span class="n">order</span> <span class="n">by</span> <span class="n">rate</span><span class="p">;</span>
 </pre></div>
 </div>

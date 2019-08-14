@@ -127,7 +127,7 @@
 <blockquote>
 <div><a class="reference internal image-reference" href="../../_images/vmdk_general_advanced.png"><img alt="../../_images/vmdk_general_advanced.png" src="../../_images/vmdk_general_advanced.png" style="width: 425.75px; height: 282.75px;" /></a>
 </div></blockquote>
-<p>Go to the «&nbsp;Display&nbsp;» section and increase video memory to 32 or 64 MB. In some host operating systems, it may be required to «&nbsp;Enable 3D Acceleration&nbsp;» for display to work properly.</p>
+<p>Accédez à la section «&nbsp;Affichage&nbsp;» et augmenter la mémoire vidéo à 32 ou 64 Mo. Dans certains systèmes d’exploitation, il peut être nécessaire d”«&nbsp;Activer l’accélération 3D&nbsp;» pour que l’affichage fonctionne correctement.</p>
 <blockquote>
 <div><a class="reference internal image-reference" href="../../_images/vmdk_display.png"><img alt="../../_images/vmdk_display.png" src="../../_images/vmdk_display.png" style="width: 424.45px; height: 282.1px;" /></a>
 </div></blockquote>
@@ -138,15 +138,15 @@
 <p>Vous pouvez sélectionner de rendre le répertoire partagé en lecture seule et de le monter automatiquement. Une fois le «&nbsp;Chemin du dossier&nbsp;» et le «&nbsp;Nom du dossier&nbsp;» définis, cliquez sur OK, puis sur OK de nouveau pour terminer et fermer la fenêtre des paramètres.</p>
 <p><strong>Exécuter une machine virtuelle</strong></p>
 <p>Démarrez maintenant la VM en cliquant sur le bouton Démarrer (flèche verte).</p>
-<p>When you install the iso on the VM, the username must be set to «&nbsp;user&nbsp;»</p>
-<p>The user «&nbsp;user&nbsp;» is not a member of the «&nbsp;users&nbsp;» group on the OSGeoLive virtual machine. This prevents some tools from writing to its data directory and causes some software to fail to start.</p>
-<p>The solution is to fix the vmdk with the following one-time procedure:</p>
+<p>Lorsque vous installez l’iso dans la VM, le nom d’utilisateur doit être réglé sur «&nbsp;user&nbsp;»</p>
+<p>L’utilisateur «&nbsp;user&nbsp;» n’est pas membre du groupe «&nbsp;users&nbsp;» dans la machine virtuelle OSGeoLive. Cela empêche certains outils d’écrire dans le répertoire de données et empêche certains logiciels de démarrer.</p>
+<p>La solution est de réparer le vmdk avec la procédure unique suivante:</p>
 <ol class="arabic simple">
-<li>Start a terminal.</li>
-<li>Run «&nbsp;sudo adduser user users&nbsp;».</li>
-<li>Apply this change by starting a new desktop session: either restart the virtual machine or log out and log back in (username «&nbsp;user&nbsp;», password «&nbsp;user&nbsp;»).</li>
+<li>Démarrer un terminal.</li>
+<li>Exécutez «&nbsp;sudo adduser user users&nbsp;».</li>
+<li>Appliquez cette modification en commençant une nouvelle session de bureau : soit en redémarrant la machine virtuelle, soit vous vous déconnectez et vous reconnectez (nom d’utilisateur «&nbsp;user&nbsp;», mot de passe «&nbsp;user&nbsp;»).</li>
 </ol>
-<p>Also once the OSGeo system comes up, add yourself to the vboxsf group so that the shared folders (defined above) are accessible by running in a terminal window:</p>
+<p>Aussi une fois que le système OSGeo a démarré, ajoutez-vous au groupe vboxsf afin que les dossiers partagés (définis ci-dessus) soient accessibles en exécutant dans une fenêtre de terminal :</p>
 <p><code class="docutils literal"><span class="pre">user&#64;osgeolive:~$</span> <span class="pre">sudo</span> <span class="pre">usermod</span> <span class="pre">-a</span> <span class="pre">-G</span> <span class="pre">vboxsf</span> <span class="pre">user</span></code></p>
 <p>Dans l’exemple ci-dessus, nous avons défini un chemin de répertoire partagé sur le système hôte et l’avons nommé «&nbsp;GIS&nbsp;» dans les paramètres de la VM. Le répertoire partagé apparaîtra dans le système de fichiers sous /media/sf_GIS/. Pour monter ce dossier dans le répertoire personnel de l’utilisateur, par exemple, dans un terminal, faites:</p>
 <p><code class="docutils literal"><span class="pre">user&#64;osgeolive:~$</span> <span class="pre">mkdir</span> <span class="pre">GIS</span></code></p>

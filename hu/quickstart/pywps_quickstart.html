@@ -101,13 +101,11 @@
 </div>
 <div class="section" id="installing-pywps-flask">
 <h2><a class="toc-backref" href="#id2">pywps-flask telepítés</a><a class="headerlink" href="#installing-pywps-flask" title="Hivatkozás erre a fejezetcímre">¶</a></h2>
-<p>Since the example service depends on Flask, make sure it is installed on your
-OSGeo-Live:</p>
+<p>Mivel a minta szolgáltatás a Flask-et használja, győződjön meg, hogy telepítették-e az OSGeoLive-ra:</p>
 <p><cite>sudo apt install python-flask</cite></p>
 <p>Majd klónozza a GitHub-ról a tárházat:</p>
 <p><cite>git clone https://github.com/geopython/pywps-flask.git</cite></p>
-<p>Now move into the repository folder and edit the configuration file. This can
-be done with a program like <cite>nano</cite>:</p>
+<p>Mozogjon a tárház mappába  és módosítsa a konfigurációs fájlt. Ezt megteheti a <cite>nano</cite> programmal:</p>
 <p><cite>nano pywps.cfg</cite></p>
 <p>Az egyetelen kritikus, ellenőrizendő dolog a napló adatbázis helye. A <cite>Pywps-flask</cite>&nbsp; gondoskodik egy minta adatbázisról, mely használható erre a célra. Győződjön meg róla, hogy a <cite>database</cite> beállítás így néz ki:</p>
 <p><cite>database=sqlite:////home/user/pywps-flask/logs/pywps-logs.sqlite3</cite></p>

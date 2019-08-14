@@ -216,12 +216,8 @@
 </pre></div>
 </div>
 <img alt="../../_images/r_plot2.png" src="../../_images/r_plot2.png" />
-<p>This looks a bit squashed to anyone who lives here, since we are more familiar with
-a coordinate system centred at our latitude. Currently the object doesn’t have a
-coordinate system assigned to it.</p>
-<p>We need to assign a CRS to the object before we can
-transform it with the sf::st_transform function from the sf package. We transform
-to EPSG:27700 which is the Ordnance Survey of Great Britain grid system:</p>
+<p>Dies sieht für jemanden, der hier lebt ein bisschen gequetscht aus, da wir es eher gewohnt sind ein Koordinatenreferenzsystem zu nutzen, das sich auf unseren Längengrad (Latitude) bezieht. Derzeit wurde dem Objekt kein Koordinatenreferenzsystem zugewiesen.</p>
+<p>Wir müssen dem Objekt ein CRS zuweisen, bevor wir es mit der sf::st_transform-Funktion des sf-Paketes transformieren können. Wir transformieren nach EPSG:27700 dem Grid-System der britischen Ordnance Survey:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">ukos</span> <span class="o">&lt;-</span> <span class="n">st_transform</span><span class="p">(</span><span class="n">uk</span><span class="p">,</span><span class="mi">27700</span><span class="p">)</span>
 <span class="o">&gt;</span> <span class="n">ggplot</span><span class="p">(</span><span class="n">ukos</span><span class="p">)</span> <span class="o">+</span> <span class="n">geom_sf</span><span class="p">()</span>
 </pre></div>
@@ -232,9 +228,7 @@ to EPSG:27700 which is the Ordnance Survey of Great Britain grid system:</p>
 &gt; ukpop &lt;- st_transform(ukpop,27700)
 </pre></div>
 </div>
-<p>We add these points to the base map, scaling their size by scaled square root of the
-population (because that makes a symbol with area proportional to population), set the
-colour to red and the plotting character to a solid blob:</p>
+<p>Wir fügen diese Punkte zur Basiskarte hinzu, skalieren ihre Größe nach der  by scaled square root of der Einwohner (da dies ein Symbol mit der Fläche proportional zur Bevölkerung erzeugt), setzen die Farbe auf rot und the plotting character to a solid blob:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>&gt; ggplot() +
 &gt;   geom_sf(data = ukos) +                                                          # add UK shape to the map
 &gt;   geom_sf(data = ukpop,                                                           # add the Populated places
@@ -254,18 +248,13 @@ colour to red and the plotting character to a solid blob:</p>
 </div>
 <div class="section" id="vignettes">
 <h2>Vignetten<a class="headerlink" href="#vignettes" title="Link zu dieser Überschrift">¶</a></h2>
-<p>In the past the documentation for R packages tended to be tersely-written help pages
-for each function. Now package authors are encouraged to write a ‚vignette‘ as a friendly
-introduction to the package. If you just run the <code class="docutils literal"><span class="pre">vignette()</span></code> function with no arguments
-you will get the list of those vignettes on your system. Try <code class="docutils literal"><span class="pre">vignette(&quot;sf1&quot;)</span></code> for a
-slightly technical introduction to the R spatial package.</p>
+<p>In der Vergangenheit waren die Dokumentationen für R-Pakete eher knapp. Nun werden Autoren von Paketen aufgefordert eine ‚Vignette‘ , d.h. eine Einführung für ihr Paket zu schreiben. Wenn Sie nun einfach die <code class="docutils literal"><span class="pre">vignette()</span></code>-Funktion ohne Argumente aufrufen, erhalten Sie eine Liste dieser Vignetten auf ihrem System. Rufen Sie <code class="docutils literal"><span class="pre">vignette(&quot;sf1&quot;)</span></code> für eine eher technische Einführung in das R Spatial Paket auf.</p>
 </div>
 <div class="section" id="further-reading">
 <h2>Weiterführende Links<a class="headerlink" href="#further-reading" title="Link zu dieser Überschrift">¶</a></h2>
 <p>Für allgemeine Informationen über R, versuchen Sie die offizielle Seite <a class="reference external" href="http://cran.r-project.org/doc/manuals/R-intro.html">Introduction to R</a> oder eine andere Dokumentation von der Hauptseite des <a class="reference external" href="http://www.r-project.org/">R Projekts</a>.</p>
 <p>Für weitere Informationen über räumliche Aspekte von R, ist wahrscheinlich das <a class="reference external" href="http://cran.r-project.org/web/views/Spatial.html">R Spatial Task View</a> am hilfreichsten.</p>
-<p>You might also want to check out the <a class="reference external" href="http://www.rspatial.org">R-Spatial</a>
-page.</p>
+<p>Sie interessieren sich vermutlich auch für die <a class="reference external" href="http://www.rspatial.org">R-Spatial</a> -Seite.</p>
 </div>
 </div>
 

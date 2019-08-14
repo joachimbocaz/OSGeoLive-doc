@@ -74,36 +74,36 @@
 <div class="section" id="geos">
 <h1>GEOS<a class="headerlink" href="#geos" title="Link a questa intestazione">¶</a></h1>
 <div class="section" id="spatial-library">
-<h2>Spatial Library<a class="headerlink" href="#spatial-library" title="Link a questa intestazione">¶</a></h2>
-<p>GEOS (Geometry Engine - Open Source) is a C++ port of the <a class="reference external" href="https://www.locationtech.org/proposals/jts-topology-suite">JTS Topology Suite (JTS)</a>. It includes the OpenGIS Simple Features for SQL spatial predicate functions and spatial operators, as well as specific JTS enhanced topology functions.</p>
-<p>GEOS is the most widely used geospatial C++ geometry library, being used by open source projects such as <a class="reference internal" href="postgis_overview.html"><span class="doc">PostGIS</span></a>, <a class="reference internal" href="qgis_overview.html"><span class="doc">QGIS</span></a>, <a class="reference internal" href="gdal_overview.html"><span class="doc">GDAL/OGR</span></a> and <a class="reference internal" href="mapserver_overview.html"><span class="doc">MapServer</span></a>, and by proprietary products including <a class="reference external" href="http://www.safe.com/fme/fme-technology/">FME</a>.</p>
+<h2>Libreria spaziale<a class="headerlink" href="#spatial-library" title="Link a questa intestazione">¶</a></h2>
+<p>GEOS (Geometry Engine - Open Source) è un port C++ di <a class="reference external" href="https://www.locationtech.org/proposals/jts-topology-suite">JTS Topology Suite (JTS)</a>. Include OpenGIS Simple Features per funzioni con predicato spaziale SQL e operatori spaziali, cosi come le funzioni specifiche della topologia avanzata JTS.</p>
+<p>GEOS è la libreria geometrica geospaziale C++ più usata, essendo utilizzata da progetti open source come <a class="reference internal" href="postgis_overview.html"><span class="doc">PostGIS</span></a>, <a class="reference internal" href="qgis_overview.html"><span class="doc">QGIS</span></a>, <a class="reference internal" href="gdal_overview.html"><span class="doc">GDAL/OGR</span></a> and <a class="reference internal" href="mapserver_overview.html"><span class="doc">MapServer</span></a>, e da prodotti proprietari come <a class="reference external" href="http://www.safe.com/fme/fme-technology/">FME</a>.</p>
 <div class="section" id="implemented-standards">
-<h3>Implemented Standards<a class="headerlink" href="#implemented-standards" title="Link a questa intestazione">¶</a></h3>
+<h3>Standards implementati<a class="headerlink" href="#implemented-standards" title="Link a questa intestazione">¶</a></h3>
 <ul class="simple">
-<li><a class="reference external" href="http://www.opengeospatial.org/standards/sfs">OpenGIS Simple Features for SQL</a>  spatial predicate functions and spatial operators</li>
+<li><a class="reference external" href="http://www.opengeospatial.org/standards/sfs">OpenGIS Simple Features for SQL</a> per funzioni con predicato spaziale SQL e operatori spaziali</li>
 </ul>
 </div>
 <div class="section" id="core-features">
-<h3>Core Features<a class="headerlink" href="#core-features" title="Link a questa intestazione">¶</a></h3>
+<h3>Caratteristiche principali<a class="headerlink" href="#core-features" title="Link a questa intestazione">¶</a></h3>
 <ul class="simple">
-<li>Geometries: Point, LineString, Polygon, MultiPoint, MultiLineString, MultiPolygon, GeometryCollection</li>
-<li>Predicates: Intersects, Touches, Disjoint, Crosses, Within, Contains, Overlaps, Equals, Covers</li>
-<li>Operations: Union, Distance, Intersection, Symmetric Difference, Convex Hull, Envelope, Buffer, Simplify, Polygon Assembly, Valid, Area, Length,</li>
-<li>Prepared geometries (pre-spatially indexed)</li>
-<li>STR spatial index</li>
-<li>OGC Well Known Text (WKT) and Well Known Binary (WKB) encoders and decoders.</li>
-<li>C and C++ API (C API gives long term ABI stability)</li>
-<li>Thread safe (using the reentrant API)</li>
+<li>Geometrie: Punto, Linea, Poligono, MultiPunto, MultiLinea, MultiPoligono, GeometryCollection</li>
+<li>Predicati: Interseziona, Tocca, Scompone, Incrocia, Within, Contiene, Sovrappone, Uguale, Copre</li>
+<li>Operazioni: Unione, Distaza, Intersezione, Differenza simmetrica, Poligono convesso, Envelope, Buffer, Semplificazione, Unione Poligoni, Validità, Area, Lunghezza,</li>
+<li>Geometrie Preparate (indicizzate pre-spazialmente)</li>
+<li>Indice spaziale STR</li>
+<li>Codificatori e decodificatori per OGC Well Known Text (WKT) e Well Known Binary (WKB).</li>
+<li>API C e C++ (API C stabilità a lungo termine dell’ABI)</li>
+<li>Thread sicuri (usando l’API dell’avvallamento)</li>
 </ul>
 </div>
 <div class="section" id="details">
-<h3>Details<a class="headerlink" href="#details" title="Link a questa intestazione">¶</a></h3>
-<p><strong>Website:</strong>  <a class="reference external" href="http://geos.osgeo.org/">http://geos.osgeo.org/</a></p>
-<p><strong>Licence:</strong> LGPL</p>
-<p><strong>Software Version:</strong> 3.7.1</p>
-<p><strong>Supported Platforms:</strong> Windows, Linux, Mac</p>
-<p><strong>API Interfaces:</strong> C, C++</p>
-<p><strong>Support:</strong> <a class="reference external" href="http://lists.osgeo.org/mailman/listinfo/geos-devel">http://lists.osgeo.org/mailman/listinfo/geos-devel</a>, <a class="reference external" href="http://www.osgeo.org/search_profile">http://www.osgeo.org/search_profile</a></p>
+<h3>Dettagli<a class="headerlink" href="#details" title="Link a questa intestazione">¶</a></h3>
+<p><strong>Sito web:</strong> <a class="reference external" href="http://geos.osgeo.org/">http://geos.osgeo.org/</a></p>
+<p><strong>Licenza:</strong> LGPL</p>
+<p><strong>Versione del Software:</strong> 3.7.1</p>
+<p><strong>Piattaforme Supportate:</strong> Windows, Linux, Mac</p>
+<p><strong>Interfacce API:</strong> C, C++</p>
+<p><strong>Supporto:</strong> <a class="reference external" href="http://lists.osgeo.org/mailman/listinfo/geos-devel">http://lists.osgeo.org/mailman/listinfo/geos-devel</a>, <a class="reference external" href="http://www.osgeo.org/search_profile">http://www.osgeo.org/search_profile</a></p>
 </div>
 </div>
 </div>
