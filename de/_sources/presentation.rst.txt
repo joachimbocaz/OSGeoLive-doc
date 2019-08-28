@@ -166,13 +166,13 @@ OSGeoLive
         :title-heading: h3
   
 
-            ================== ============== =============== ============================================
-            ================== ============== =============== ============================================
-              QGIS              GRASS GIS      gvSIG Desktop   User-friendly Desktop Internet GIS (uDig)
-              |qgis_logo|       |grass_logo|   |gvsig_logo|    |udig_logo|                              
-              OpenJUMP GIS      SAGA                                            
-              |openjump_logo|   |saga_logo|                                     
-            ================== ============== =============== ============================================
+            ================== ============== =============== ================
+            ================== ============== =============== ================
+              QGIS              GRASS GIS      gvSIG Desktop   uDig         
+              |qgis_logo|       |grass_logo|   |gvsig_logo|    |udig_logo|  
+              OpenJUMP GIS      SAGA                
+              |openjump_logo|   |saga_logo|         
+            ================== ============== =============== ================
 
 
 
@@ -229,7 +229,7 @@ OSGeoLive
 
 
 
-    .. revealjs:: User-friendly Desktop Internet GIS (uDig)
+    .. revealjs:: uDig
         :title-heading: h3
   
         .. image:: ../images/projects/udig/udig_screenshot.png
