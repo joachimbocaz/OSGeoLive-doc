@@ -168,10 +168,10 @@ OSGeoLive
 
             ================== ============== =============== ================
             ================== ============== =============== ================
-              QGIS              GRASS GIS      gvSIG Desktop   uDig         
               |qgis_logo|       |grass_logo|   |gvsig_logo|    |udig_logo|  
-              OpenJUMP GIS      SAGA                
+              QGIS              GRASS GIS      gvSIG Desktop   uDig         
               |openjump_logo|   |saga_logo|         
+              OpenJUMP GIS      SAGA                
             ================== ============== =============== ================
 
 
@@ -280,10 +280,10 @@ OSGeoLive
 
             ==================== ================ ================= ==================
             ==================== ================ ================= ==================
-              OpenLayers          Leaflet          Cesium            Geomajas       
               |openlayers_logo|   |leaflet_logo|   |cesium_logo|     |geomajas_logo|
-              Mapbender           GeoExt           GeoMoose          GeoNode        
+              OpenLayers          Leaflet          Cesium            Geomajas       
               |mapbender_logo|    |geoext_logo|    |geomoose_logo|   |geonode_logo| 
+              Mapbender           GeoExt           GeoMoose          GeoNode        
             ==================== ================ ================= ==================
 
 
@@ -413,16 +413,16 @@ OSGeoLive
 
             =================== ================== ======================= =================
             =================== ================== ======================= =================
-              GeoServer          MapServer          MapCache                deegree       
               |geoserver_logo|   |mapserver_logo|   |mapcache_logo|         |deegree_logo|
-              ncWMS              EOxServer          GeoNetwork              pycsw         
+              GeoServer          MapServer          MapCache                deegree       
               |ncWMS_logo|       |eoxserver_logo|   |geonetwork_logo|       |pycsw_logo|  
-              PyWPS              MapProxy           QGIS Server             istSOS        
+              ncWMS              EOxServer          GeoNetwork              pycsw         
               |pywps_logo|       |mapproxy_logo|    |qgis_mapserver_logo|   |istsos_logo| 
-              52 North SOS       52 North WPS       Zoo Project             t-rex         
+              PyWPS              MapProxy           QGIS Server             istSOS        
               |52nSOS_logo|      |52nWPS_logo|      |zoo-project_logo|      |t-rex_logo|  
-              Actinia                                 
+              52 North SOS       52 North WPS       Zoo Project             t-rex         
               |actinia_logo|                          
+              Actinia                                 
             =================== ================== ======================= =================
 
 
@@ -670,8 +670,8 @@ OSGeoLive
 
             ================= =================== ================= ===================
             ================= =================== ================= ===================
-              PostGIS          SpatiaLite          Rasdaman          pgRouting       
               |postgis_logo|   |spatialite_logo|   |rasdaman_logo|   |pgrouting_logo|
+              PostGIS          SpatiaLite          Rasdaman          pgRouting       
             ================= =================== ================= ===================
 
 
@@ -745,10 +745,10 @@ OSGeoLive
 
             ================== ================ =============== ==================
             ================== ================ =============== ==================
-              GpsPrune          Marble           OpenStreetMap   iD editor      
               |gpsprune_logo|   |marble_logo|    |osm_logo|      |ideditor_logo|
-              JOSM              OpenCPN                 
+              GpsPrune          Marble           OpenStreetMap   iD editor      
               |josm_logo|       |opencpn_logo|          
+              JOSM              OpenCPN                 
             ================== ================ =============== ==================
 
 
@@ -843,10 +843,10 @@ OSGeoLive
 
             =================== =============== =============== ================
             =================== =============== =============== ================
-              GMT                OTB             R               Mapnik       
               |gmt_logo|         |otb_logo|      |R_logo|        |mapnik_logo|
-              MapSlicer                   
+              GMT                OTB             R               Mapnik       
               |mapslicer_logo|            
+              MapSlicer                   
             =================== =============== =============== ================
 
 
@@ -927,8 +927,8 @@ OSGeoLive
     .. revealjs:: Domain Specific GIS
         :title-heading: h3
   
-              zyGrib
               |zygrib_logo|
+           zyGrib
 
 
         .. rv_note::
@@ -956,8 +956,8 @@ OSGeoLive
 
             ====================== ======================================== ==================== ========================
             ====================== ======================================== ==================== ========================
-              Natural Earth         North Carolina USA Educational dataset   OpenStreetMap        NetCDF Data Set      
               |naturalearth_logo|   |nc_dataset_logo|                        |osm_dataset_logo|   |netcdf_dataset_logo|
+              Natural Earth         North Carolina USA Educational dataset   OpenStreetMap        NetCDF Data Set      
             ====================== ======================================== ==================== ========================
 
 
@@ -1028,10 +1028,10 @@ OSGeoLive
 
             ================ ================= =============== ================
             ================ ================= =============== ================
-              GDAL/OGR        GeoTools          GEOS            Proj.4       
               |gdal_logo|     |geotools_logo|   |geos_logo|     |proj4_logo| 
-              libLAS          JTS                    
+              GDAL/OGR        GeoTools          GEOS            Proj.4       
               |liblas_logo|   |jts_logo|             
+              libLAS          JTS                    
             ================ ================= =============== ================
 
 
