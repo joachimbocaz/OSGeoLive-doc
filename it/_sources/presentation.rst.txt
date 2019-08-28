@@ -1162,7 +1162,7 @@ OSGeoLive
 
         *  Translate and improve the documentation
 
-          * Translation is made in `Transifex <https://www.transifex.com/osgeo/osgeolive/dashboard/`__
+          * Translation is made in `Transifex <https://www.transifex.com/osgeo/osgeolive/dashboard/>`__
           * Local Chapters can easily get involved here
           * No technical experience necessary
 
