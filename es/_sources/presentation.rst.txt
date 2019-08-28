@@ -1131,7 +1131,6 @@ OSGeoLive
         * Bas Couwenberg
         * Massimo De Stefano
         * Astrid Emde
-        * Ben Caradoc-Davies
         * Nicolas Roelandt
         * Vicky Vergara
 
