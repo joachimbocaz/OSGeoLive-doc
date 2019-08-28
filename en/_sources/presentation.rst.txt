@@ -1026,13 +1026,13 @@ OSGeoLive
         :title-heading: h3
   
 
-            ================ ==================== =============== ================
-            ================ ==================== =============== ================
-              GDAL/OGR        GeoTools             GEOS            Proj.4       
-              |gdal_logo|     |geotools_logo|      |geos_logo|     |proj4_logo| 
-              libLAS          JTS Topology Suite        
-              |liblas_logo|   |jts_logo|                
-            ================ ==================== =============== ================
+            ================ ================= =============== ================
+            ================ ================= =============== ================
+              GDAL/OGR        GeoTools          GEOS            Proj.4       
+              |gdal_logo|     |geotools_logo|   |geos_logo|     |proj4_logo| 
+              libLAS          JTS                    
+              |liblas_logo|   |jts_logo|             
+            ================ ================= =============== ================
 
 
 
@@ -1104,7 +1104,7 @@ OSGeoLive
 
 
 
-    .. revealjs:: JTS Topology Suite
+    .. revealjs:: JTS
         :title-heading: h3
   
         .. image:: ../images/projects/jts/jts_screenshot.png
