@@ -954,11 +954,11 @@ OSGeoLive
         :title-heading: h3
   
 
-            ====================== =============================================== ==================== ========================
-            ====================== =============================================== ==================== ========================
-              Natural Earth         OSGeo North Carolina, USA Educational dataset   OpenStreetMap        NetCDF Data Set      
-              |naturalearth_logo|   |nc_dataset_logo|                               |osm_dataset_logo|   |netcdf_dataset_logo|
-            ====================== =============================================== ==================== ========================
+            ====================== ======================================== ==================== ========================
+            ====================== ======================================== ==================== ========================
+              Natural Earth         North Carolina USA Educational dataset   OpenStreetMap        NetCDF Data Set      
+              |naturalearth_logo|   |nc_dataset_logo|                        |osm_dataset_logo|   |netcdf_dataset_logo|
+            ====================== ======================================== ==================== ========================
 
 
 
@@ -980,7 +980,7 @@ OSGeoLive
 
 
 
-    .. revealjs:: OSGeo North Carolina, USA Educational dataset
+    .. revealjs:: North Carolina USA Educational dataset
         :title-heading: h3
   
         .. image:: ../images/projects/nc_dataset/nc_dataset_screenshot.png
