@@ -841,13 +841,13 @@ OSGeoLive
         :title-heading: h3
   
 
-            =================== =============== ==================== ================
-            =================== =============== ==================== ================
-              GMT                OTB             R for Spatial Data   Mapnik       
-              |gmt_logo|         |otb_logo|      |R_logo|             |mapnik_logo|
-              MapSlicer                        
-              |mapslicer_logo|                 
-            =================== =============== ==================== ================
+            =================== =============== =============== ================
+            =================== =============== =============== ================
+              GMT                OTB             R               Mapnik       
+              |gmt_logo|         |otb_logo|      |R_logo|        |mapnik_logo|
+              MapSlicer                   
+              |mapslicer_logo|            
+            =================== =============== =============== ================
 
 
 
@@ -881,7 +881,7 @@ OSGeoLive
 
 
 
-    .. revealjs:: R for Spatial Data
+    .. revealjs:: R
         :title-heading: h3
   
         .. image:: ../images/projects/R/R_screenshot.png
