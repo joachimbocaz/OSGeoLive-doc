@@ -73,14 +73,26 @@
 <div class="section" id="geoext-quickstart">
 <h1>GeoExt-Quickstart<a class="headerlink" href="#geoext-quickstart" title="Link zu dieser Überschrift">¶</a></h1>
 <p>GeoExt ist eine JavaScript-Bibliothek, die im Browser ausgeführt wird und das ExtJS-Framework und die OpenLayers-Bibliothek kombiniert und erweitert. In diesem Quickstart werden die Schritte zum Erstellen einer umfangreichen Webanwendung mit GeoExt-Komponenten in weniger als 200 Codezeilen erläutert. Wir werden die installierten MapServer-Web-Services auf OSGeoLive als MapServer verwenden, um Karten-Layer für die Anwendung bereitzustellen. Wenn Sie die folgenden Schritte ausführen, wird die Demo-Anwendung GeoExt auf <a class="reference external" href="http://localhost/geoext/">http://localhost/geoext/</a>.</p>
-<div class="section" id="html-page">
-<h2>HTML-Seite<a class="headerlink" href="#html-page" title="Link zu dieser Überschrift">¶</a></h2>
-<p>Im ersten Schritt richten wir eine leere HTML-Seite ein, die die Anwendung enthält.</p>
-<p>Erstellen Sie zunächst eine neue HTML-Datei unter ‚‘/var/www/html/geoext/demo.html‘‘ mit dem auf OSGeoLive installierten Texteditor Leafpad. Um sicherzustellen, dass Sie über Berechtigungen zum Speichern der Datei verfügen, öffnen Sie Leafpad über die Befehlszeile mit erhöhten Berechtigungen mit dem folgenden Befehl:</p>
+<div class="contents local topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#create-an-html-page" id="id1">Create an HTML page</a></li>
+<li><a class="reference internal" href="#configure-openlayers-objects" id="id2">Configure OpenLayers objects</a></li>
+<li><a class="reference internal" href="#work-with-geoext-components" id="id3">Work with GeoExt components</a></li>
+<li><a class="reference internal" href="#create-a-viewport" id="id4">Create a viewport</a></li>
+<li><a class="reference internal" href="#what-s-next" id="id5">What’s next?</a></li>
+</ul>
+</div>
+<div class="section" id="create-an-html-page">
+<h2><a class="toc-backref" href="#id1">Create an HTML page</a><a class="headerlink" href="#create-an-html-page" title="Link zu dieser Überschrift">¶</a></h2>
+<p>In this step we will set-up an empty HTML page which will contain the application. We’ll use the text editor Leafpad installed on OSGeoLive to create a new HTML file at <code class="docutils literal"><span class="pre">/var/www/html/geoext/demo.html</span></code></p>
+<ol class="arabic">
+<li><p class="first">Open Leafpad from the command line with elevated permissions (so you can save the file) using the command below:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>sudo leafpad
 </pre></div>
 </div>
-<p>Fügen Sie den folgenden HTML-Code ein. Dieser enthält Links zu den JavaScript-Bibliotheken ExtJS und OpenLayers sowie zwei CSS-Dateien, die zum Formatieren von ExtJS- und OpenLayers-Komponenten verwendet werden.</p>
+</li>
+<li><p class="first">Fügen Sie den folgenden HTML-Code ein. Dieser enthält Links zu den JavaScript-Bibliotheken ExtJS und OpenLayers sowie zwei CSS-Dateien, die zum Formatieren von ExtJS- und OpenLayers-Komponenten verwendet werden.</p>
 <p>Wir verwenden die Klasse ‚‘Ext.Loader‘‘, um in GeoExt JavaScript-Quelldateien zu laden. Diese befinden sich alle im Ordner ‚‘src‘‘ in ‚‘/var/www/html/geoext/‘‘.</p>
 <div class="highlight-html"><div class="highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
 <span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
@@ -110,11 +122,17 @@
 <span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </pre></div>
 </div>
-<p>Sie sollten nun eine leere HTML-Seite in Firefox unter <a class="reference external" href="http://localhost/geoext/demo.html">http://localhost/geoext/demo.html</a> sehen. Das gesamte JavaScript in dem folgenden Kommentar <code class="docutils literal"><span class="pre">//</span> <span class="pre">all</span> <span class="pre">JavaScript</span> <span class="pre">application</span> <span class="pre">code</span> <span class="pre">should</span> <span class="pre">go</span> <span class="pre">here</span></code> eingefügt werden. An dieser Stelle wird gewährleistet, dass die JavaScript-Bibliotheken geladen wurden, bevor benutzerdefinierter JavaScript-Code ausgeführt wird.</p>
+</li>
+</ol>
+<p>You should now be able to view an empty HTML page in Firefox at <a class="reference external" href="http://localhost/geoext/demo.html">http://localhost/geoext/demo.html</a></p>
+<p>All the JavaScript in the following sections should be pasted after the <code class="docutils literal"><span class="pre">//</span> <span class="pre">all</span> <span class="pre">JavaScript</span> <span class="pre">application</span> <span class="pre">code</span> <span class="pre">should</span> <span class="pre">go</span> <span class="pre">here</span></code> comment in the
+<code class="docutils literal"><span class="pre">Ext.onReady</span></code> function. Placing code here ensures the JavaScript libraries have been loaded before running any custom JavaScript code.</p>
 </div>
-<div class="section" id="openlayers">
-<h2>Openlayers<a class="headerlink" href="#openlayers" title="Link zu dieser Überschrift">¶</a></h2>
-<p>Als Nächstes konfigurieren wir einige OpenLayers-Objekte, die von der Anwendung verwendet werden. Zunächst können Sie einen Kartenkachel-Layer mit OpenStreetMap und einige WMS-Layer erstellen, die über die MapServer Itasca-Demo auf OSGeoLive zur Verfügung stehen.</p>
+<div class="section" id="configure-openlayers-objects">
+<h2><a class="toc-backref" href="#id2">Configure OpenLayers objects</a><a class="headerlink" href="#configure-openlayers-objects" title="Link zu dieser Überschrift">¶</a></h2>
+<p>Next we will configure some OpenLayers objects used by the application.</p>
+<ol class="arabic">
+<li><p class="first">First lets create a map tile layer using OpenStreetMap, and some WMS layers that are available from the MapServer Itasca demo on OSGeoLive.</p>
 <div class="highlight-js"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">map</span><span class="p">;</span>
 <span class="kd">var</span> <span class="nx">mapServerUrl</span> <span class="o">=</span> <span class="s1">&#39;http://localhost/cgi-bin/mapserv?map=/usr/local/www/docs_maps/mapserver_demos/itasca/itasca.map&amp;&#39;</span><span class="p">;</span>
 
@@ -148,7 +166,8 @@
 <span class="p">});</span>
 </pre></div>
 </div>
-<p>Als nächstes werden wir in einem WFS-Vektor-Layer hinzufügen - dies ist etwas komplizierter, aber folgt dem gleichen Ansatz der Erstellung einer Quelle und einer Ebene - also wie beim vorherigen Layer:</p>
+</li>
+<li><p class="first">Als nächstes werden wir in einem WFS-Vektor-Layer hinzufügen - dies ist etwas komplizierter, aber folgt dem gleichen Ansatz der Erstellung einer Quelle und einer Ebene - also wie beim vorherigen Layer:</p>
 <div class="highlight-js"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">vectorSource</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ol</span><span class="p">.</span><span class="nx">source</span><span class="p">.</span><span class="nx">Vector</span><span class="p">({</span>
     <span class="nx">format</span><span class="o">:</span> <span class="k">new</span> <span class="nx">ol</span><span class="p">.</span><span class="nx">format</span><span class="p">.</span><span class="nx">GeoJSON</span><span class="p">(),</span>
     <span class="nx">url</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">extent</span><span class="p">)</span> <span class="p">{</span>
@@ -166,7 +185,8 @@
 <span class="p">});</span>
 </pre></div>
 </div>
-<p>Jetzt erstellen wir unser OpenLayers-Kartenobjekt, das mit den Layern konfiguriert ist, die wir gerade erstellt haben. Wir legen auch die Mittelpunkt- und Zoomstufe der Karte fest und fügen eine ausgewählte Interaktion hinzu, damit wir Features in unserem Vektor-Layer auswählen können.</p>
+</li>
+<li><p class="first">Jetzt erstellen wir unser OpenLayers-Kartenobjekt, das mit den Layern konfiguriert ist, die wir gerade erstellt haben. Wir legen auch die Mittelpunkt- und Zoomstufe der Karte fest und fügen eine ausgewählte Interaktion hinzu, damit wir Features in unserem Vektor-Layer auswählen können.</p>
 <div class="highlight-js"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">map</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ol</span><span class="p">.</span><span class="nx">Map</span><span class="p">({</span>
     <span class="nx">layers</span><span class="o">:</span> <span class="p">[</span>
         <span class="nx">wmsLayer1</span><span class="p">,</span> <span class="nx">wmsLayer2</span><span class="p">,</span> <span class="nx">wmsLayer3</span><span class="p">,</span> <span class="nx">vectorLayer</span>
@@ -181,17 +201,22 @@
 <span class="nx">map</span><span class="p">.</span><span class="nx">addInteraction</span><span class="p">(</span><span class="nx">selectInteraction</span><span class="p">);</span>
 </pre></div>
 </div>
+</li>
+</ol>
 </div>
-<div class="section" id="geoext">
-<h2>GeoExt<a class="headerlink" href="#geoext" title="Link zu dieser Überschrift">¶</a></h2>
-<p>Jetzt sind die Karte und die Layer konfiguriert, wir werden unsere GeoExt-Komponenten erstellen und konfigurieren. Zuallererst erstellen wir eine ‚‘GeoExt.component.Map‘‘. Dies verwendet die OpenLayers-Karte, die wir erstellt haben, und wird im Bereich „center“ unserer Anwendung positioniert.</p>
+<div class="section" id="work-with-geoext-components">
+<h2><a class="toc-backref" href="#id3">Work with GeoExt components</a><a class="headerlink" href="#work-with-geoext-components" title="Link zu dieser Überschrift">¶</a></h2>
+<p>Now the map and layers have been configured we are going to create and configure our GeoExt components.</p>
+<ol class="arabic">
+<li><p class="first">First of all we will create a <code class="docutils literal"><span class="pre">GeoExt.component.Map</span></code>. This uses the OpenLayers map we created, and will be positioned in the ‚center‘ region of our application.</p>
 <div class="highlight-js"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">mapComponent</span> <span class="o">=</span> <span class="nx">Ext</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="s1">&#39;GeoExt.component.Map&#39;</span><span class="p">,</span> <span class="p">{</span>
     <span class="nx">map</span><span class="o">:</span> <span class="nx">map</span><span class="p">,</span>
     <span class="nx">region</span><span class="o">:</span> <span class="s1">&#39;center&#39;</span>
 <span class="p">});</span>
 </pre></div>
 </div>
-<p>Als Nächstes erstellen wir eine Ebenenbaum-Komponente. Der Baum hat einen eigenen Datenspeicher - ‚‘GeoExt.data.store.LayersTree‘‘‘, den wir mit Layern aus unserer OpenLayers-Karte füllen. Der Speicher wird verwendet, um unseren Ebenenbaum zu füllen. Wir fügen dem Baum auch ein Plugin hinzu, damit die Reihenfolge des Karten-Layers durch Ziehen und Ablegen der Layer geändert werden kann. Die Eigenschaft ‚‘flex‘‘ bewirkt, dass das Ebenenbaum-Fenster den gesamten verfügbaren Platz in seinem Bereich des Bildschirms auffüllt.</p>
+</li>
+<li><p class="first">Als Nächstes erstellen wir eine Ebenenbaum-Komponente. Der Baum hat einen eigenen Datenspeicher - ‚‘GeoExt.data.store.LayersTree‘‘‘, den wir mit Layern aus unserer OpenLayers-Karte füllen. Der Speicher wird verwendet, um unseren Ebenenbaum zu füllen. Wir fügen dem Baum auch ein Plugin hinzu, damit die Reihenfolge des Karten-Layers durch Ziehen und Ablegen der Layer geändert werden kann. Die Eigenschaft ‚‘flex‘‘ bewirkt, dass das Ebenenbaum-Fenster den gesamten verfügbaren Platz in seinem Bereich des Bildschirms auffüllt.</p>
 <div class="highlight-js"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">treeStore</span> <span class="o">=</span> <span class="nx">Ext</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="s1">&#39;GeoExt.data.store.LayersTree&#39;</span><span class="p">,</span> <span class="p">{</span>
     <span class="nx">layerGroup</span><span class="o">:</span> <span class="nx">map</span><span class="p">.</span><span class="nx">getLayerGroup</span><span class="p">()</span>
 <span class="p">});</span>
@@ -208,7 +233,8 @@
 <span class="p">});</span>
 </pre></div>
 </div>
-<p>Wir werden auch ein Grid-Komponente erstellen, um die Attribute der Features von unserem WFS-Layer anzuzeigen. Ähnlich wie im Layerbaum-Speicher und im Ebenenbaum erstellen wir ein ‚‘GeoExt.data.store.Features‘‘-Speicher und einen Grid-Bereich.</p>
+</li>
+<li><p class="first">Wir werden auch ein Grid-Komponente erstellen, um die Attribute der Features von unserem WFS-Layer anzuzeigen. Ähnlich wie im Layerbaum-Speicher und im Ebenenbaum erstellen wir ein ‚‘GeoExt.data.store.Features‘‘-Speicher und einen Grid-Bereich.</p>
 <div class="highlight-js"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">featureStore</span> <span class="o">=</span> <span class="nx">Ext</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="s1">&#39;GeoExt.data.store.Features&#39;</span><span class="p">,</span> <span class="p">{</span>
     <span class="nx">layer</span><span class="o">:</span> <span class="nx">vectorLayer</span><span class="p">,</span>
     <span class="nx">map</span><span class="o">:</span> <span class="nx">map</span>
@@ -235,7 +261,8 @@
 <span class="p">});</span>
 </pre></div>
 </div>
-<p>Unsere letzte GeoExt-Komponente ist eine Übersichtskarte - ‚‘GeoExt.component.OverviewMap‘‘. Wir konfigurieren diese so, dass der OpenStreetMap-Layer angezeigt wird, den wir zuvor erstellt haben, und ihn in einem ExtJS-Bedienfeld platzieren.</p>
+</li>
+<li><p class="first">Unsere letzte GeoExt-Komponente ist eine Übersichtskarte - ‚‘GeoExt.component.OverviewMap‘‘. Wir konfigurieren diese so, dass der OpenStreetMap-Layer angezeigt wird, den wir zuvor erstellt haben, und ihn in einem ExtJS-Bedienfeld platzieren.</p>
 <div class="highlight-js"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">overview</span> <span class="o">=</span> <span class="nx">Ext</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="s1">&#39;GeoExt.component.OverviewMap&#39;</span><span class="p">,</span> <span class="p">{</span>
     <span class="nx">parentMap</span><span class="o">:</span> <span class="nx">map</span><span class="p">,</span>
     <span class="nx">layers</span><span class="o">:</span> <span class="p">[</span><span class="nx">osmLayer</span><span class="p">]</span>
@@ -251,9 +278,11 @@
 <span class="p">});</span>
 </pre></div>
 </div>
+</li>
+</ol>
 </div>
-<div class="section" id="extjs">
-<h2>Extjs<a class="headerlink" href="#extjs" title="Link zu dieser Überschrift">¶</a></h2>
+<div class="section" id="create-a-viewport">
+<h2><a class="toc-backref" href="#id4">Create a viewport</a><a class="headerlink" href="#create-a-viewport" title="Link zu dieser Überschrift">¶</a></h2>
 <p>Der letzte Schritt beim Erstellen unserer Anwendung besteht darin, ein Ansichtsfenster zu erstellen - einen Container, der die Anwendung darstellt, der alle oben erstellten Komponenten anzeigt.</p>
 <div class="highlight-js"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">vp</span> <span class="o">=</span> <span class="nx">Ext</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="s1">&#39;Ext.container.Viewport&#39;</span><span class="p">,</span> <span class="p">{</span>
     <span class="nx">layout</span><span class="o">:</span> <span class="s1">&#39;border&#39;</span><span class="p">,</span>
@@ -278,7 +307,7 @@
 <a class="reference internal image-reference" href="../../_images/geoext_quickstart.png"><img alt="../../_images/geoext_quickstart.png" src="../../_images/geoext_quickstart.png" style="width: 1521.0px; height: 725.0px;" /></a>
 </div>
 <div class="section" id="what-s-next">
-<h2>Was kommt als Nächstes?<a class="headerlink" href="#what-s-next" title="Link zu dieser Überschrift">¶</a></h2>
+<h2><a class="toc-backref" href="#id5">What’s next?</a><a class="headerlink" href="#what-s-next" title="Link zu dieser Überschrift">¶</a></h2>
 <ul class="simple">
 <li>Die <a class="reference external" href="https://geoext.github.io/geoext3/">GeoExt-Webseite</a> beinhaltet eine vollständige <a class="reference external" href="https://geoext.github.io/geoext3/v3.1.0/docs">API Dokumentation</a> und Beispiele</li>
 <li>In einem <a class="reference external" href="https://github.com/geoext/geoext3-ws">GeoExt Workshop</a> werden alle Schritte zum Konfigurieren und Verwenden von GeoExt3 in Ihren ExtJS-Anwendungen erläutert</li>
