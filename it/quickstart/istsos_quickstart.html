@@ -78,22 +78,35 @@ istSOS allows for managing and dispatch observations from monitoring sensors acc
 <p>The project provides also a Graphical user Interface that allows for easing the daily operations and a RESTFull Web api for automatizing administration procedures.</p>
 <p>istSOS is released under the GPLv2 licence, and runs on all major platforms
 (Windows, Linux, Mac OS X), even though it has been used in production in linux environment only.</p>
+<div class="contents local topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#create-postgis-database" id="id1">Create postgis database</a></li>
+<li><a class="reference internal" href="#set-up-an-istsos-service-instance" id="id2">Set up an istSOS service instance</a></li>
+<li><a class="reference internal" href="#create-a-new-service" id="id3">Create a new service</a></li>
+<li><a class="reference internal" href="#add-a-new-procedure" id="id4">Add a new procedure</a></li>
+<li><a class="reference internal" href="#add-new-observations" id="id5">Add new observations</a></li>
+<li><a class="reference internal" href="#what-next" id="id6">What next?</a></li>
+</ul>
+</div>
 <div class="section" id="create-postgis-database">
-<h2>Create postgis database<a class="headerlink" href="#create-postgis-database" title="Link a questa intestazione">¶</a></h2>
+<h2><a class="toc-backref" href="#id1">Create postgis database</a><a class="headerlink" href="#create-postgis-database" title="Link a questa intestazione">¶</a></h2>
 <p>Open a terminal and execute the following commands:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">u</span> <span class="n">postgres</span> <span class="n">createdb</span> <span class="o">-</span><span class="n">E</span> <span class="n">UTF8</span> <span class="n">istsos</span>
 <span class="n">sudo</span> <span class="o">-</span><span class="n">u</span> <span class="n">postgres</span> <span class="n">psql</span> <span class="o">-</span><span class="n">d</span> <span class="n">istsos</span> <span class="o">-</span><span class="n">c</span> <span class="s1">&#39;CREATE EXTENSION postgis&#39;</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="setting-up-an-istsos-service-instance">
-<h2>Setting up an istSOS service instance<a class="headerlink" href="#setting-up-an-istsos-service-instance" title="Link a questa intestazione">¶</a></h2>
+<div class="section" id="set-up-an-istsos-service-instance">
+<h2><a class="toc-backref" href="#id2">Set up an istSOS service instance</a><a class="headerlink" href="#set-up-an-istsos-service-instance" title="Link a questa intestazione">¶</a></h2>
 <p>With istSOS you can organize your sensor data in different instances. Every instance has its own database schema independent from other instances. You can even deploy other databases over your network according to your needs.</p>
 <p>The first steps into istSOS setup is to configure the default configuration options. These options will then be automatically used for your convenience by every new istSOS instance created.</p>
-<p><strong>1) Open the Web Admin interface</strong></p>
-<p>Open a browser and go to <a class="reference external" href="http://localhost/istsos/admin">http://localhost/istsos/admin</a></p>
-<p><strong>2) Configure your database connection</strong></p>
-<p>From the toolbar buttons menu press the «Database» button and fill in the database configuration options:</p>
+<ol class="arabic">
+<li><p class="first">Click <span class="menuselection">Geospatial ‣ Webservices ‣ istSOS</span> to open the Web Admin interface. Alternatively, open a browser and go to <a class="reference external" href="http://localhost/istsos/admin">http://localhost/istsos/admin</a></p>
+</li>
+<li><p class="first">Click the <span class="guilabel">Enter</span> button in the administration page.</p>
+</li>
+<li><p class="first">Configure your database connection. From the toolbar buttons menu, press the «Database» button and fill in the database configuration options:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">user</span><span class="p">:</span> <span class="n">postgres</span>
 <span class="n">password</span><span class="p">:</span> <span class="n">postgres</span>
 <span class="n">host</span><span class="p">:</span> <span class="n">localhost</span>
@@ -101,44 +114,46 @@ istSOS allows for managing and dispatch observations from monitoring sensors acc
 <span class="n">DB</span> <span class="n">name</span><span class="p">:</span> <span class="n">istsos</span>
 </pre></div>
 </div>
-<p><strong>3) Configure the default Service provider information</strong></p>
-<p>Press the «Service provider» button and fill it using your institutional information.</p>
-<p><strong>4) Configure the default Service identification information</strong></p>
-<p>Press the «Service identification» button and fill up with custom metadata that describe the service usage.</p>
-<p><strong>5) Configure your service coordinates system</strong></p>
-<p>Press the «Coordinates system» button to manage the Coordinate Reference System (CRS).</p>
-<p><em>Default EPSG code</em>: this will be the native Coordinate Reference System of your geometries in the database.</p>
-<p><em>Permitted EPSG</em>: here you can configure which other Coordinate Reference Systems your system will support and reproject if requested.</p>
-<p><strong>6) Configure your getobservation request options</strong></p>
-<p>From the toolbar buttons menu press the «GetObservation Configuration» button to
+</li>
+<li><p class="first">Press the «Service provider» button and fill it using your institutional information.</p>
+</li>
+<li><p class="first">Press the «Service identification» button and fill up with custom metadata that describe the service usage.</p>
+</li>
+<li><p class="first">Press the «Coordinates system» button to manage the Coordinate Reference System (CRS).</p>
+<ul class="simple">
+<li><em>Default EPSG code</em>: this will be the native Coordinate Reference System of your geometries in the database.</li>
+<li><em>Permitted EPSG</em>: here you can configure which other Coordinate Reference Systems your system will support and reproject if requested.</li>
+</ul>
+</li>
+</ol>
+<p>#. From the toolbar buttons menu, press the «GetObservation Configuration» button to
 set maximum time interval per getObservation request (zero for no limits) and aggregation no-data value.</p>
-<p><strong>7) Configure your service proxy address</strong></p>
-<p>The Proxy URL field is the base URL seen beyond a reverse proxy.</p>
+<ol class="arabic simple">
+<li>Configure your service proxy address. The Proxy URL field is the base URL seen beyond a reverse proxy.</li>
+</ol>
 </div>
 <div class="section" id="create-a-new-service">
-<h2>Create a new service<a class="headerlink" href="#create-a-new-service" title="Link a questa intestazione">¶</a></h2>
+<h2><a class="toc-backref" href="#id3">Create a new service</a><a class="headerlink" href="#create-a-new-service" title="Link a questa intestazione">¶</a></h2>
 <p>Now that you have configured istSOS, it’s time to create a new service instance.</p>
-<p><strong>1) Create a new service</strong></p>
-<p>From the toolbar buttons menu press the «new service» button:</p>
-<p>Choose the name of your instance. In this workshop use the name <strong>demo</strong>.</p>
-<p>In the EPSG field you can set the database native projection. Leaving it empty,
-the default one will be used.</p>
-<p>Clicking on the «Customize database» box, you are able
-to change the default database configuration for
-this new istSOS instance.</p>
-<p><strong>2) Press “next”</strong></p>
-<p>As you pressed the “next” button, the server status panel is displayed.
-If something’s gone wrong during the creation you will see here an alert.</p>
+<ol class="arabic simple">
+<li>From the toolbar buttons menu press the «new service» button and click <span class="guilabel">Next</span>.</li>
+<li>Type <strong>demo</strong> for the Service name.</li>
+<li>In the EPSG field you can set the database native projection. Leave it empty to use the default. Click <span class="guilabel">Next</span>.</li>
+<li>Clicking on the «Customize database» box, you are able to change the default database configuration for this new istSOS instance.</li>
+<li>Press <span class="guilabel">Next</span>. The server status panel is displayed. If something’s gone wrong during the creation you will see an alert here.</li>
+</ol>
 <div class="admonition note">
 <p class="first admonition-title">Nota</p>
 <p class="last">The istSOS “demo” instance has inherited all the configuration options from the default configuration. If, for any reason you decide to modify them, the changes will affect only this instance.</p>
 </div>
 </div>
 <div class="section" id="add-a-new-procedure">
-<h2>Add a new procedure<a class="headerlink" href="#add-a-new-procedure" title="Link a questa intestazione">¶</a></h2>
-<p>From the “services” drop down button of the admin interface (<a class="reference external" href="http://localhost/istsos/admin">http://localhost/istsos/admin</a> ) choose the desired instance.</p>
-<p>From the toolbar buttons menu press the «New procedure» button.</p>
-<p>Fill in the form using appropriate information.</p>
+<h2><a class="toc-backref" href="#id4">Add a new procedure</a><a class="headerlink" href="#add-a-new-procedure" title="Link a questa intestazione">¶</a></h2>
+<ol class="arabic simple">
+<li>From the “services” drop down button of the admin interface (<a class="reference external" href="http://localhost/istsos/admin">http://localhost/istsos/admin</a> ) choose the desired instance.</li>
+<li>From the toolbar buttons menu press the <span class="guilabel">New procedure</span> button.</li>
+<li>Fill in the form using appropriate information.</li>
+</ol>
 <div class="admonition warning">
 <p class="first admonition-title">Avvertimento</p>
 <p class="last">Once a procedure is created the outputs (observed properties) cannot be changed.</p>
@@ -193,15 +208,14 @@ If something’s gone wrong during the creation you will see here an alert.</p>
 </div>
 </div>
 <div class="section" id="add-new-observations">
-<h2>Add new observations<a class="headerlink" href="#add-new-observations" title="Link a questa intestazione">¶</a></h2>
+<h2><a class="toc-backref" href="#id5">Add new observations</a><a class="headerlink" href="#add-new-observations" title="Link a questa intestazione">¶</a></h2>
+<p>First we will create a text file with sensor data, formatted according to «text/csv, subtype=istSOS». The file uses a Comma Separated Values (CSV) format. The first line contains header information, including URI names of the observed properties. The following lines contain the data.</p>
 <ol class="arabic">
-<li><p class="first">First we will create a text file with sensor data, formatted according to «text/csv, subtype=istSOS». The file uses a Comma Separated Values (CSV) format. The first line contains header information, including URI names of the observed properties. The following lines contain the data.</p>
+<li><p class="first">Open a text editor by selecting <span class="menuselection">Accessories ‣ Leafpad</span>.</p>
+</li>
+<li><p class="first">Copy and paste the follOwing text into the text editor window:</p>
 <blockquote>
-<div><ol class="arabic simple">
-<li>Open a text editor by selecting <span class="menuselection">Accessories ‣ Leafpad</span>.</li>
-<li>Copy and paste the follwing text into the text editor window:</li>
-</ol>
-<div class="highlight-rest"><div class="highlight"><pre><span></span>urn:ogc:def:parameter:x-istsos:1.0:time:iso8601,urn:ogc:def:parameter:x-istsos:1.0:meteo:air:temperature
+<div><div class="highlight-rest"><div class="highlight"><pre><span></span>urn:ogc:def:parameter:x-istsos:1.0:time:iso8601,urn:ogc:def:parameter:x-istsos:1.0:meteo:air:temperature
 2014-06-03T14:30:00.00Z,22.20
 2014-06-03T14:40:00.00Z,22.00
 2014-06-03T14:50:00.00Z,21.70
@@ -215,18 +229,27 @@ If something’s gone wrong during the creation you will see here an alert.</p>
 2014-06-03T16:10:00.00Z,17.20
 </pre></div>
 </div>
-<ol class="arabic simple">
-<li>Save the file as «T_LUGANO_20140603161000000.dat» on the Desktop. The filename convention being used is: PROCEDURENAME_YYYYMMDDhhmmssfff.dat</li>
-<li>Open a terminal by selecting <span class="menuselection">Accessories ‣ LXTerminal</span>.</li>
-<li>In the terminal, enter: «cd /usr/share/istsos/» and press ENTER</li>
-<li>Write «python scripts/csv2istsos.py -p T_LUGANO -u <a class="reference external" href="http://localhost/istsos">http://localhost/istsos</a> -s demo -w ~/Desktop» and press ENTER</li>
-<li>You should see a message «Insert observation success: True»</li>
-<li>Click <span class="menuselection">Geospatial ‣ Webservices ‣ istSOS</span>.</li>
-<li>Click the ENTER button in the administration page</li>
-<li>Click <span class="menuselection">Data Management ‣ Data Viewer</span>.</li>
+</div></blockquote>
+</li>
+<li><p class="first">Save the file as «T_LUGANO_20140603161000000.dat» on the Desktop. The filename convention being used is: PROCEDURENAME_YYYYMMDDhhmmssfff.dat</p>
+</li>
+<li><p class="first">Open a terminal by selecting <span class="menuselection">Accessories ‣ LXTerminal</span>.</p>
+</li>
+<li><p class="first">In the terminal, enter: «cd /usr/share/istsos/» and press ENTER.</p>
+</li>
+<li><p class="first">Write «python scripts/csv2istsos.py -p T_LUGANO -u <a class="reference external" href="http://localhost/istsos">http://localhost/istsos</a> -s demo -w ~/Desktop» and press ENTER</p>
+</li>
+<li><p class="first">You should see a message «Insert observation success: True»</p>
+</li>
+<li><p class="first">Click <span class="menuselection">Geospatial ‣ Webservices ‣ istSOS</span>.</p>
+</li>
+<li><p class="first">Click the <span class="guilabel">Enter</span> button in the administration page</p>
+</li>
+<li><p class="first">Click <span class="menuselection">Data Management ‣ Data Viewer</span>.</p>
+</li>
 <li><dl class="first docutils">
 <dt>Select the following:</dt>
-<dd><ul class="first last">
+<dd><ul class="first last simple">
 <li>Service = demo</li>
 <li>Offering = temporary</li>
 <li>Procedure T_LUGANO</li>
@@ -234,20 +257,16 @@ If something’s gone wrong during the creation you will see here an alert.</p>
 </dd>
 </dl>
 </li>
-<li>Click the «Add» button</li>
-<li>Click the «Plot» button and check that the data have been added (watch out at your time zone!)</li>
-</ol>
-</div></blockquote>
+<li><p class="first">Click the <span class="guilabel">Add</span> button</p>
+</li>
+<li><p class="first">Click the <span class="guilabel">Plot</span> button and check that the data have been added (watch out at your time zone!)</p>
 </li>
 </ol>
 <a class="reference internal image-reference" href="../../_images/istsos_viewer.png"><img alt="../../_images/istsos_viewer.png" src="../../_images/istsos_viewer.png" style="width: 512.0px; height: 384.0px;" /></a>
 </div>
 <div class="section" id="what-next">
-<h2>What Next?<a class="headerlink" href="#what-next" title="Link a questa intestazione">¶</a></h2>
-<dl class="docutils">
-<dt>To learn more about istSOS, a starting point is the <a class="reference external" href="http://istsos.org/en/trunk/doc/index.html">istSOS Documentation</a></dt>
-<dd>and the <a class="reference external" href="http://istsos.org/tutorial/">istSOS Tutorial</a>.</dd>
-</dl>
+<h2><a class="toc-backref" href="#id6">What next?</a><a class="headerlink" href="#what-next" title="Link a questa intestazione">¶</a></h2>
+<p>To learn more about istSOS, a starting point is the <a class="reference external" href="http://istsos.org/en/trunk/doc/index.html">istSOS Documentation</a> and the <a class="reference external" href="http://istsos.org/tutorial/">istSOS Tutorial</a>.</p>
 </div>
 </div>
 
