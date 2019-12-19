@@ -73,10 +73,18 @@
 <div class="section" id="mapnik-quickstart">
 <h1>Guide de démarrage rapide de Mapnik<a class="headerlink" href="#mapnik-quickstart" title="Lien permanent vers ce titre">¶</a></h1>
 <p>Mapnik est une boîte à outils pour développer des applications de cartographie. Mapnik est avant tout pour faire de belles cartes. Il est facilement extensible et approprié pour le développement d’applications bureautiques et web.</p>
+<div class="contents local topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#mapnik-python" id="id1">Mapnik &amp; Python</a></li>
+<li><a class="reference internal" href="#mapnik-leaflet" id="id2">Mapnik &amp; Leaflet</a></li>
+<li><a class="reference internal" href="#what-next" id="id3">What next?</a></li>
+</ul>
+</div>
 <div class="section" id="mapnik-python">
-<h2>Mapnik &amp; Python<a class="headerlink" href="#mapnik-python" title="Lien permanent vers ce titre">¶</a></h2>
+<h2><a class="toc-backref" href="#id1">Mapnik &amp; Python</a><a class="headerlink" href="#mapnik-python" title="Lien permanent vers ce titre">¶</a></h2>
 <p>Mapnik et ses liaisons Python sont installés et prêts à être utilisés pour les scripts sur cette machine.</p>
-<p>La création de cartes dans python est facile avec Mapnik. Tapez <cite>python</cite>  sur la ligne de commande pour entrer un interpréteur python et essayez ceci&nbsp;:</p>
+<p>Creating maps in python is easy with Mapnik. Open a terminal window and type <cite>python</cite> on the command line to enter a python interpreter. Then try this:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">mapnik</span><span class="o">,</span> <span class="nn">os</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">mapnik</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="mi">600</span><span class="p">,</span><span class="mi">400</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">style</span> <span class="o">=</span> <span class="s1">&#39;/usr/local/share/mapnik/demo/population.xml&#39;</span>
@@ -92,46 +100,21 @@
 </div>
 </div>
 <div class="section" id="mapnik-leaflet">
-<h2>Mapnik &amp; Leaflet<a class="headerlink" href="#mapnik-leaflet" title="Lien permanent vers ce titre">¶</a></h2>
-<p>En outre, une application de base de démonstration est disponible, qui met en évidence l’utilisation de Mapnik pour servir les tuiles dans une webmap OpenLayers dans le shéma de tuile OSM/Google.</p>
-<p>La démonstration utilise un serveur de tuiles conçu pour Mapnik appelé «&nbsp;TileStache&nbsp;»</p>
-<blockquote>
-<div><ul class="simple">
-<li>Plus d’informations sur TileStache&nbsp;: <a class="reference external" href="http://tilestache.org/">http://tilestache.org/</a></li>
-</ul>
-</div></blockquote>
-<p>Pour exécuter la démo il suffit de suivre ces étapes&nbsp;:</p>
-<blockquote>
-<div><ol class="arabic simple">
-<li>Cliquez sur&nbsp;&nbsp;<span class="menuselection">Desktop ‣ Spatial Tools ‣ Start Mapnik &amp; TileStache</span></li>
-</ol>
-<blockquote>
-<div><ul class="simple">
-<li>Le serveur devrait commencer dans une fenêtre de terminal (qui reste ouvert et génère des informations basiques de débogage).</li>
-</ul>
-</div></blockquote>
+<h2><a class="toc-backref" href="#id2">Mapnik &amp; Leaflet</a><a class="headerlink" href="#mapnik-leaflet" title="Lien permanent vers ce titre">¶</a></h2>
+<p>A basic demo application is available which highlights using Mapnik to serve tiles into an OpenLayers web map in the OSM/Google tile scheme.</p>
+<p>The demo uses a tileserver designed for Mapnik called «&nbsp;TileStache&nbsp;». Visit the TileStache website for more information: <a class="reference external" href="http://tilestache.org/">http://tilestache.org/</a></p>
 <ol class="arabic simple">
-<li>Vérifiez que le serveur fonctionne en demandant une tuile depuis le serveur à <a class="reference external" href="http://localhost:8012/example/0/0/0.png">http://localhost:8012/example/0/0/0.png</a></li>
-<li>Puis visitez la page de démonstration de Leaflet&nbsp;:</li>
+<li>Click <span class="menuselection">Desktop ‣ Spatial Tools ‣ Start Mapnik &amp; TileStache</span>. The server starts in a terminal window (which stays open and outputs basic debugging information).</li>
+<li>Check that the server is working by requesting a tile from the server. Click this link <a class="reference external" href="http://localhost:8012/example/0/0/0.png">http://localhost:8012/example/0/0/0.png</a> and observe the output in the server terminal window.</li>
+<li>Visit the Leaflet demo application page <a class="reference external" href="../../../leaflet-demo.html">http://localhost/leaflet-demo.html</a>.</li>
 </ol>
-<blockquote>
-<div><ul class="simple">
-<li>Cette page est à cet endroit:  <a class="reference external" href="../../../leaflet-demo.html">http://localhost/leaflet-demo.html</a></li>
-</ul>
-</div></blockquote>
-</div></blockquote>
 </div>
 <div class="section" id="what-next">
-<h2>Ensuite ?<a class="headerlink" href="#what-next" title="Lien permanent vers ce titre">¶</a></h2>
-<ul>
-<li><p class="first">&nbsp;Tutoriels Mapnik</p>
-<p>Suivez le <a class="reference external" href="https://github.com/mapnik/mapnik/wiki/MapnikTutorials">tutoriels</a> pour en savoir plus sur Mapnik.</p>
-</li>
-</ul>
-<ul>
-<li><p class="first">Explorez les fichiers sur le DVD</p>
-<p>Voir aussi les <a class="reference external" href="file:///usr/local/share/mapnik/">fichiers</a> inclus sur le DVD.</p>
-</li>
+<h2><a class="toc-backref" href="#id3">What next?</a><a class="headerlink" href="#what-next" title="Lien permanent vers ce titre">¶</a></h2>
+<ul class="simple">
+<li>Follow the tutorials to learn more about Mapnik: <a class="reference external" href="https://github.com/mapnik/mapnik/wiki/MapnikTutorials">https://github.com/mapnik/mapnik/wiki/MapnikTutorials</a></li>
+<li>Explore the included files on this DVD: <a class="reference external" href="file:///usr/local/share/mapnik/">file:///usr/local/share/mapnik/</a></li>
+<li>Visit the Mapnik website: <a class="reference external" href="http://www.mapnik.org/">http://www.mapnik.org/</a></li>
 </ul>
 </div>
 </div>
