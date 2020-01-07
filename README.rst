@@ -72,10 +72,9 @@ For Python 3
    # Requirements for the presentation
    sudo apt-get install cpanminus
    sudo cpanm Text::SimpleTable::AutoWidth
-  
-::
 
 1.2 Install the requirements
+::
    sudo pip install sphinx==1.6.5
    sudo pip install sphinx-intl
    sudo pip install sphinxjp.themes.revealjs
