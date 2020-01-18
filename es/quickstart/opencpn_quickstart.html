@@ -73,16 +73,30 @@
 <div class="section" id="opencpn-quickstart">
 <h1>Guía de Inicio Rápido de OpenCPN<a class="headerlink" href="#opencpn-quickstart" title="Enlazar permanentemente con este título">¶</a></h1>
 <p>OpenCPN es un conciso Chart Plotter y Navegador (CPN). Como siempre, nunca use una pieza de software o equipo electrónico como su único medio de navegación y esté atento a la ventana.</p>
-<div class="section" id="running">
-<h2>Ejecución<a class="headerlink" href="#running" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="contents local topic" id="contents">
+<p class="topic-title">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#setting-up-your-charts" id="id1">Configuración de los gráficos</a></li>
+<li><a class="reference internal" href="#setting-up-your-gps" id="id2">Configuración de su GPS</a></li>
+<li><a class="reference internal" href="#things-to-try" id="id3">Things to try</a></li>
+<li><a class="reference internal" href="#what-next" id="id4">What next?</a></li>
+</ul>
+</div>
 <div class="section" id="setting-up-your-charts">
-<h3>Configuración de los gráficos<a class="headerlink" href="#setting-up-your-charts" title="Enlazar permanentemente con este título">¶</a></h3>
-<p>Antes de ejecutar el OpenCPN en el DVD en Vivo debe activar los datos de la muestra. Esta es una condición de distribuirla gratis cartas marinas NOAA. La primera vez ejecute OpenCPN desde <span class="menuselection">Geospatial ‣ Navegación y mapas</span>  o el icono del escritorio, se le presentará la opción de hacer esto automáticamente.</p>
+<h2><a class="toc-backref" href="#id1">Configuración de los gráficos</a><a class="headerlink" href="#setting-up-your-charts" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Before running OpenCPN on the LiveDVD you should activate the sample data.
+This is a condition of redistributing NOAA’s free nautical charts. The first time you open OpenCPN you are presented with the option to do this automatically.</p>
+<ol class="arabic simple">
+<li>From the Start menu, select <span class="menuselection">Geospatial ‣ Navigation and Maps ‣ OpenCPN</span>.</li>
+<li>Click <span class="guilabel">I agree</span> to the NOAA Nautical Chart Data Agreement.</li>
+<li>Click <span class="guilabel">OK</span> to agree to the OpenCPN license.</li>
+</ol>
 <p>Puede descargar más cartas náuticas de los E.E.U.U. desde  NOAA en <a class="reference external" href="http://www.charts.noaa.gov">http://www.charts.noaa.gov</a></p>
 </div>
 <div class="section" id="setting-up-your-gps">
-<h3>Configuración de su GPS<a class="headerlink" href="#setting-up-your-gps" title="Enlazar permanentemente con este título">¶</a></h3>
-<p>Si tienes un GPS conectado tienes que iniciar el servicio gpsd. Para hacerlo funcionar:</p>
+<h2><a class="toc-backref" href="#id2">Configuración de su GPS</a><a class="headerlink" href="#setting-up-your-gps" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>If you have a GPS connected you will want to start the gpsd service.
+To do that, open a terminal and run:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">dpkg</span><span class="o">-</span><span class="n">reconfigure</span> <span class="n">gpsd</span>
 </pre></div>
 </div>
@@ -91,23 +105,35 @@
 </pre></div>
 </div>
 <p>Los usuarios de GPS BlueTooth deben tener especial cuidado al leer acerca de la opción no-sonda.</p>
-<ul class="simple">
-<li>“<cite>xgps</cite>” es un buen programa para comprobar que Gpsd puede ver bien su GPS.</li>
-</ul>
+<div class="admonition tip">
+<p class="first admonition-title">Truco</p>
+<p class="last">“<cite>xgps</cite>” es un buen programa para comprobar que Gpsd puede ver bien su GPS.</p>
 </div>
 </div>
-<div class="section" id="documentation">
-<h2>Documentación<a class="headerlink" href="#documentation" title="Enlazar permanentemente con este título">¶</a></h2>
-<ul class="simple">
-<li>La documentación está disponible desde el <a class="reference external" href="../../opencpn/help_en_US.html">Menú de ayuda</a>, o en línea, <a class="reference external" href="http://www.opencpn.org/ocpn/opencpn_manual">http://www.opencpn.org/ocpn/opencpn_manual</a></li>
-<li><a class="reference external" href="../../opencpn/tips.html">Consejos para comenzar</a></li>
-</ul>
-</div>
-<div class="section" id="see-also">
-<h2>Véase también<a class="headerlink" href="#see-also" title="Enlazar permanentemente con este título">¶</a></h2>
-<p>Los datos del pronóstico meteorológico actuales y las previsiones de oleaje se pueden descargar y desplegar sobre sus gráficos utilizando el complemento GRIB. El <a class="reference internal" href="../overview/zygrib_overview.html"><span class="doc">zyGrib software</span></a> (también en este disco) es una manera fácil de descargarlo. Véase el <a class="reference internal" href="zygrib_quickstart.html"><span class="doc">zyGrib quickstart</span></a> para más detalles. Habilite el complemento desde la pestaña más a la derecha del menú de configuración de OpenCPN; Aparecerá un nuevo ícono windsock en el extremo derecho de la barra de herramientas principal.</p>
+<div class="section" id="things-to-try">
+<h2><a class="toc-backref" href="#id3">Things to try</a><a class="headerlink" href="#things-to-try" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Current weather and wave forecast data can be downloaded and draped over your charts using the GRIB plugin. The <a class="reference internal" href="../overview/zygrib_overview.html"><span class="doc">zyGrib software</span></a> (also on this disc) is an easy way to download that.</p>
+<ol class="arabic simple">
+<li>Click the <span class="guilabel">Options</span> icon on the toolbar. The Options window displays.</li>
+<li>Select the <span class="guilabel">Plugins</span> tab.</li>
+<li>Choose GRIB and then click <span class="guilabel">Enable</span>.</li>
+<li>Click <span class="guilabel">OK</span>. A windsock icon is now displayed on the toolbar.</li>
+</ol>
+<p>Run through the <a class="reference internal" href="zygrib_quickstart.html"><span class="doc">zyGrib quickstart</span></a> and load the zyGrib file over your chart.</p>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
 <p>Si ha guardado el archivo zyGrib en el directorio de inicio, desplácese a: <code class="file docutils literal"><span class="pre">/home</span></code>  y seleccione su directorio de <code class="docutils literal"><span class="pre">user</span></code> como el directorio de datos GRIB. A continuación, haga clic en  de la lista de archivos de fondo para mostrar los archivos ocultos, incluyendo el directorio de  <code class="docutils literal"><span class="pre">.zygrib</span></code> que contiene los archivos de descarga GRIB.</p>
-<p>No hay necesidad de descomprimir el archivo.  Haga click  en el «&gt;» a la izquierda del nombre del archivo y seleccione de la lista de pronósticos de tiempo disponibles.</p>
+<p class="last">No hay necesidad de descomprimir el archivo.  Haga click  en el «&gt;» a la izquierda del nombre del archivo y seleccione de la lista de pronósticos de tiempo disponibles.</p>
+</div>
+</div>
+<div class="section" id="what-next">
+<h2><a class="toc-backref" href="#id4">What next?</a><a class="headerlink" href="#what-next" title="Enlazar permanentemente con este título">¶</a></h2>
+<ul class="simple">
+<li>Documentation is available from the Help menu or online at <a class="reference external" href="https://opencpn.org/OpenCPN/info/manuals.html">https://opencpn.org/OpenCPN/info/manuals.html</a></li>
+<li><a class="reference external" href="../../opencpn/tips.html">Consejos para comenzar</a></li>
+<li>Website: <a class="reference external" href="http://www.opencpn.org">http://www.opencpn.org</a></li>
+<li>Support: <a class="reference external" href="http://www.cruisersforum.com/forums/f134">http://www.cruisersforum.com/forums/f134</a></li>
+</ul>
 </div>
 </div>
 
