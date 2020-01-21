@@ -81,34 +81,29 @@
 <li>plot some data points on a map</li>
 </ul>
 </div></blockquote>
-<div class="section" id="start-r">
-<h2>Start R<a class="headerlink" href="#start-r" title="Permalink to this headline">¶</a></h2>
-<p>Either:</p>
-<blockquote>
-<div><ul class="simple">
-<li>Choose <code class="docutils literal"><span class="pre">R</span> <span class="pre">Statistics</span></code> from the Spatial Tools section of the  menu - a terminal window appears running R.</li>
-<li>Enter <code class="docutils literal"><span class="pre">R</span></code> at a command-line shell prompt. R will start in that terminal.</li>
+<div class="contents local topic" id="contents">
+<p class="topic-title">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#start-r" id="id1">Start R</a></li>
+<li><a class="reference internal" href="#building-data" id="id2">Building data</a></li>
+<li><a class="reference internal" href="#loading-map-data" id="id3">Loading map data</a></li>
+<li><a class="reference internal" href="#vignettes" id="id4">Vignettes</a></li>
+<li><a class="reference internal" href="#what-next" id="id5">What next?</a></li>
 </ul>
-</div></blockquote>
-<p>Don’t fear the command line - it is a source of great power. Using the up and down arrows
-to recall commands so you can edit mistakes will help greatly. Hit CTRL-C if get
-stuck and you should get the prompt back.</p>
 </div>
-<div class="section" id="quit-r">
-<h2>Quit R<a class="headerlink" href="#quit-r" title="Permalink to this headline">¶</a></h2>
-<p>Almost everything in R is a function, including the function for quitting. Type
-<code class="docutils literal"><span class="pre">q()</span></code> and hit return. If you just type <code class="docutils literal"><span class="pre">q</span></code> you’ll see the source code for the <code class="docutils literal"><span class="pre">q</span></code> function.</p>
-<p>R will ask you if you want to save your workspace as an R data image file. When you
-start R again from a directory with a <code class="docutils literal"><span class="pre">.RData</span></code> file it will restore all its
-data from there.</p>
-</div>
-<div class="section" id="beginning-r">
-<h2>Beginning R<a class="headerlink" href="#beginning-r" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="start-r">
+<h2><a class="toc-backref" href="#id1">Start R</a><a class="headerlink" href="#start-r" title="Permalink to this headline">¶</a></h2>
 <p>R is essentially a command-line program, although graphical user
 interfaces are available. You type a line of code at the prompt,
 press return, and the R interpreter evaluates it and prints the
 result.</p>
-<p>You can start with simple arithmetic</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">Don’t fear the command line - it is a source of great power. Using the up and down arrows</p>
+</div>
+<p>to recall commands so you can edit mistakes. Hit CTRL-C if get stuck and you should get the prompt back.</p>
+<p>Choose <span class="menuselection">Geospatial ‣ Spatial Tools ‣ R Statistics</span>. A terminal window opens running R.</p>
+<p>You can start with simple arithmetic.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="mi">3</span><span class="o">*</span><span class="mi">2</span>
 <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="mi">6</span>
 
@@ -122,10 +117,10 @@ result.</p>
 <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="mf">1.155727</span>
 </pre></div>
 </div>
-<p>And so on. A full range of arithmetic, trigonometric, and statistical
-functions are built in, and thousands more are available from
+<p>A full range of arithmetic, trigonometric, and statistical
+functions are built-in, and thousands more are available from
 packages in the <a class="reference external" href="http://cran.r-project.org/">CRAN</a> archive.</p>
-<p>The main prompt in R is <code class="docutils literal"><span class="pre">&gt;</span></code>, but there is also the continuation prompt, <code class="docutils literal"><span class="pre">+</span></code>, which
+<p>The main prompt in R is <code class="docutils literal"><span class="pre">&gt;</span></code>, but there is also the continuation prompt <code class="docutils literal"><span class="pre">+</span></code>, which
 appears if R expects more input to make a valid expression. You’ll see this if you
 forget a closing bracket or parenthesis.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">sqrt</span><span class="p">(</span>
@@ -136,7 +131,7 @@ forget a closing bracket or parenthesis.</p>
 </div>
 </div>
 <div class="section" id="building-data">
-<h2>Building Data<a class="headerlink" href="#building-data" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id2">Building data</a><a class="headerlink" href="#building-data" title="Permalink to this headline">¶</a></h2>
 <p>You might be wondering what the mysterious ‘one’ in square brackets is
 doing in the output. This is telling you that the result is one number. R
 can store things in one-dimensional vectors, two-dimensional matrices,
@@ -219,7 +214,7 @@ using $-notation:</p>
 </div>
 </div>
 <div class="section" id="loading-map-data">
-<h2>Loading Map Data<a class="headerlink" href="#loading-map-data" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id3">Loading map data</a><a class="headerlink" href="#loading-map-data" title="Permalink to this headline">¶</a></h2>
 <p>There are many packages for spatial data manipulation and statistics. Some
 are included here, and some can be downloaded from CRAN.</p>
 <p>Here we will load two shapefiles - the country boundaries and populated places
@@ -280,17 +275,21 @@ colour to red and the plotting character to a solid blob:</p>
 </div>
 <p>and our final image appears:</p>
 <img alt="../../_images/r_plot3.png" src="../../_images/r_plot3.png" />
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">To quite R, type <code class="docutils literal"><span class="pre">q()</span></code> and hit return. R will ask you if you want to save your workspace as an R data image file. When you start R again from a directory with a <code class="docutils literal"><span class="pre">.RData</span></code> file it will restore all its data from there.</p>
+</div>
 </div>
 <div class="section" id="vignettes">
-<h2>Vignettes<a class="headerlink" href="#vignettes" title="Permalink to this headline">¶</a></h2>
-<p>In the past the documentation for R packages tended to be tersely-written help pages
+<h2><a class="toc-backref" href="#id4">Vignettes</a><a class="headerlink" href="#vignettes" title="Permalink to this headline">¶</a></h2>
+<p>In the past, the documentation for R packages tended to be tersely-written help pages
 for each function. Now package authors are encouraged to write a ‘vignette’ as a friendly
-introduction to the package. If you just run the <code class="docutils literal"><span class="pre">vignette()</span></code> function with no arguments
+introduction to the package. If you run the <code class="docutils literal"><span class="pre">vignette()</span></code> function with no arguments
 you will get the list of those vignettes on your system. Try <code class="docutils literal"><span class="pre">vignette(&quot;sf1&quot;)</span></code> for a
 slightly technical introduction to the R spatial package.</p>
 </div>
-<div class="section" id="further-reading">
-<h2>Further Reading<a class="headerlink" href="#further-reading" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="what-next">
+<h2><a class="toc-backref" href="#id5">What next?</a><a class="headerlink" href="#what-next" title="Permalink to this headline">¶</a></h2>
 <p>For general information about R, try the official <a class="reference external" href="http://cran.r-project.org/doc/manuals/R-intro.html">Introduction to R</a> or any of the documentation from the main <a class="reference external" href="http://www.r-project.org/">R Project</a> page.</p>
 <p>For more information on spatial aspects of R, the best place to start is probably the <a class="reference external" href="http://cran.r-project.org/web/views/Spatial.html">R Spatial Task View</a></p>
 <p>You might also want to check out the <a class="reference external" href="http://www.rspatial.org">R-Spatial</a>
